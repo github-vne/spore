@@ -1,0 +1,13 @@
+export enum STYLED {
+  PRIMARY,
+  SECONDARY,
+  TERTIARY
+}
+
+export enum SIZE {
+  EXTRA_SMALL,
+  SMALL,
+  MIDDLE,
+  LARGE,
+  EXTRA_LARGE
+}
