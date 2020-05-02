@@ -1,28 +1,46 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { Textarea as _Textarea } from 'ui-kit';
+import { MessageType } from './types';
 
-export const ChatContainer = styled.div`
-  height: calc(100vh - 115px);
+export const Column = styled.div`
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+  overflow: auto;
+`;
+
+export const Container = styled.div`
+  height: 100%;
   display: grid;
   grid-template-columns: 1fr 250px;
+`;
+
+export const UserColumn = styled.div`
+  ${Column};
+`;
+
+export const MessageColumn = styled.div`
+  ${Column};
+`;
+
+export const Info = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  min-height: 55px;
+  border: 1px solid #fff;
 `;
 
 export const UserList = styled.ul`
   height: 100%;
   overflow-y: auto;
   border: 1px solid #fff;
-  padding: 0 10px;
 `;
 
-export const Chat = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  overflow: auto;
-`;
-
-export const ChatInput = styled.div`
+export const TextareaBox = styled.div`
+  padding: 5px;
+  background: #1e1e24;
   width: 100%;
-  height: 50px;
   border: 1px solid #fff;
   flex: none;
   display: flex;
@@ -30,35 +48,74 @@ export const ChatInput = styled.div`
   justify-content: center;
 `;
 
-export const Info = styled.div`
-  padding: 20px;
-  border: 1px solid #fff;
-`;
-
-export const Users = styled.div`
-  height: 100%;
-  overflow: hidden;
-  display: grid;
-`;
-
-export const Content = styled.div`
-  display: grid;
-  grid-template-rows: auto calc(100vh - 245px);
+export const Textarea = styled(_Textarea)`
+  width: 100%;
 `;
 
 export const MessageList = styled.ol`
   border: 1px solid #fff;
-  overflow-y: auto;
   overflow: auto;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   height: 100%;
+  padding: 15px;
 `;
 
-export const Message = styled.div`
-  width: 100%;
-  padding: 20px;
+const MessageBefore = css`
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    display: block;
+    border: solid;
+    border-color: transparent;
+  }
+`;
+
+export const Message = styled.li`
+  position: relative;
+  width: fit-content;
+  max-width: 500px;
+  padding: 8px 10px;
+  box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
+  margin-bottom: 10px;
+  border-radius: 8px;
+  ${({ type }: { type?: MessageType }) => {
+    switch (type) {
+      case MessageType.MY:
+        return css`
+          align-self: flex-end;
+          background: #2b5278;
+          ${MessageBefore};
+          &:before {
+            right: -9px;
+            border-width: 10px 0px 0px 15px;
+            border-left-color: #2b5278;
+          }
+        `;
+      case MessageType.CONTACT:
+        return css`
+          align-self: flex-start;
+          background: #617b95;
+          ${MessageBefore};
+          &:before {
+            left: -9px;
+            border-width: 10px 15px 0px 0px;
+            border-right-color: #617b95;
+          }
+        `;
+      case MessageType.INFO:
+        return css`
+          font-size: 12px;
+          padding: 4px 8px;
+          border-radius: 15px;
+          align-self: center;
+          background: #617b95;
+        `;
+      default:
+        break;
+    }
+  }};
 `;
 
 export const Test = styled.div`

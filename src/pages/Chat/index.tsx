@@ -1,50 +1,87 @@
 import { Layout } from 'common';
+import { SIZE } from 'const';
+import { action } from 'mobx';
 import { observer } from 'mobx-react';
-import React, { Fragment } from 'react';
+import React, { Fragment, RefObject } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { PageType } from 'routers/Router';
 import { MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
+import { Avatar, Button, Input } from 'ui-kit';
 import ChatUser from './ChatUser';
-import { Chat, ChatContainer, ChatInput, Info, Message, MessageList, Test, UserList, Users } from './style';
+import { Column, Container, Info, Message, MessageList, Test, Textarea, TextareaBox, UserList } from './style';
+import { MessageType } from './types';
+
+const messageList = [
+  { type: MessageType.INFO, text: '100 лет назад' },
+  { type: MessageType.CONTACT, text: 'Первое сообщение' },
+  { type: MessageType.MY, text: 'Это моё тестовое сообщение, которое находится с правой стороны :3' },
+  { type: MessageType.INFO, text: 'Сегодня' },
+  { type: MessageType.CONTACT, text: 'Это будет супер длинное сообщение Это будет супер длинное сообщение' },
+  { type: MessageType.CONTACT, text: 'Это будет супер длинное сообщение Это будет супер длинное сообщение' },
+  { type: MessageType.CONTACT, text: 'Это будет супер длинное сообщение Это будет супер длинное сообщение' },
+  { type: MessageType.CONTACT, text: 'Это будет супер длинное сообщение Это будет супер длинное сообщение' },
+  { type: MessageType.INFO, text: '100 лет назад' },
+  { type: MessageType.CONTACT, text: 'Первое сообщение' },
+  { type: MessageType.MY, text: 'Это моё тестовое сообщение, которое находится с правой стороны :3' },
+  { type: MessageType.INFO, text: 'Сегодня' },
+  { type: MessageType.CONTACT, text: 'Это будет супер длинное сообщение Это будет супер длинное сообщение' },
+  { type: MessageType.INFO, text: '100 лет назад' },
+  { type: MessageType.CONTACT, text: 'Первое сообщение' },
+  { type: MessageType.MY, text: 'Это моё тестовое сообщение, которое находится с правой стороны :3' },
+  { type: MessageType.INFO, text: 'Сегодня' },
+  { type: MessageType.CONTACT, text: 'Это будет супер длинное сообщение Это будет супер длинное сообщение' }
+];
 
 @observer
 export default class PageChat extends React.Component<RouteComponentProps> {
   @Inject private mainStore: MainStore;
 
+  private messageListRef: RefObject<HTMLOListElement> = React.createRef();
+
   componentDidMount(): void {
     this.mainStore.changeCurrentPage(PageType.CHAT);
+    this.scrollToBottom();
+  }
+
+  @action.bound
+  private scrollToBottom(): void {
+    this.messageListRef.current.scrollTo(0, this.messageListRef.current.scrollHeight);
   }
 
   render(): JSX.Element {
     return (
       <Layout>
-        <ChatContainer>
-          <Chat>
-            <Info>TITLE</Info>
-            <MessageList>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map(el => (
-                <Fragment key={el}>
-                  <Message>Message #{el}</Message>
-                  <Message>Message #{el}</Message>
-                  <Message>Message #{el}</Message>
-                </Fragment>
+        <Container>
+          <Column>
+            <Info>
+              <Avatar size={SIZE.SMALL} />
+            </Info>
+            <MessageList ref={this.messageListRef}>
+              {messageList.map((message, index) => (
+                <Message type={message.type} key={index}>
+                  <p>{message.text}</p>
+                </Message>
               ))}
             </MessageList>
-            <ChatInput>Input</ChatInput>
-          </Chat>
-          <Users>
-            <Info>TITLE</Info>
+            <TextareaBox>
+              <Textarea placeholder="Write a message..." />
+              <Button>Send</Button>
+            </TextareaBox>
+          </Column>
+          <Column>
+            <Info>
+              <Input />
+            </Info>
             <UserList>
               {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map(el => (
                 <Fragment key={el}>
-                  <ChatUser />
-                  <ChatUser />
+                  <ChatUser selected={el === 1} />
                 </Fragment>
               ))}
             </UserList>
-          </Users>
-        </ChatContainer>
+          </Column>
+        </Container>
       </Layout>
     );
   }

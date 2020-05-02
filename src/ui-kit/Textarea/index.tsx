@@ -50,6 +50,7 @@ export default class UiTextarea extends FormControl<string, TextareaProps> {
           </Label>
         )}
         <Textarea
+          rows={1}
           id={this.id}
           name={name}
           ref={this.textareaRef}

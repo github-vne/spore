@@ -18,7 +18,6 @@ export default class PagePosts extends React.Component<RouteComponentProps> {
 
   componentDidMount(): void {
     this.mainStore.changeCurrentPage(PageType.POSTS);
-    CreatePost.openModal();
   }
 
   @action.bound

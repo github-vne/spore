@@ -3,10 +3,10 @@ import React from 'react';
 import { Avatar } from 'ui-kit';
 import { Info, User } from './style';
 
-export default class ChatUser extends React.Component {
+export default class ChatUser extends React.Component<{ selected: boolean }> {
   render(): JSX.Element {
     return (
-      <User>
+      <User selected={this.props.selected}>
         <Avatar size={SIZE.SMALL} />
         <Info>
           <p>User Name</p>
