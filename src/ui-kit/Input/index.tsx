@@ -1,10 +1,10 @@
 import { action, observable } from 'mobx';
 import { observer } from 'mobx-react';
 import React, { RefObject } from 'react';
-import { FormControl } from 'ui-kit';
+import { FormControl, RawSvg } from 'ui-kit';
 import { Label } from 'ui-kit/FormControl';
 import uuid from 'uuid';
-import { Input, InputBox } from './style';
+import { InnerBtn, Input, InputBox, InputIcon, Wrapper } from './style';
 import { InputProps } from './types';
 
 @observer
@@ -41,26 +41,36 @@ export default class UiInput extends FormControl<string, InputProps> {
   }
 
   render(): JSX.Element {
-    const { placeholder, disabled, label } = this.props;
+    const { placeholder, disabled, label, icon, innerBtn } = this.props;
     return (
-      <InputBox className={this.props.className}>
+      <Wrapper className={this.props.className}>
         {label && (
           <Label htmlFor={this.id} focus={this.inputFocused}>
             {label}
           </Label>
         )}
-        <Input
-          id={this.id}
-          name={name}
-          ref={this.inputRef}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          disabled={disabled}
-          placeholder={placeholder}
-          onChange={this.onInnerChange}
-          value={this.innerValue === undefined ? '' : this.innerValue}
-        />
-      </InputBox>
+        <InputBox>
+          {icon && <InputIcon icon={icon} focus={this.inputFocused} />}
+          <Input
+            id={this.id}
+            name={name}
+            ref={this.inputRef}
+            onFocus={this.onFocus}
+            onBlur={this.onBlur}
+            disabled={disabled}
+            placeholder={placeholder}
+            onChange={this.onInnerChange}
+            hasIcon={!!icon}
+            hasInnerBtn={!!innerBtn}
+            value={this.innerValue === undefined ? '' : this.innerValue}
+          />
+          {innerBtn ? (
+            <InnerBtn onClick={innerBtn.onClick}>
+              {typeof innerBtn.icon === 'object' ? innerBtn.icon : <RawSvg icon={innerBtn.icon || 'common/send'} />}
+            </InnerBtn>
+          ) : null}
+        </InputBox>
+      </Wrapper>
     );
   }
 }

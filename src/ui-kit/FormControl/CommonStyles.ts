@@ -9,8 +9,9 @@ export const styleEl = css`
   outline: 0;
   display: block;
   box-sizing: border-box;
-  padding: 10px;
-  transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  padding: 8px 10px;
+  min-height: 40px;
+  transition: 0.3s ease-in-out;
   color: inherit;
   ::-webkit-search-decoration,
   ::-webkit-search-cancel-button,

@@ -7,9 +7,9 @@ import { RouteComponentProps } from 'react-router-dom';
 import { PageType } from 'routers/Router';
 import { MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
-import { Avatar, Button, Input } from 'ui-kit';
+import { Avatar, Button, Input, Textarea } from 'ui-kit';
 import ChatUser from './ChatUser';
-import { Column, Container, Info, Message, MessageList, Test, Textarea, TextareaBox, UserList } from './style';
+import { Column, Container, Info, Message, MessageList, TextareaBox, UserList } from './style';
 import { MessageType } from './types';
 
 const messageList = [
@@ -65,8 +65,7 @@ export default class PageChat extends React.Component<RouteComponentProps> {
               ))}
             </MessageList>
             <TextareaBox>
-              <Textarea placeholder="Write a message..." />
-              <Button>Send</Button>
+              <Textarea placeholder="Write a message..." innerBtn={{ onClick: _ => console.info('yes') }} />
             </TextareaBox>
           </Column>
           <Column>

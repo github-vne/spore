@@ -1,10 +1,10 @@
 import { action, observable } from 'mobx';
 import { observer } from 'mobx-react';
 import React, { RefObject } from 'react';
-import { FormControl } from 'ui-kit';
+import { FormControl, RawSvg } from 'ui-kit';
 import { Label } from 'ui-kit/FormControl';
 import uuid from 'uuid';
-import { Textarea, TextareaBox } from './style';
+import { InnerBtn, Textarea, TextareaBox } from './style';
 import { TextareaProps } from './types';
 
 @observer
@@ -41,7 +41,7 @@ export default class UiTextarea extends FormControl<string, TextareaProps> {
   }
 
   render(): JSX.Element {
-    const { placeholder, disabled, label } = this.props;
+    const { placeholder, disabled, label, innerBtn } = this.props;
     return (
       <TextareaBox className={this.props.className}>
         {label && (
@@ -61,6 +61,11 @@ export default class UiTextarea extends FormControl<string, TextareaProps> {
           onChange={this.onInnerChange}
           value={this.innerValue === undefined ? '' : this.innerValue}
         />
+        {innerBtn ? (
+          <InnerBtn onClick={innerBtn.onClick}>
+            {typeof innerBtn.icon === 'object' ? innerBtn.icon : <RawSvg icon={innerBtn.icon || 'common/send'} />}
+          </InnerBtn>
+        ) : null}
       </TextareaBox>
     );
   }

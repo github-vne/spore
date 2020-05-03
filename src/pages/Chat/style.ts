@@ -48,10 +48,6 @@ export const TextareaBox = styled.div`
   justify-content: center;
 `;
 
-export const Textarea = styled(_Textarea)`
-  width: 100%;
-`;
-
 export const MessageList = styled.ol`
   border: 1px solid #fff;
   overflow: auto;

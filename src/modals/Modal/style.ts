@@ -38,8 +38,8 @@ export const ModalOverlay = styled.div`
   width: 100%;
   height: 150%;
   user-select: none;
-  opacity: 0.8;
-  background: ${COLOR.GRAY_80};
+  opacity: 0.5;
+  background: ${COLOR.GRAY_10};
   transform: translateZ(-1px);
 
   ${(props: WrapperProps) =>

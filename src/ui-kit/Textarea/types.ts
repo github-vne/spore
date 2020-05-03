@@ -6,4 +6,8 @@ export interface TextareaProps extends FormControlProps<string> {
   clearable?: string;
   placeholder?: string;
   error?: string | boolean;
+  innerBtn?: {
+    icon?: string | JSX.Element;
+    onClick: () => void;
+  };
 }
