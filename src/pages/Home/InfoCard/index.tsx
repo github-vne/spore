@@ -9,7 +9,7 @@ export default ({ value }: { value: number }) => {
           <Title>Toatal trafic</Title>
           <p>123,412</p>
         </div>
-        <Image src="" />
+        <Image src={require('./example.png')} />
       </Info>
       <InfoStatus positive={value >= 0}>
         <div>

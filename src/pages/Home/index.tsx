@@ -34,7 +34,7 @@ export default class PageHome extends React.Component<RouteComponentProps> {
           <InfoCard value={-6} />
           <InfoCard value={3.5} />
         </CardPanel>
-        <ProgressPages title="Progress pages">
+        <ProgressPages title="Вёрстка">
           {nav.map((page, item) => (
             <PagesItem key={item}>
               <PageIcon icon={`sideBar/${page.icon}`} />

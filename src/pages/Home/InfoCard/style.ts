@@ -30,6 +30,8 @@ export const Image = styled.img`
   width: 48px;
   height: 48px;
   margin-left: 5px;
+  background: #fff;
+  border-radius: 50%;
 `;
 
 export const InfoStatus = styled.div`
