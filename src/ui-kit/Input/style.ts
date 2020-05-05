@@ -14,23 +14,8 @@ export const InputBox = styled.div`
   color: ${COLOR.WHITE};
 `;
 
-interface InputStyledProps {
-  hasInnerBtn?: boolean;
-  hasIcon?: boolean;
-}
-
 export const Input = styled.input`
   ${styleEl}
-  ${({ hasIcon }: InputStyledProps) =>
-    hasIcon &&
-    css`
-      padding-left: 39px;
-    `};
-  ${({ hasInnerBtn }: InputStyledProps) =>
-    hasInnerBtn &&
-    css`
-      padding-right: 39px;
-    `}
 `;
 
 const Icon = css`

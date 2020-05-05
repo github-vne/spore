@@ -1,3 +1,4 @@
+import autosize from 'autosize';
 import { action, observable } from 'mobx';
 import { observer } from 'mobx-react';
 import React, { RefObject } from 'react';
@@ -10,8 +11,17 @@ import { TextareaProps } from './types';
 @observer
 export default class UiTextarea extends FormControl<string, TextareaProps> {
   @observable private textareaFocused: boolean = false;
+  @observable private autoSize: boolean = true;
   private textareaRef: RefObject<HTMLTextAreaElement> = React.createRef<HTMLTextAreaElement>();
   private id: string = this.props.id || uuid();
+
+  componentDidMount(): void {
+    this.autoSize && autosize(this.textareaRef.current);
+  }
+
+  componentDidUpdate(): void {
+    this.autoSize && autosize.update(this.textareaRef.current);
+  }
 
   @action
   resetValue(): void {
@@ -41,17 +51,19 @@ export default class UiTextarea extends FormControl<string, TextareaProps> {
   }
 
   render(): JSX.Element {
-    const { placeholder, disabled, label, innerBtn } = this.props;
+    const { placeholder, disabled, label, innerBtn, styled, className } = this.props;
     return (
-      <TextareaBox className={this.props.className}>
+      <TextareaBox className={className}>
         {label && (
           <Label htmlFor={this.id} focus={this.textareaFocused}>
             {label}
           </Label>
         )}
         <Textarea
-          rows={1}
           id={this.id}
+          rows={1}
+          autoFocus
+          styled={styled}
           name={name}
           ref={this.textareaRef}
           onFocus={this.onFocus}
@@ -60,6 +72,7 @@ export default class UiTextarea extends FormControl<string, TextareaProps> {
           placeholder={placeholder}
           onChange={this.onInnerChange}
           value={this.innerValue === undefined ? '' : this.innerValue}
+          hasInnerBtn={!!innerBtn}
         />
         {innerBtn ? (
           <InnerBtn onClick={innerBtn.onClick}>

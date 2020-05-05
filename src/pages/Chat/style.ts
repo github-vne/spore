@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Textarea as _Textarea } from 'ui-kit';
+import { RawSvg, Textarea as _Textarea } from 'ui-kit';
 import { MessageType } from './types';
 
 export const Column = styled.div`
@@ -120,4 +120,14 @@ export const Test = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   overflow: auto;
+`;
+
+export const SendButton = styled(RawSvg)`
+  color: ${({ hasMessage }: { hasMessage?: boolean }) => (hasMessage ? '#2b5278' : '#617b95')};
+`;
+
+export const Textarea = styled(_Textarea)`
+  textarea {
+    max-height: 160px;
+  }
 `;

@@ -1,3 +1,4 @@
+import { STYLED } from 'const';
 import { FormControlProps } from 'ui-kit';
 
 export interface TextareaProps extends FormControlProps<string> {
@@ -6,6 +7,8 @@ export interface TextareaProps extends FormControlProps<string> {
   clearable?: string;
   placeholder?: string;
   error?: string | boolean;
+  styled?: STYLED;
+  className?: string;
   innerBtn?: {
     icon?: string | JSX.Element;
     onClick: () => void;

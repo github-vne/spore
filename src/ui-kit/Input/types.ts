@@ -1,3 +1,4 @@
+import { STYLED } from 'const';
 import { FormControlProps } from 'ui-kit';
 
 export interface InputProps extends FormControlProps<string> {
@@ -7,6 +8,8 @@ export interface InputProps extends FormControlProps<string> {
   clearable?: string;
   placeholder?: string;
   error?: string | boolean;
+  styled?: STYLED;
+  className?: string;
   innerBtn?: {
     icon?: string | JSX.Element;
     tooltip?: string;
