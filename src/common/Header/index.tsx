@@ -14,7 +14,7 @@ export default class HeaderComponent extends Component {
   render(): JSX.Element {
     return (
       <Header>
-        <Page>{PageName[this.mainStore.currentPage]}</Page>
+        <Page>Дом > {PageName[this.mainStore.currentPage]}</Page>
         <Panel>
           <Menu>
             {[1, 2, 3].map(el => (

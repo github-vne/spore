@@ -4,6 +4,7 @@ import { styleEl } from 'ui-kit/FormControl';
 import RawSvg from 'ui-kit/RawSvg';
 
 export const Wrapper = styled.div`
+  color: ${COLOR.WHITE};
   display: block;
   width: 100%;
 `;
@@ -11,7 +12,6 @@ export const Wrapper = styled.div`
 export const InputBox = styled.div`
   width: 100%;
   position: relative;
-  color: ${COLOR.WHITE};
 `;
 
 export const Input = styled.input`

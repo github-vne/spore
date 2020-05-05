@@ -45,7 +45,7 @@ export const PageName = {
   [PageType.SETTINGS]: 'Настройки',
   [PageType.COMPONENTS]: 'Компоненты',
   [PageType.CHAT]: 'Чат',
-  [PageType.POSTS]: 'Лента новостей',
+  [PageType.POSTS]: 'Новости',
   [PageType.TASKS]: 'Задачи',
   [PageType.NOT_FOUND]: 'Страница не найдена'
 };
