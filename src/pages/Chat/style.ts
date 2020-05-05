@@ -2,6 +2,24 @@ import styled, { css } from 'styled-components';
 import { RawSvg, Textarea as _Textarea } from 'ui-kit';
 import { MessageType } from './types';
 
+const ScrollStyle = css`
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #1e1e2f;
+  }
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    background-color: #1e1e2f;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #617b95;
+  }
+`;
+
 export const Column = styled.div`
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -32,6 +50,7 @@ export const Info = styled.div`
 `;
 
 export const UserList = styled.ul`
+  ${ScrollStyle};
   height: 100%;
   overflow-y: auto;
   border: 1px solid #fff;
@@ -49,6 +68,7 @@ export const TextareaBox = styled.div`
 `;
 
 export const MessageList = styled.ol`
+  ${ScrollStyle};
   border: 1px solid #fff;
   overflow: auto;
   display: flex;

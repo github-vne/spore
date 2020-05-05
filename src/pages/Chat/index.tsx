@@ -82,7 +82,7 @@ export default class PageChat extends React.Component<RouteComponentProps> {
               <Input icon="common/search" styled={STYLED.PRIMARY} />
             </Info>
             <UserList>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map(el => (
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19].map(el => (
                 <Fragment key={el}>
                   <ChatUser selected={el === 1} el={el} />
                 </Fragment>
