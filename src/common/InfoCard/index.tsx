@@ -1,22 +1,23 @@
 import React from 'react';
 import { Image, Info, InfoCard, InfoStatus, LastUpload, Status, StatusIcon, Title } from './style';
+import { InfoCardProps } from './type';
 
-export default ({ value }: { value: number }) => {
+export default ({ card }: { card: InfoCardProps }) => {
   return (
     <InfoCard>
       <Info>
         <div>
-          <Title>Toatal trafic</Title>
-          <p>123,412</p>
+          <Title>{card.title}</Title>
+          <p>{card.value}</p>
         </div>
         <Image src={require('./example.png')} />
       </Info>
-      <InfoStatus positive={value >= 0}>
+      <InfoStatus positive={card.percent >= 0}>
         <div>
           <StatusIcon icon="common/arrow" />
-          <Status>{value}%</Status>
+          <Status>{card.percent}%</Status>
         </div>
-        <LastUpload>2 ч. назад</LastUpload>
+        <LastUpload>{card.lastUpdate}</LastUpload>
       </InfoStatus>
     </InfoCard>
   );

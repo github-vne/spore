@@ -1,11 +1,10 @@
-import { Layout } from 'common';
+import { InfoCard, Layout } from 'common';
 import { observer } from 'mobx-react';
 import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { PageName, PageType } from 'routers/Router';
 import { MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
-import InfoCard from './InfoCard';
 import { CardPanel, PageIcon, PagesItem, ProgressBar, ProgressPages } from './style';
 
 const nav = [
@@ -16,6 +15,13 @@ const nav = [
   { root: PageType.TASKS, icon: 'tasks', value: 2 },
   { root: PageType.SETTINGS, icon: 'settings', value: 29 },
   { root: PageType.COMPONENTS, icon: 'components', value: 72 }
+];
+
+const infoCards = [
+  { title: 'Tesla', value: 243.23, percent: 5.2, lastUpdate: '2ч. назад' },
+  { title: 'Apple', value: 361.25, percent: -6, lastUpdate: '2ч. назад' },
+  { title: 'Yandex', value: 223.3, percent: 45.2, lastUpdate: '2ч. назад' },
+  { title: 'Google', value: 343, percent: -4.2, lastUpdate: '2ч. назад' }
 ];
 @observer
 export default class PageHome extends React.Component<RouteComponentProps> {
@@ -29,10 +35,9 @@ export default class PageHome extends React.Component<RouteComponentProps> {
     return (
       <Layout>
         <CardPanel>
-          <InfoCard value={0.2} />
-          <InfoCard value={12} />
-          <InfoCard value={-6} />
-          <InfoCard value={3.5} />
+          {infoCards.map((card, index) => (
+            <InfoCard card={card} key={index} />
+          ))}
         </CardPanel>
         <ProgressPages title="Вёрстка">
           {nav.map((page, item) => (
