@@ -35,7 +35,9 @@ export default class SideBar extends Component {
   render(): JSX.Element {
     return (
       <Container expand={this.expand}>
-        <Logo>[Logo]</Logo>
+        <Logo>
+          <RawSvg icon="sideBar/logo" />
+        </Logo>
         <Navigation>
           {nav.map((page, index) => (
             <NavItem
