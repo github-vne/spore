@@ -11,6 +11,7 @@ export const CardPanel = styled.div`
 
 export const ProgressPages = styled(Box)`
   display: flex;
+  flex: 1;
   flex-direction: column;
   max-width: 33%;
 `;
@@ -39,4 +40,13 @@ export const ProgressBar = styled.progress`
     background-color: #11cdef;
     border-radius: 8px;
   }
+`;
+
+export const Flex = styled.div`
+  display: flex;
+`;
+
+export const Graph = styled(Box)`
+  width: 70%;
+  margin-left: 3%;
 `;

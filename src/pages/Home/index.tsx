@@ -1,11 +1,13 @@
 import { InfoCard, Layout } from 'common';
+import { chartExample1 } from 'const/charts';
 import { observer } from 'mobx-react';
 import React from 'react';
+import { Line } from 'react-chartjs-2';
 import { RouteComponentProps } from 'react-router-dom';
 import { PageName, PageType } from 'routers/Router';
 import { MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
-import { CardPanel, PageIcon, PagesItem, ProgressBar, ProgressPages } from './style';
+import { CardPanel, Flex, Graph, PageIcon, PagesItem, ProgressBar, ProgressPages } from './style';
 
 const nav = [
   { root: PageType.HOME, icon: 'home', value: 15 },
@@ -39,19 +41,24 @@ export default class PageHome extends React.Component<RouteComponentProps> {
             <InfoCard card={card} key={index} />
           ))}
         </CardPanel>
-        <ProgressPages title="Вёрстка">
-          {nav.map((page, item) => (
-            <PagesItem key={item}>
-              <PageIcon icon={`sideBar/${page.icon}`} />
-              <div>
-                <span>
-                  {PageName[page.root]} ({page.value}%)
-                </span>
-                <ProgressBar value={page.value} max={100} />
-              </div>
-            </PagesItem>
-          ))}
-        </ProgressPages>
+        <Flex>
+          <ProgressPages title="Вёрстка">
+            {nav.map((page, item) => (
+              <PagesItem key={item}>
+                <PageIcon icon={`sideBar/${page.icon}`} />
+                <div>
+                  <span>
+                    {PageName[page.root]} ({page.value}%)
+                  </span>
+                  <ProgressBar value={page.value} max={100} />
+                </div>
+              </PagesItem>
+            ))}
+          </ProgressPages>
+          <Graph>
+            <Line data={chartExample1.data} options={chartExample1.options} />
+          </Graph>
+        </Flex>
       </Layout>
     );
   }
