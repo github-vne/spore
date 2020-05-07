@@ -11,7 +11,6 @@ export const Container = styled.div`
   background: ${GRADIENT.BACKGROUND};
   padding: 20px;
 `;
-export const Header = styled.header``;
 
 export const Footer = styled.footer`
   font-size: 12px;

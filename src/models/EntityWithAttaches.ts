@@ -27,8 +27,4 @@ export default class EntityWithAttaches extends BaseEntity {
     )
   )
   attachments: Array<AttachmentEntity> = [];
-
-  @computed get hasPendingAttachment(): boolean {
-    return this.uploadingAttachments.some(item => item instanceof UploadingFile);
-  }
 }

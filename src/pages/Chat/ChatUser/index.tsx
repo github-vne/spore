@@ -3,15 +3,15 @@ import React from 'react';
 import { Avatar } from 'ui-kit';
 import { Info, User } from './style';
 
-export default class ChatUser extends React.Component<{ selected: boolean; el: number }> {
+export default class ChatUser extends React.Component<{ selected: boolean; user: any }> {
   render(): JSX.Element {
-    const { selected, el } = this.props;
+    const { selected, user } = this.props;
     return (
       <User selected={selected}>
         <Avatar size={SIZE.SMALL} />
         <Info>
-          <p>Пользователь #{el}</p>
-          <p>Сообщение - {el}</p>
+          <p>{user.name}</p>
+          <p>{user.lastMessage}</p>
         </Info>
       </User>
     );

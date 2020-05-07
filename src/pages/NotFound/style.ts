@@ -2,7 +2,7 @@ import { GRADIENT, STYLED } from 'const';
 import styled from 'styled-components';
 import { Button } from 'ui-kit';
 
-export const Content = styled.div`
+export const Content = styled.main`
   width: 100%;
   height: 100vh;
   background: ${GRADIENT.BACKGROUND};

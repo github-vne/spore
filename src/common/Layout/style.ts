@@ -16,13 +16,10 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.main`
+  display: block;
   width: 100%;
-  position: relative;
   height: calc(100vh - 55px);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  position: relative;
   overflow-y: auto;
   padding: 0 20px 10px;
-  display: block;
 `;

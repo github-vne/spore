@@ -9,28 +9,8 @@ import { MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Avatar, Input } from 'ui-kit';
 import ChatUser from './ChatUser';
+import { exampleMessageList, userList } from './example';
 import { Column, Container, Info, Message, MessageList, SendButton, Textarea, TextareaBox, UserList } from './style';
-import { MessageType } from './types';
-
-const messageList = [
-  { type: MessageType.INFO, text: '100 лет назад' },
-  { type: MessageType.CONTACT, text: 'Первое сообщение' },
-  { type: MessageType.MY, text: 'Это моё тестовое сообщение, которое находится с правой стороны :3' },
-  { type: MessageType.INFO, text: 'Сегодня' },
-  { type: MessageType.CONTACT, text: 'Это будет супер длинное сообщение Это будет супер длинное сообщение' },
-  { type: MessageType.CONTACT, text: 'Это будет супер длинное сообщение Это будет супер длинное сообщение' },
-  { type: MessageType.CONTACT, text: 'Это будет супер длинное сообщение Это будет супер длинное сообщение' },
-  { type: MessageType.CONTACT, text: 'Это будет супер длинное сообщение Это будет супер длинное сообщение' },
-  { type: MessageType.INFO, text: '100 лет назад' },
-  { type: MessageType.CONTACT, text: 'Первое сообщение' },
-  { type: MessageType.MY, text: 'Это моё тестовое сообщение, которое находится с правой стороны :3' },
-  { type: MessageType.INFO, text: 'Сегодня' },
-  { type: MessageType.CONTACT, text: 'Это будет супер длинное сообщение Это будет супер длинное сообщение' },
-  { type: MessageType.CONTACT, text: 'Первое сообщение' },
-  { type: MessageType.MY, text: 'Это моё тестовое сообщение, которое находится с правой стороны :3' },
-  { type: MessageType.INFO, text: 'Сегодня' },
-  { type: MessageType.CONTACT, text: 'Это будет супер длинное сообщение Это будет супер длинное сообщение' }
-];
 
 @observer
 export default class PageChat extends React.Component<RouteComponentProps> {
@@ -50,7 +30,6 @@ export default class PageChat extends React.Component<RouteComponentProps> {
 
   @action.bound
   private sendMessage = (): void => {
-    console.info('e');
     return null;
   };
 
@@ -63,7 +42,7 @@ export default class PageChat extends React.Component<RouteComponentProps> {
               <Avatar size={SIZE.SMALL} />
             </Info>
             <MessageList ref={this.messageListRef}>
-              {messageList.map((message, index) => (
+              {exampleMessageList.map((message, index) => (
                 <Message type={message.type} key={index}>
                   <p>{message.text}</p>
                 </Message>
@@ -82,9 +61,9 @@ export default class PageChat extends React.Component<RouteComponentProps> {
               <Input icon="common/search" styled={STYLED.PRIMARY} />
             </Info>
             <UserList>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19].map(el => (
-                <Fragment key={el}>
-                  <ChatUser selected={el === 1} el={el} />
+              {userList.map((user, index) => (
+                <Fragment key={index}>
+                  <ChatUser selected={index === 0} user={user} />
                 </Fragment>
               ))}
             </UserList>

@@ -2,17 +2,13 @@ import { Header, SideBar } from 'common';
 import React from 'react';
 import { Container, Layout, Main } from './style';
 
-interface LayoutProps {
-  children: Array<JSX.Element> | JSX.Element;
-}
-
-export default (props: LayoutProps) => {
+export default ({ children }: { children: Array<JSX.Element> | JSX.Element }) => {
   return (
     <Layout>
       <SideBar />
       <Container>
         <Header />
-        <Main>{props.children}</Main>
+        <Main>{children}</Main>
       </Container>
     </Layout>
   );

@@ -1,10 +1,11 @@
+import { Box } from 'common';
 import React from 'react';
-import { Image, Info, InfoCard, InfoStatus, LastUpload, Status, StatusIcon, Title } from './style';
+import { Image, Info, Percent, Status, StatusIcon, Title } from './style';
 import { InfoCardProps } from './type';
 
 export default ({ card }: { card: InfoCardProps }) => {
   return (
-    <InfoCard>
+    <Box>
       <Info>
         <div>
           <Title>{card.title}</Title>
@@ -12,13 +13,13 @@ export default ({ card }: { card: InfoCardProps }) => {
         </div>
         <Image src={require('./example.png')} />
       </Info>
-      <InfoStatus positive={card.percent >= 0}>
-        <div>
+      <Status>
+        <Percent positive={card.percent >= 0}>
           <StatusIcon icon="common/arrow" />
-          <Status>{card.percent}%</Status>
-        </div>
-        <LastUpload>{card.lastUpdate}</LastUpload>
-      </InfoStatus>
-    </InfoCard>
+          <span>{card.percent}%</span>
+        </Percent>
+        <span>{card.lastUpdate}</span>
+      </Status>
+    </Box>
   );
 };

@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react';
 import { Modal, ModalLayout } from 'modals/Modal';
 import React from 'react';
-import { Definition, Word, Wrapper } from './style';
+import { Definition, Word } from './style';
 
 @observer
 export class WordDefinition extends Modal<{ word: string }> {
@@ -9,10 +9,8 @@ export class WordDefinition extends Modal<{ word: string }> {
     const { word } = this.props.scope;
     return (
       <ModalLayout>
-        <Wrapper>
-          <Word>{word}</Word>
-          <Definition>Описание слова</Definition>
-        </Wrapper>
+        <Word>{word}</Word>
+        <Definition>Описание слова</Definition>
       </ModalLayout>
     );
   }

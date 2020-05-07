@@ -23,7 +23,5 @@ export enum GRADIENT {
 }
 
 export enum SHADOW {
-  BOX = '0 1px 20px 0 rgba(0,0,0,.1)',
-  DP3 = '0px 16px 32px rgba(43, 46, 51, 0.2), 0px 4px 12px rgba(43, 46, 51, 0.08)',
-  POPUP = '0 20px 40px 1px rgba(0, 0, 0, .13)'
+  BOX = '0 1px 20px 0 rgba(0,0,0,.1)'
 }

@@ -28,20 +28,6 @@ export const PageIcon = styled(RawSvg)`
   width: 100%;
 `;
 
-export const ProgressBar = styled.progress`
-  width: 100%;
-  height: 4px;
-  border-radius: 8px;
-  ::-webkit-progress-bar {
-    background-color: #e6e9ec;
-    border-radius: 8px;
-  }
-  ::-webkit-progress-value {
-    background-color: #11cdef;
-    border-radius: 8px;
-  }
-`;
-
 export const Flex = styled.div`
   display: flex;
 `;

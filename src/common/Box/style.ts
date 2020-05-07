@@ -15,7 +15,6 @@ export const Title = styled.h4`
 `;
 
 export const Footer = styled.div`
-  font-weight: bold;
   margin-top: 25px;
   display: flex;
   justify-content: flex-end;

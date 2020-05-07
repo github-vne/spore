@@ -33,20 +33,6 @@ export const Error = styled.span`
   white-space: nowrap;
 `;
 
-export const Progress = styled.progress`
-  width: 100%;
-  height: 4px;
-  border-radius: 8px;
-  ::-webkit-progress-bar {
-    background-color: blue;
-    border-radius: 8px;
-  }
-  ::-webkit-progress-value {
-    background-color: orange;
-    border-radius: 8px;
-  }
-`;
-
 export const Link = styled.a`
   position: absolute;
   top: 0;

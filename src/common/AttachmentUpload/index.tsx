@@ -1,4 +1,3 @@
-import { AttachmentItem } from 'common';
 import { EntityWithAttachType } from 'const';
 import { action, computed, observable } from 'mobx';
 import { observer } from 'mobx-react';
@@ -8,6 +7,7 @@ import { Inject } from 'typescript-ioc';
 import { Button } from 'ui-kit';
 import { FileService } from 'utils';
 import uuidv4 from 'uuid/v4';
+import AttachmentItem from './AttachmentItem';
 
 @observer
 export default class AttachmentUpload extends React.Component<{

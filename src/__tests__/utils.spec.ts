@@ -1,7 +1,7 @@
 const inflect = require('../utils/inflect').default;
 
-describe('inflect test', () => {
-  it('test method', () => {
+describe('Test Utils', () => {
+  it('inflect', () => {
     const titles: Array<string> = ['рыба', 'рыбы', 'рыб'];
 
     expect(inflect(1, titles)).toBe('1 рыба');

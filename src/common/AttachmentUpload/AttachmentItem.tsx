@@ -1,10 +1,11 @@
+import { Progress } from 'common/components';
 import { FormatIcon, FormatSizeUnits } from 'const';
 import { action } from 'mobx';
 import { observer } from 'mobx-react';
 import { AttachmentEntity, UploadingFile } from 'models';
 import React from 'react';
 import { RawSvg } from 'ui-kit';
-import { ClearBtn, Container, Content, Error, Link, Progress } from './components';
+import { ClearBtn, Container, Content, Error, Link } from './style';
 
 @observer
 export default class AttachmentItem extends React.Component<{

@@ -3,7 +3,7 @@ import { PostEntity } from 'models';
 export type EntityWithAttachType = PostEntity;
 export const MAX_FILE_SIZE = 104857600; // max size 100Mb
 
-export function FormatSizeUnits(bytes: number): string {
+export function formatFileSize(bytes: number): string {
   if (bytes >= 1073741824) {
     return (bytes / 1073741824).toFixed(2) + ' GB';
   } else if (bytes >= 1048576) {
@@ -18,16 +18,17 @@ export function FormatSizeUnits(bytes: number): string {
   return '0 bytes';
 }
 
-export function FormatIcon(type: string): string {
+export function parseMediaType(type: string): string {
   if (!type) return '';
-  if (~type.indexOf('pdf')) return 'pdf';
-  if (~type.indexOf('video') || ~type.indexOf('audio')) return 'video';
-  if (~type.indexOf('image')) return 'images';
-  if (~type.indexOf('powerpoint') || ~type.indexOf('presentation')) return 'pptx';
-  if (~type.indexOf('excel') || ~type.indexOf('spreadsheet')) return 'xlsx';
-  if (~type.indexOf('msword') || ~type.indexOf('document')) return 'docx';
-  if (~type.indexOf('zip') || ~type.indexOf('compressed') || ~type.indexOf('archive') || ~type.indexOf('tar')) {
+  if (type.includes('pdf')) return 'pdf';
+  if (type.includes('video') || type.includes('audio')) return 'media';
+  if (type.includes('image')) return 'image';
+  if (type.includes('powerpoint') || type.includes('presentation')) return 'pptx';
+  if (type.includes('excel') || type.includes('spreadsheet')) return 'xlsx';
+  if (type.includes('word') || type.includes('document.text')) return 'docx';
+  if (type.includes('zip') || type.includes('compressed') || type.includes('archive') || type.includes('tar')) {
     return 'archive';
   }
+
   return 'unknown';
 }

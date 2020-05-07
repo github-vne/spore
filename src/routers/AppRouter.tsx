@@ -11,7 +11,7 @@ export default class AppRouter extends React.PureComponent {
   render(): JSX.Element {
     return (
       <Router history={this.mainRouter.history}>
-        <Suspense fallback={<h2>is loading...</h2>}>
+        <Suspense fallback={<h2>Is loading...</h2>}>
           <Switch>
             <Route exact path={this.mainRouter.MAIN} component={Main} />
             <Route exact path={this.mainRouter.HOME} component={Home} />

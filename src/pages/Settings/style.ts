@@ -1,14 +1,15 @@
 import { Box } from 'common';
 import styled from 'styled-components';
+import { Input } from 'ui-kit';
 
 export const Container = styled.div`
   display: flex;
 `;
 
-export const ChangePhoto = styled.div`
-  display: grid;
-  grid-gap: 10px;
-  width: max-content;
+export const FormInput = styled(Input)`
+  & + & {
+    margin-top: 15px;
+  }
 `;
 
 export const Profile = styled.div`

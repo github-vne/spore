@@ -1,4 +1,5 @@
 import { InfoCard, Layout } from 'common';
+import { Progress } from 'common/components';
 import { chartExample1 } from 'const/charts';
 import { observer } from 'mobx-react';
 import React from 'react';
@@ -7,10 +8,10 @@ import { RouteComponentProps } from 'react-router-dom';
 import { PageName, PageType } from 'routers/Router';
 import { MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
-import { CardPanel, Flex, Graph, PageIcon, PagesItem, ProgressBar, ProgressPages } from './style';
+import { CardPanel, Flex, Graph, PageIcon, PagesItem, ProgressPages } from './style';
 
 const nav = [
-  { root: PageType.MAIN, icon: 'home', value: 15 },
+  { root: PageType.MAIN, icon: 'main', value: 15 },
   { root: PageType.POSTS, icon: 'news', value: 49 },
   { root: PageType.USERS, icon: 'users', value: 10 },
   { root: PageType.CHAT, icon: 'chat', value: 60 },
@@ -50,7 +51,7 @@ export default class PageMain extends React.Component<RouteComponentProps> {
                   <span>
                     {PageName[page.root]} ({page.value}%)
                   </span>
-                  <ProgressBar value={page.value} max={100} />
+                  <Progress value={page.value} max={100} />
                 </div>
               </PagesItem>
             ))}

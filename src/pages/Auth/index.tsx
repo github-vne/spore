@@ -50,11 +50,11 @@ export default class PageAuth extends React.Component<RouteComponentProps> {
   render(): JSX.Element {
     return (
       <Container>
-        <Header>
+        <div>
           <Link to={PageLink.HOME}>
             <Button styled={STYLED.TERTIARY}>В сервис</Button>
           </Link>
-        </Header>
+        </div>
         <Box
           title="Регистрация"
           footer={

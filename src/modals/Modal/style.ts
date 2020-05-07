@@ -52,13 +52,11 @@ export const ModalOverlay = styled.div`
 export const ModalInner = styled.div`
   background: ${COLOR.WHITE};
   border-radius: 4px;
-  box-shadow: ${SHADOW.POPUP};
   display: flex;
   flex-direction: column;
   min-width: 320px;
   position: relative;
   transition: transform 0.3s ease-in-out;
-
   ${(props: ModalDefinition) =>
     props.fullHeight
       ? css`

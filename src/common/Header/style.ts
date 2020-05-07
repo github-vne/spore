@@ -2,19 +2,13 @@ import { COLOR } from 'const';
 import styled from 'styled-components';
 import { RawSvg } from 'ui-kit';
 
-export const Header = styled.header`
+export const Wrapper = styled.header`
   display: flex;
   align-items: center;
-  margin: 0 20px 10px;
-  padding-top: 3px;
+  padding: 3px 20px 10px;
 `;
 
-export const CurrentPage = styled.h4`
-  font-size: 20px;
-  margin-right: 20px;
-`;
-
-export const Nav = styled.ol`
+export const Nav = styled.ul`
   display: flex;
   align-items: center;
   color: ${COLOR.WHITE};
@@ -40,12 +34,10 @@ export const Panel = styled.div`
   display: flex;
   align-items: center;
   margin-left: auto;
-  height: 100%;
 `;
 
 export const Menu = styled.ul`
   display: flex;
-  height: 100%;
   margin-right: 10px;
 `;
 

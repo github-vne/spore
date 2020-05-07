@@ -1,15 +1,15 @@
 import { SIZE } from 'const';
 import { computed } from 'mobx';
 import { observer } from 'mobx-react';
-import React, { Component } from 'react';
+import React from 'react';
 import { PageName } from 'routers/Router';
 import { MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Avatar, RawSvg } from 'ui-kit';
-import { CurrentPage, Header, HomeIcon, Item, Menu, Nav, Panel } from './style';
+import { HomeIcon, Item, Menu, Nav, Panel, Wrapper } from './style';
 
 @observer
-export default class HeaderComponent extends Component {
+export default class Header extends React.Component {
   @Inject private mainStore: MainStore;
 
   @computed private get pageName(): string {
@@ -18,25 +18,24 @@ export default class HeaderComponent extends Component {
 
   render(): JSX.Element {
     return (
-      <Header>
-        <CurrentPage>{this.pageName}</CurrentPage>
+      <Wrapper>
         <Nav>
           <li>
-            <HomeIcon icon="header/home" />
+            <HomeIcon icon="header/house" />
           </li>
           <li>{this.pageName}</li>
         </Nav>
         <Panel>
           <Menu>
-            {[1, 2, 3].map(el => (
+            {[1, 2].map(el => (
               <Item key={el}>
-                <RawSvg icon="header/message" />
+                <RawSvg icon="header/book" />
               </Item>
             ))}
           </Menu>
           <Avatar size={SIZE.EXTRA_SMALL} />
         </Panel>
-      </Header>
+      </Wrapper>
     );
   }
 }

@@ -1,14 +1,6 @@
-import { COLOR, SHADOW } from 'const';
-import styled from 'styled-components';
+import { COLOR } from 'const';
+import styled, { css } from 'styled-components';
 import { RawSvg } from 'ui-kit';
-
-export const InfoCard = styled.div`
-  position: relative;
-  border-radius: 5px;
-  background: ${COLOR.BLUE_10};
-  box-shadow: ${SHADOW.BOX};
-  padding: 10px 15px;
-`;
 
 export const Info = styled.div`
   display: flex;
@@ -20,7 +12,7 @@ export const Info = styled.div`
 `;
 
 export const Title = styled.h4`
-  font-size: 13px;
+  font-size: 14px;
   text-transform: uppercase;
   color: ${COLOR.GRAY_80};
   margin-bottom: 10px;
@@ -34,22 +26,30 @@ export const Image = styled.img`
   border-radius: 50%;
 `;
 
-export const InfoStatus = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+export const Status = styled.span`
   margin-top: 10px;
-  color: ${({ positive }: { positive: boolean }) => (positive ? COLOR.GREEN_80 : COLOR.RED_100)};
+  display: flex;
+  justify-content: space-between;
 `;
 
-export const Status = styled.span``;
+export const Percent = styled.div`
+  ${({ positive }: { positive: boolean }) =>
+    positive
+      ? css`
+          color: ${COLOR.GREEN_80};
+          ${StatusIcon} {
+            transform: rotate(90deg);
+          }
+        `
+      : css`
+          color: ${COLOR.RED_100};
+          ${StatusIcon} {
+            transform: rotate(-90deg);
+          }
+        `};
+`;
 
 export const StatusIcon = styled(RawSvg)`
   width: 13px;
-  transform: rotate(90deg);
   margin-right: 3px;
-`;
-
-export const LastUpload = styled.p`
-  color: ${COLOR.WHITE};
 `;

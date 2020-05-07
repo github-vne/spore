@@ -18,7 +18,7 @@ export default class NotFound extends React.Component<RouteComponentProps> {
     return (
       <Content>
         <Comeback href={PageLink.HOME}>На главную</Comeback>
-        <Image src={require('icons/common/404.svg')} />
+        <Image src={require('./404.svg')} />
       </Content>
     );
   }

@@ -1,4 +1,4 @@
-import { Box, FormItem, Layout } from 'common';
+import { Box, Layout } from 'common';
 import { SIZE, STYLED } from 'const';
 import { observer } from 'mobx-react';
 import React from 'react';
@@ -6,8 +6,8 @@ import { RouteComponentProps } from 'react-router-dom';
 import { PageType } from 'routers/Router';
 import { MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
-import { Avatar, Button, Input } from 'ui-kit';
-import { ChangePhoto, Container, EditProfile, Profile, User, UserDescription, UserName, UserPosition } from './style';
+import { Avatar, Button } from 'ui-kit';
+import { Container, EditProfile, FormInput, Profile, User, UserDescription, UserName, UserPosition } from './style';
 
 @observer
 export default class PageSettings extends React.Component<RouteComponentProps> {
@@ -23,29 +23,13 @@ export default class PageSettings extends React.Component<RouteComponentProps> {
         <Container>
           <Profile>
             <EditProfile title="Edit Profile" footer={<Button styled={STYLED.TERTIARY}>Update</Button>}>
-              <FormItem title="Profile photo">
-                <ChangePhoto>
-                  <Avatar />
-                  <Button>Add photo</Button>
-                </ChangePhoto>
-              </FormItem>
-              <FormItem title="Name">
-                <Input placeholder="Name" />
-              </FormItem>
-              <FormItem title="Email">
-                <Input placeholder="Email" />
-              </FormItem>
+              <FormInput placeholder="name" label="Name" />
+              <FormInput placeholder="email" label="Email" />
             </EditProfile>
             <Box title="Change Password" footer={<Button styled={STYLED.TERTIARY}>Change</Button>}>
-              <FormItem title="Current Password">
-                <Input placeholder="Current Password" />
-              </FormItem>
-              <FormItem title="New Password">
-                <Input placeholder="New Password" />
-              </FormItem>
-              <FormItem title="Confirm New Password">
-                <Input placeholder="Confirm New Password" />
-              </FormItem>
+              <FormInput placeholder="password" label="Current Password" />
+              <FormInput placeholder="password" label="New Password" />
+              <FormInput placeholder="Confirm New Password" label="Confirm New Password" />
             </Box>
           </Profile>
           <User>

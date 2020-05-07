@@ -3,25 +3,25 @@ import BaseEntity from './BaseEntity';
 
 export default class UserEntity extends BaseEntity {
   @serializable
-  login: string = '';
+  login: string;
 
   @serializable
   email: string;
 
   @serializable(alias('first_name'))
-  firstName: string = '';
+  firstName: string;
 
   @serializable(alias('middle_name'))
-  middleName: string = '';
+  middleName: string;
 
   @serializable(alias('last_name'))
-  lastName: string = '';
+  lastName: string;
 
   @serializable
-  position: string = '';
+  position: string;
 
   @serializable(alias('photo_id'))
-  avatar: string = '';
+  avatar: string;
 
   static fromServer(rawData: Record<string, any>): UserEntity {
     return deserialize(UserEntity, rawData);
@@ -44,6 +44,6 @@ export default class UserEntity extends BaseEntity {
   }
 
   get initials(): string {
-    return `${(this.firstName || '').charAt(0)}${(this.lastName || '').charAt(0)}`;
+    return `${(this.lastName || '').charAt(0)}${(this.firstName || '').charAt(0)}`;
   }
 }
