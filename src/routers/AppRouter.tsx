@@ -1,5 +1,5 @@
 import 'globalCss.css';
-import { Auth, Chat, Components, Home, Main, NotFound, Posts, Settings, Tasks, Users } from 'pages';
+import { Auth, Chat, Components, Dictionary, Home, Main, NotFound, Posts, Settings, Tasks, Users } from 'pages';
 import React, { Suspense } from 'react';
 import { Route, Router, Switch } from 'react-router-dom';
 import { Inject } from 'typescript-ioc';
@@ -21,6 +21,7 @@ export default class AppRouter extends React.PureComponent {
             <Route exact path={this.mainRouter.COMPONENTS} component={Components} />
             <Route exact path={this.mainRouter.CHAT} component={Chat} />
             <Route exact path={this.mainRouter.POSTS} component={Posts} />
+            <Route exact path={this.mainRouter.DICTIONARY} component={Dictionary} />
             <Route exact path={this.mainRouter.TASKS} component={Tasks} />
             <Route component={NotFound} />
           </Switch>

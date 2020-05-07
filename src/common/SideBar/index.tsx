@@ -11,8 +11,9 @@ const nav = [
   { root: PageType.MAIN, icon: 'home' },
   { root: PageType.POSTS, icon: 'news' },
   { root: PageType.USERS, icon: 'users' },
-  { root: PageType.CHAT, icon: 'chat' },
   { root: PageType.TASKS, icon: 'tasks' },
+  { root: PageType.CHAT, icon: 'chat' },
+  { root: PageType.DICTIONARY, icon: 'dictionary' },
   { root: PageType.SETTINGS, icon: 'settings' },
   { root: PageType.COMPONENTS, icon: 'components' }
 ];

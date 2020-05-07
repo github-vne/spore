@@ -8,3 +8,4 @@ export { default as Settings } from './Settings';
 export { default as Tasks } from './Tasks';
 export { default as Users } from './Users';
 export { default as Main } from './Main';
+export { default as Dictionary } from './Dictionary';
