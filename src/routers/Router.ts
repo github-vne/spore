@@ -11,6 +11,7 @@ export default class Router {
   POSTS: string = PageLink.POSTS;
   COMPONENTS: string = PageLink.COMPONENTS;
   TASKS: string = PageLink.TASKS;
+  MAIN: string = PageLink.MAIN;
 
   history: History = createBrowserHistory();
 }
@@ -24,6 +25,7 @@ export enum PageType {
   CHAT = 'CHAT',
   POSTS = 'POSTS',
   TASKS = 'TASKS',
+  MAIN = 'MAIN',
   NOT_FOUND = 'NOT_FOUND'
 }
 
@@ -35,11 +37,12 @@ export const PageLink = {
   [PageType.COMPONENTS]: '/components',
   [PageType.CHAT]: '/chat',
   [PageType.POSTS]: '/posts',
-  [PageType.TASKS]: '/tasks'
+  [PageType.TASKS]: '/tasks',
+  [PageType.MAIN]: '/main'
 };
 
 export const PageName = {
-  [PageType.HOME]: 'Главная',
+  [PageType.HOME]: 'О продукте',
   [PageType.AUTH]: 'Вход',
   [PageType.USERS]: 'Юзеры',
   [PageType.SETTINGS]: 'Настройки',
@@ -47,5 +50,6 @@ export const PageName = {
   [PageType.CHAT]: 'Чат',
   [PageType.POSTS]: 'Новости',
   [PageType.TASKS]: 'Задачи',
+  [PageType.MAIN]: 'Главная',
   [PageType.NOT_FOUND]: 'Страница не найдена'
 };

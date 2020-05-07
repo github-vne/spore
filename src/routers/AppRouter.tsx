@@ -1,5 +1,5 @@
 import 'globalCss.css';
-import { Auth, Chat, Components, Home, NotFound, Posts, Settings, Tasks, Users } from 'pages';
+import { Auth, Chat, Components, Home, Main, NotFound, Posts, Settings, Tasks, Users } from 'pages';
 import React, { Suspense } from 'react';
 import { Route, Router, Switch } from 'react-router-dom';
 import { Inject } from 'typescript-ioc';
@@ -13,6 +13,7 @@ export default class AppRouter extends React.PureComponent {
       <Router history={this.mainRouter.history}>
         <Suspense fallback={<h2>is loading...</h2>}>
           <Switch>
+            <Route exact path={this.mainRouter.MAIN} component={Main} />
             <Route exact path={this.mainRouter.HOME} component={Home} />
             <Route exact path={this.mainRouter.AUTH} component={Auth} />
             <Route exact path={this.mainRouter.SETTINGS} component={Settings} />

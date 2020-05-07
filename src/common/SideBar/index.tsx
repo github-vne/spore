@@ -8,7 +8,7 @@ import { Inject } from 'typescript-ioc';
 import { Container, Logo, Navigation, NavItem, RawSvg, Toggle } from './style';
 
 const nav = [
-  { root: PageType.HOME, icon: 'home' },
+  { root: PageType.MAIN, icon: 'home' },
   { root: PageType.POSTS, icon: 'news' },
   { root: PageType.USERS, icon: 'users' },
   { root: PageType.CHAT, icon: 'chat' },
