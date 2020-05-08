@@ -12,7 +12,7 @@ import Item from './Item';
 import { SearchPanel, UserList } from './style';
 
 @observer
-export default class PageUser extends React.Component<RouteComponentProps> {
+export default class PageUsers extends React.Component<RouteComponentProps> {
   @Inject private mainStore: MainStore;
   @Inject private userStore: UserStore;
 

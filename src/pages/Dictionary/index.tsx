@@ -1,4 +1,5 @@
 import { Layout } from 'common';
+import { action } from 'mobx';
 import { observer } from 'mobx-react';
 import { WordDefinition } from 'modals';
 import React from 'react';
@@ -16,9 +17,10 @@ export default class PageDictionary extends React.Component<RouteComponentProps>
     this.mainStore.changeCurrentPage(PageType.DICTIONARY);
   }
 
-  openDefinition(word: string): void {
+  @action.bound
+  private openDefinition = (word: string): void => {
     WordDefinition.openModal({ word });
-  }
+  };
 
   render(): JSX.Element {
     return (

@@ -2,20 +2,30 @@ import styled from 'styled-components';
 
 export const Main = styled.div`
   height: 100vh;
-  background: #1e1e2f;
+  background-color: #1e1e2f;
+  background-size: 20px;
+  background-position: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
-export const Line = styled.div`
-  bottom: 0;
+export const MainForm = styled.div`
   width: 100%;
-  background-image: url(${require('./image/line.svg')});
-  background-repeat: repeat-x;
-  background-position: bottom;
-  background-size: 1100px 160px;
-  height: 0;
-  padding: 0;
-  padding-bottom: 100px;
+  max-width: 430px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Logo = styled.img`
+  width: 100%;
+`;
+
+export const Tagline = styled.h3`
+  font-size: 24px;
+  text-align: center;
+  margin: 15px 0;
 `;

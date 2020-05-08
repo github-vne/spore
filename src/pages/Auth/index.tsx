@@ -8,7 +8,7 @@ import { PageLink, PageType } from 'routers/Router';
 import { AccountStore, MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Button, Input } from 'ui-kit';
-import { Container, Footer, Header } from './style';
+import { Container, Footer } from './style';
 
 @observer
 export default class PageAuth extends React.Component<RouteComponentProps> {

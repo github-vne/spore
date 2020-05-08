@@ -1,3 +1,4 @@
+import { COLOR } from 'const';
 import styled, { css } from 'styled-components';
 import { RawSvg, Textarea as _Textarea } from 'ui-kit';
 import { MessageType } from './types';
@@ -33,34 +34,26 @@ export const Container = styled.div`
   grid-template-columns: 1fr 250px;
 `;
 
-export const UserColumn = styled.div`
-  ${Column};
-`;
-
-export const MessageColumn = styled.div`
-  ${Column};
-`;
-
 export const Info = styled.div`
   display: flex;
   align-items: center;
   padding: 0 10px;
   min-height: 55px;
-  border: 1px solid #fff;
+  border: 1px solid ${COLOR.WHITE};
 `;
 
 export const UserList = styled.ul`
   ${ScrollStyle};
   height: 100%;
   overflow-y: auto;
-  border: 1px solid #fff;
+  border: 1px solid ${COLOR.WHITE};
 `;
 
 export const TextareaBox = styled.div`
   padding: 5px;
   background: #1e1e24;
   width: 100%;
-  border: 1px solid #fff;
+  border: 1px solid ${COLOR.WHITE};
   flex: none;
   display: flex;
   align-items: center;
@@ -69,7 +62,7 @@ export const TextareaBox = styled.div`
 
 export const MessageList = styled.ol`
   ${ScrollStyle};
-  border: 1px solid #fff;
+  border: 1px solid ${COLOR.WHITE};
   overflow: auto;
   display: flex;
   flex-direction: column;

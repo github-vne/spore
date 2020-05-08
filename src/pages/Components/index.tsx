@@ -1,4 +1,3 @@
-// tslint:disable: max-classes-per-file
 import { Layout } from 'common';
 import { SIZE, STYLED } from 'const';
 import { action } from 'mobx';
@@ -12,17 +11,14 @@ import { Avatar, Button, Input, Loader, ToastType } from 'ui-kit';
 import { NotificationService } from 'utils';
 import { Group } from './style';
 
-class GroupComponent extends React.Component<{ title?: string }> {
-  render(): JSX.Element {
-    const { title, children } = this.props;
-    return (
-      <div>
-        {title ? <p>{title}</p> : null}
-        {children ? <Group>{children}</Group> : null}
-      </div>
-    );
-  }
-}
+const GroupComponent = ({ title, children }: { title?: string; children?: JSX.Element | Array<JSX.Element> }) => {
+  return (
+    <div>
+      {title ? <p>{title}</p> : null}
+      {children ? <Group>{children}</Group> : null}
+    </div>
+  );
+};
 
 @observer
 export default class PageComponents extends React.Component<RouteComponentProps> {

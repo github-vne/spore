@@ -7,7 +7,7 @@ import { Inject } from 'typescript-ioc';
 import { Comeback, Content, Image } from './style';
 
 @observer
-export default class NotFound extends React.Component<RouteComponentProps> {
+export default class PageNotFound extends React.Component<RouteComponentProps> {
   @Inject private mainStore: MainStore;
 
   componentDidMount(): void {

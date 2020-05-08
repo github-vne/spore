@@ -4,7 +4,8 @@ import { RouteComponentProps } from 'react-router-dom';
 import { PageType } from 'routers/Router';
 import { MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
-import { Line, Main } from './style';
+import { Button } from 'ui-kit';
+import { Logo, Main, MainForm, Tagline } from './style';
 
 @observer
 export default class PageHome extends React.Component<RouteComponentProps> {
@@ -17,8 +18,18 @@ export default class PageHome extends React.Component<RouteComponentProps> {
   render(): JSX.Element {
     return (
       <div>
-        <Main>123</Main>
-        <Line />
+        <Main>
+          <MainForm>
+            <Logo src={require('./image/logo.svg')} alt="" />
+            <Tagline>Портфолио Front-end разработчика</Tagline>
+            <Button>Начать</Button>
+            <span>Другие проекты</span>
+            <div>
+              <div>gitHub</div>
+            </div>
+          </MainForm>
+        </Main>
+        <img src={require('./image/line.svg')} alt="" />
       </div>
     );
   }
