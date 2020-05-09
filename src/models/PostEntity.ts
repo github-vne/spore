@@ -1,5 +1,6 @@
 import { observable } from 'mobx';
-import { serializable } from 'serializr';
+import { UserEntity } from 'models';
+import { alias, custom, serializable, SKIP } from 'serializr';
 import { Singleton } from 'typescript-ioc';
 import EntityWithAttaches from './EntityWithAttaches';
 
@@ -14,6 +15,10 @@ export default class PostEntity extends EntityWithAttaches {
   text: string;
 
   @observable
-  @serializable
-  img: string;
+  @serializable(alias('title_photo_url'))
+  titlePhoto: string;
+
+  @observable
+  @serializable(custom(_ => SKIP, UserEntity.fromServer))
+  owner: UserEntity;
 }

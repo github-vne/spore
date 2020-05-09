@@ -4,6 +4,7 @@ import { observer } from 'mobx-react';
 import { Modal, ModalLayout } from 'modals/Modal';
 import { AttachmentEntity, PostEntity } from 'models';
 import React from 'react';
+import { PostStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Button, Loader } from 'ui-kit';
 import { FileService } from 'utils';
@@ -11,9 +12,10 @@ import uuidv4 from 'uuid/v4';
 import { AddImage, Content, DemoImg, ImagePreview, Input, Textarea } from './style';
 
 @observer
-export class CreatePost extends Modal {
+export class NewPost extends Modal {
   static width: string = '500px';
 
+  @Inject private postStore: PostStore;
   @Inject private fileService: FileService;
 
   private hash: string = uuidv4();
@@ -36,8 +38,12 @@ export class CreatePost extends Modal {
   @action.bound
   private createPost(): void {
     this.pending = true;
-    setTimeout(() => (this.pending = false), 3000);
-    console.info(this.tempPost);
+    try {
+      const res = this.postStore.createPost(this.tempPost);
+      console.info(res);
+    } finally {
+      this.pending = false;
+    }
   }
 
   @action.bound

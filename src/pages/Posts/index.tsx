@@ -1,11 +1,12 @@
 import { Layout } from 'common';
-import { action } from 'mobx';
+import { action, computed } from 'mobx';
 import { observer } from 'mobx-react';
-import { CreatePost } from 'modals';
+import { NewPost } from 'modals';
+import { PostEntity } from 'models';
 import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { PageType } from 'routers/Router';
-import { MainStore } from 'stores';
+import { MainStore, PostStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Button } from 'ui-kit';
 import Item from './Item';
@@ -14,27 +15,31 @@ import { Container, Panel, PostList } from './style';
 @observer
 export default class PagePosts extends React.Component<RouteComponentProps> {
   @Inject private mainStore: MainStore;
-  private array: Array<any> = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  @Inject private postStore: PostStore;
 
   componentDidMount(): void {
     this.mainStore.changeCurrentPage(PageType.POSTS);
   }
 
   @action.bound
-  private createPost = (): void => {
-    CreatePost.openModal();
+  private newPost = (): void => {
+    NewPost.openModal();
   };
+
+  @computed private get postList(): Array<PostEntity> {
+    return this.postStore.postList.get();
+  }
 
   render(): JSX.Element {
     return (
       <Layout>
         <Container>
           <Panel>
-            <Button onClick={this.createPost}>Создать</Button>
+            <Button onClick={this.newPost}>Создать</Button>
           </Panel>
           <PostList>
-            {this.array.map(el => (
-              <Item key={el} />
+            {this.postList.map((post, index) => (
+              <Item key={index} post={post} />
             ))}
           </PostList>
           <Panel>Фильтры</Panel>
