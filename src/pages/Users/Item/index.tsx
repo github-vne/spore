@@ -19,10 +19,10 @@ export default class User extends React.Component<UserProps> {
   };
 
   render(): JSX.Element {
-    const { login, avatar, id } = this.props.user;
+    const { login, photo, id } = this.props.user;
     return (
       <Block onClick={this.openModal.bind(this, this.props.user)} key={id}>
-        <Avatar image={`https://randomuser.me/api/portraits/men/${id}.jpg`} size={SIZE.SMALL} />
+        <Avatar image={photo} size={SIZE.SMALL} />
         <p>Login: {login}</p>
       </Block>
     );

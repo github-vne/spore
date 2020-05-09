@@ -11,6 +11,8 @@ export class UserCard extends Modal<{ user: UserEntity }> {
   private user: UserEntity = this.props.scope?.user;
 
   render(): JSX.Element {
+    if (!this.user) return;
+
     return (
       <ModalLayout>
         <Content>

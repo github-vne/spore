@@ -20,7 +20,7 @@ export default class UserEntity extends BaseEntity {
   @serializable
   position: string;
 
-  @serializable(alias('photo_url'))
+  @serializable
   photo: string;
 
   static fromServer(rawData: Record<string, any>): UserEntity {

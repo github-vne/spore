@@ -12,9 +12,7 @@ export default class UserStore {
   userList: PromisedComputedValue<Array<UserEntity>> = promisedComputed([], async () => {
     if (this.usersHash) return this.usersHash;
     try {
-      const arr = new Array(20);
-      for (let i = 0; i < arr.length; i++) arr[i] = i;
-      const res = await this.transport.retrieveUserList({ ids: arr.join(',') });
+      const res = await this.transport.retrieveUserList();
       return (this.usersHash = res.results);
     } catch (e) {
       return (this.usersHash = []);

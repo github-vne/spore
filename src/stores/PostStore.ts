@@ -13,7 +13,6 @@ export default class PostStore {
     if (this.postsHash) return this.postsHash;
     try {
       const res = await this.transport.retrievePostList();
-      console.info(res);
       return (this.postsHash = res.results);
     } catch (e) {
       return (this.postsHash = []);

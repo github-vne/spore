@@ -1,4 +1,5 @@
 import { Box } from 'common';
+import { COLOR } from 'const';
 import styled from 'styled-components';
 
 export const Container = styled(Box)`
@@ -7,42 +8,45 @@ export const Container = styled(Box)`
   height: max-content;
 `;
 
-export const Text = styled.p`
-  padding: 10px 0;
+export const Owner = styled.div`
+  display: grid;
+  gap: 10px;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  margin-bottom: 10px;
+`;
+
+export const Title = styled.h5`
+  font-size: 22px;
 `;
 
 export const Images = styled.img`
   width: calc(100% + 30px);
-  margin: 0 -15px;
-`;
-
-export const Statistics = styled.ol`
-  padding: 10px 0;
-  border-bottom: 1px solid #fff;
-  color: #fff;
-  display: flex;
-  > li:not(:last-child):after {
-    content: '|';
-    margin: 0 5px;
-  }
-  font-size: 15px;
+  margin: 10px -15px;
 `;
 
 export const ActionPanel = styled.div`
+  margin-top: 10px;
+  padding: 10px 0;
+  border-top: 1px solid ${COLOR.WHITE};
+  color: ${COLOR.WHITE};
   display: flex;
   justify-content: flex-end;
-  padding: 5px 0 10px 0;
+  font-size: 15px;
 `;
 
 export const ActionButton = styled.button`
-  padding: 5px;
+  cursor: pointer;
   color: #fff;
-  transition: 0.2s;
-  border-radius: 8px;
+  display: flex;
+  align-items: center;
   :hover {
     color: #33b5e5;
   }
   & + & {
+    margin-left: 15px;
+  }
+  > span {
     margin-left: 5px;
   }
 `;

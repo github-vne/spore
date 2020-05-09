@@ -2,31 +2,27 @@ import { SIZE } from 'const';
 import { PostEntity } from 'models';
 import React from 'react';
 import { Avatar, Input, RawSvg } from 'ui-kit';
-import { ActionButton, ActionPanel, Container, CreateComment, Images, Statistics, Text } from './style';
+import { ActionButton, ActionPanel, Container, CreateComment, Images, Owner, Title } from './style';
 
 export default ({ post }: { post: PostEntity }) => {
-  const { text, title } = post;
+  const { text, title, photo, owner } = post;
   return (
     <Container>
-      <div>
-        <Avatar size={SIZE.SMALL} />
-      </div>
-      <h2>{title}</h2>
-      <Text>{text}</Text>
-      <Images
-        src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/ba444a28739655.55cfb1b2ee941.jpg"
-        alt="user_images"
-      />
-      <Statistics>
-        <li>Лайки: 1</li>
-        {/* <li>Просмотры: 3</li> */}
-      </Statistics>
+      <Owner>
+        <Avatar image={owner.photo} size={SIZE.SMALL} />
+        <p>{owner.fullName}</p>
+      </Owner>
+      <Title>{title}</Title>
+      <Images src={photo} alt="user_images" />
+      <p>{text}</p>
       <ActionPanel>
         <ActionButton>
           <RawSvg icon="post/comment" />
+          <span>1</span>
         </ActionButton>
         <ActionButton>
           <RawSvg icon="post/like" />
+          <span>1</span>
         </ActionButton>
       </ActionPanel>
       <CreateComment>
