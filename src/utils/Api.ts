@@ -18,7 +18,7 @@ interface RequestConfig {
   apiVer?: false | string;
 }
 
-const BACKEND_URL = 'http://cuddly-parakeet.herokuapp.com/';
+const BACKEND_URL = 'http://25.73.35.40/';
 
 @Singleton
 export default class Api {

@@ -19,7 +19,7 @@ export class ModalLayout extends React.Component<Layout> {
     const { header, children, footer } = this.props;
     return (
       <>
-        <Header>{header}</Header>
+        {header && <Header>{header}</Header>}
         <ModalContent ref={this.contentRef} onScroll={this.onContentScroll} scrollContent={this.scrollContent}>
           {children}
         </ModalContent>

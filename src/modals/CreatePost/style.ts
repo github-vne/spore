@@ -5,6 +5,7 @@ import { Button, Input as _Input, Textarea as _Textarea } from 'ui-kit';
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 5px 15px;
 `;
 
 export const Input = styled(_Input)`

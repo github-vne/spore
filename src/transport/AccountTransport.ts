@@ -9,6 +9,6 @@ export default class AccountTransport {
   private AUTH: string = 'signup';
 
   signUp(params?: object): Promise<ListResponseType<UserEntity>> {
-    return this.api.post(`${this.AUTH}`, params).then(ListResponse.fromServer.bind(null, UserEntity));
+    return this.api.post(this.AUTH, params).then(ListResponse.fromServer.bind(null, UserEntity));
   }
 }

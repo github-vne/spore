@@ -50,6 +50,7 @@ export const ModalOverlay = styled.div`
 `;
 
 export const ModalInner = styled.div`
+  overflow: auto;
   background: ${COLOR.WHITE};
   border-radius: 4px;
   display: flex;
@@ -78,12 +79,11 @@ export const ModalInner = styled.div`
 `;
 
 export const ModalContent = styled.section`
-  padding: 5px 15px;
   overflow-y: auto;
   height: auto;
   min-height: 100px;
-  border-top: 1px solid transparent;
-  border-bottom: 1px solid transparent;
+  /* border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent; */
   transition: border-color 0.25s;
   color: ${COLOR.BLACK};
   ${({ scrollContent }: { scrollContent: boolean }) =>
@@ -108,6 +108,7 @@ export const ModalCloseButton = styled.button`
   height: 48px;
   transition: all 0.15s linear;
   border-radius: 0 4px 0 0;
+  z-index: 10;
   &:before,
   &:after {
     position: absolute;
