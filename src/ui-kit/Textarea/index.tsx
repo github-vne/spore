@@ -47,12 +47,12 @@ export default class UiTextarea extends FormControl<string, TextareaProps> {
   }
 
   render(): JSX.Element {
-    const { placeholder, disabled, innerBtn, styled, className } = this.props;
+    const { placeholder, disabled, innerBtn, styled, rows, className } = this.props;
     return (
       <TextareaBox className={className}>
         <Textarea
           id={this.id}
-          rows={1}
+          rows={rows || 1}
           styled={styled}
           name={name}
           ref={this.textareaRef}

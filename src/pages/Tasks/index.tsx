@@ -5,7 +5,8 @@ import { RouteComponentProps } from 'react-router-dom';
 import { PageType } from 'routers/Router';
 import { MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
-import Task from './Task';
+import { Textarea } from 'ui-kit';
+import { CreateTask, TabLine, TasksCard, Wrapper } from './style';
 
 @observer
 export default class PageTasks extends React.Component<RouteComponentProps> {
@@ -18,8 +19,17 @@ export default class PageTasks extends React.Component<RouteComponentProps> {
   render(): JSX.Element {
     return (
       <Layout>
-        <Task />
-        <Task />
+        <Wrapper>
+          <div>
+            <h2>Создать задание</h2>
+            <CreateTask>
+              <Textarea placeholder="New task" rows={3} />
+            </CreateTask>
+          </div>
+          <TasksCard title="Список заданий">
+            <TabLine>123</TabLine>
+          </TasksCard>
+        </Wrapper>
       </Layout>
     );
   }

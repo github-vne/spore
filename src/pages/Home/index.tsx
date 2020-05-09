@@ -1,11 +1,11 @@
+import { STYLED } from 'const';
 import { observer } from 'mobx-react';
 import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { PageType } from 'routers/Router';
 import { MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
-import { Button } from 'ui-kit';
-import { Logo, Main, MainForm, Tagline } from './style';
+import { Logo, Main, MainForm, MyLink, MyLinks, SporeBtn, Tagline } from './style';
 
 @observer
 export default class PageHome extends React.Component<RouteComponentProps> {
@@ -20,16 +20,25 @@ export default class PageHome extends React.Component<RouteComponentProps> {
       <div>
         <Main>
           <MainForm>
-            <Logo src={require('./image/logo.svg')} alt="" />
+            <Logo src={require('./image/logo.svg')} alt="logo" />
             <Tagline>Портфолио Front-end разработчика</Tagline>
-            <Button>Начать</Button>
-            <span>Другие проекты</span>
-            <div>
-              <div>gitHub</div>
-            </div>
+            <SporeBtn href="main" styled={STYLED.PRIMARY}>
+              Spore
+            </SporeBtn>
+            <span>Ссылки на проекты:</span>
+            <MyLinks>
+              <MyLink>
+                <img src={require('./image/github.svg')} />
+                <span>GitHub</span>
+              </MyLink>
+              <MyLink>
+                <img src={require('./image/github.svg')} />
+                <span>GitHub</span>
+              </MyLink>
+            </MyLinks>
           </MainForm>
         </Main>
-        <img src={require('./image/line.svg')} alt="" />
+        <img src={require('./image/line.svg')} alt="line" />
       </div>
     );
   }
