@@ -12,7 +12,6 @@ export const Avatar = styled.div`
   overflow: hidden;
   border-radius: 50%;
   border: 2px solid ${COLOR.WHITE};
-  text-transform: uppercase;
   ${({ size }: AvatarProps) => {
     let _size;
     switch (size) {

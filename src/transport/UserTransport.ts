@@ -6,9 +6,13 @@ import { Api } from 'utils';
 export default class UserTransport {
   @Inject api: Api;
 
-  private TICKET_ENDPOINT: string = 'users';
+  private USER_LIST_ENDPOINT: string = 'users';
 
   retrieveUserList(params?: object): Promise<ListResponseType<UserEntity>> {
-    return this.api.get(`${this.TICKET_ENDPOINT}`, params).then(ListResponse.fromServer.bind(null, UserEntity));
+    return this.api.get(this.USER_LIST_ENDPOINT, params).then(ListResponse.fromServer.bind(null, UserEntity));
+  }
+
+  updateUserInfo(user: UserEntity): Promise<UserEntity> {
+    return this.api.post(`${this.USER_LIST_ENDPOINT}/info`, { ...user.toServer(), id: 1 }).then(UserEntity.fromServer);
   }
 }

@@ -18,10 +18,13 @@ export default class UserEntity extends BaseEntity {
   lastName: string;
 
   @serializable
-  position: string;
+  status: string;
 
   @serializable
   photo: string;
+
+  @serializable
+  description: string;
 
   static fromServer(rawData: Record<string, any>): UserEntity {
     return deserialize(UserEntity, rawData);

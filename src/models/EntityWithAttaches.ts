@@ -7,9 +7,9 @@ export default class EntityWithAttaches extends BaseEntity {
   @observable
   @serializable(
     alias(
-      'attachment_ids',
+      'photo_id',
       custom(
-        arr => (arr.length ? arr.map(item => item.id) : SKIP),
+        arr => (arr.length ? arr.map(item => item.id)[0] : SKIP),
         _ => SKIP
       )
     )

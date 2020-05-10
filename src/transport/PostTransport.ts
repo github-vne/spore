@@ -12,7 +12,7 @@ export default class PostTransport {
     return this.api.get(this.POST_ENDPOINT).then(ListResponse.fromServer.bind(null, PostEntity));
   }
 
-  createPost(post?: PostEntity): Promise<any> {
-    return this.api.post(this.POST_ENDPOINT, post.toServer()).then(res => console.info(res));
+  createPost(post?: PostEntity): Promise<PostEntity> {
+    return this.api.post(this.POST_ENDPOINT, post.toServer()).then(PostEntity.fromServer);
   }
 }

@@ -1,11 +1,24 @@
 import { Box } from 'common';
 import { COLOR } from 'const';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Container = styled(Box)`
-  display: flex;
-  flex-direction: column;
-  height: max-content;
+const OverflowText = css`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+`;
+
+export const List = styled.div`
+  column-width: 300px;
+  column-gap: 15px;
+`;
+
+export const Post = styled(Box)`
+  width: 100%;
+  display: inline-block;
+  margin-bottom: 15px;
 `;
 
 export const Owner = styled.div`
@@ -17,17 +30,24 @@ export const Owner = styled.div`
 `;
 
 export const Title = styled.h5`
+  ${OverflowText};
   font-size: 22px;
+  margin-bottom: 10px;
 `;
 
 export const Images = styled.img`
   width: calc(100% + 30px);
-  margin: 10px -15px;
+  margin: 0 -15px 10px -15px;
+`;
+
+export const Text = styled.pre`
+  ${OverflowText};
+  -webkit-line-clamp: 5;
 `;
 
 export const ActionPanel = styled.div`
   margin-top: 10px;
-  padding: 10px 0;
+  padding-top: 10px;
   border-top: 1px solid ${COLOR.WHITE};
   color: ${COLOR.WHITE};
   display: flex;
@@ -37,7 +57,7 @@ export const ActionPanel = styled.div`
 
 export const ActionButton = styled.button`
   cursor: pointer;
-  color: #fff;
+  color: ${COLOR.WHITE};
   display: flex;
   align-items: center;
   :hover {
@@ -49,11 +69,4 @@ export const ActionButton = styled.button`
   > span {
     margin-left: 5px;
   }
-`;
-
-export const CreateComment = styled.div`
-  display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: center;
-  grid-gap: 10px;
 `;

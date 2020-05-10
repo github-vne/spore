@@ -1,22 +1,18 @@
 import { Box } from 'common';
 import styled from 'styled-components';
-import { Input } from 'ui-kit';
 
 export const Container = styled.div`
   display: flex;
-`;
-
-export const FormInput = styled(Input)`
-  & + & {
-    margin-top: 15px;
-  }
 `;
 
 export const Profile = styled.div`
   width: 100%;
 `;
 
-export const EditProfile = styled(Box)`
+export const EditProfile = styled.div`
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 15px;
   margin-bottom: 20px;
 `;
 

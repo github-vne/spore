@@ -1,4 +1,3 @@
-import { SIZE } from 'const';
 import { action, computed, observable } from 'mobx';
 import { observer } from 'mobx-react';
 import { Modal, ModalLayout } from 'modals/Modal';
@@ -36,13 +35,14 @@ export class NewPost extends Modal {
   }
 
   @action.bound
-  private createPost(): void {
+  private async createPost(): Promise<void> {
     this.pending = true;
     try {
-      const res = this.postStore.createPost(this.tempPost);
-      console.info(res);
+      const res = await this.postStore.createPost(this.tempPost);
+      if (res) this.postStore.pushNewPost(res);
     } finally {
       this.pending = false;
+      this.closeModal();
     }
   }
 
@@ -57,7 +57,7 @@ export class NewPost extends Modal {
 
   @computed
   private get disabledBtn(): boolean {
-    return !this.tempPost.text || !this.tempPost.title;
+    return !this.tempPost.text || !this.tempPost.title || !this.tempPost.uploadingAttachments.length;
   }
 
   private get headerEl(): JSX.Element {
@@ -84,7 +84,7 @@ export class NewPost extends Modal {
       <>
         {this.tempPost.uploadingAttachments.reverse().map((file, index) => (
           <ImagePreview key={index}>
-            {file instanceof AttachmentEntity && file.type === 'photo' ? (
+            {file instanceof AttachmentEntity ? (
               <>
                 <DemoImg alt="demo" src={file.url} />
                 <button
@@ -99,7 +99,7 @@ export class NewPost extends Modal {
                 </button>
               </>
             ) : (
-              <Loader fullScreen size={SIZE.EXTRA_LARGE} inverseColor />
+              <Loader fullScreen inverseColor />
             )}
           </ImagePreview>
         ))}

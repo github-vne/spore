@@ -18,4 +18,8 @@ export default class UserStore {
       return (this.usersHash = []);
     }
   });
+
+  updateUserInfo(user: UserEntity): Promise<UserEntity> {
+    return this.transport.updateUserInfo(user);
+  }
 }

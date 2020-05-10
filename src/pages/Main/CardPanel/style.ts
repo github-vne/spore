@@ -2,12 +2,13 @@ import { COLOR } from 'const';
 import styled, { css } from 'styled-components';
 import { RawSvg } from 'ui-kit';
 
-export const Info = styled.div`
-  display: flex;
-  justify-content: space-between;
-  p {
-    font-size: 20px;
-    font-weight: bold;
+export const Wrapper = styled.div`
+  padding: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-gap: 20px;
+  > div {
+    min-height: 110px;
   }
 `;
 
@@ -18,9 +19,14 @@ export const Title = styled.h4`
   margin-bottom: 10px;
 `;
 
+export const Price = styled.p`
+  font-size: 20px;
+  font-weight: bold;
+`;
+
 export const Image = styled.img`
-  width: 48px;
-  height: 48px;
+  width: 25px;
+  height: 25px;
   margin-left: 5px;
   background: #fff;
   border-radius: 50%;

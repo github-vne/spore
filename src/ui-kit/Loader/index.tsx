@@ -1,3 +1,4 @@
+import { SIZE } from 'const';
 import React from 'react';
 import { FullScreen, Loader } from './style';
 import { LoaderProps } from './types';
@@ -8,7 +9,7 @@ export default class UiLoader extends React.Component<LoaderProps> {
     if (fullScreen) {
       return (
         <FullScreen>
-          <Loader icon="common/loader" {...props} />
+          <Loader icon="common/loader" size={SIZE.EXTRA_LARGE} {...props} />
         </FullScreen>
       );
     }

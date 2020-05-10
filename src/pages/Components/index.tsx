@@ -61,12 +61,11 @@ export default class PageComponents extends React.Component<RouteComponentProps>
           <Loader size={SIZE.EXTRA_SMALL} />
         </GroupComponent>
         <GroupComponent title="Avatar">
-          <Avatar size={SIZE.EXTRA_LARGE} initials="ВН" />
           <Avatar size={SIZE.EXTRA_LARGE} image="https://randomuser.me/api/portraits/men/3.jpg" />
-          <Avatar image="https://randomuser.me/api/portraits/men/3.jpg" />
-          <Avatar size={SIZE.MIDDLE} image="https://randomuser.me/api/portraits/men/3.jpg" />
-          <Avatar size={SIZE.SMALL} image="https://randomuser.me/api/portraits/men/3.jpg" />
-          <Avatar size={SIZE.EXTRA_SMALL} image="https://randomuser.me/api/portraits/men/3.jpg" />
+          <Avatar />
+          <Avatar size={SIZE.MIDDLE} />
+          <Avatar size={SIZE.SMALL} />
+          <Avatar size={SIZE.EXTRA_SMALL} />
         </GroupComponent>
         <GroupComponent title="Input">
           <Input name="input0" onChange={this.onChange} placeholder="Label" label="With Label" />

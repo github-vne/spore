@@ -2,18 +2,16 @@ import { Box } from 'common';
 import styled from 'styled-components';
 import { RawSvg } from 'ui-kit';
 
-export const CardPanel = styled.div`
-  padding: 20px 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 20px;
+export const Wrapper = styled.div`
+  display: flex;
 `;
 
 export const ProgressPages = styled(Box)`
   display: flex;
-  flex: 1;
+  flex: none;
   flex-direction: column;
-  max-width: 33%;
+  max-width: 400px;
+  margin-right: 20px;
 `;
 
 export const PagesItem = styled.div`
@@ -28,11 +26,6 @@ export const PageIcon = styled(RawSvg)`
   width: 100%;
 `;
 
-export const Flex = styled.div`
-  display: flex;
-`;
-
 export const Graph = styled(Box)`
-  width: 70%;
-  margin-left: 3%;
+  width: 100%;
 `;

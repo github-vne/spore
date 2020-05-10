@@ -1,14 +1,15 @@
-import { InfoCard, Layout } from 'common';
+import { Layout } from 'common';
 import { Progress } from 'common/components';
 import { chartExample1 } from 'const/charts';
 import { observer } from 'mobx-react';
 import React from 'react';
-import { Line } from 'react-chartjs-2';
 import { RouteComponentProps } from 'react-router-dom';
 import { PageName, PageType } from 'routers/Router';
 import { MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
-import { CardPanel, Flex, Graph, PageIcon, PagesItem, ProgressPages } from './style';
+import CardPanel from './CardPanel';
+import Graph from './Graph';
+import { PageIcon, PagesItem, ProgressPages, Wrapper } from './style';
 
 const nav = [
   { root: PageType.MAIN, icon: 'main', value: 15 },
@@ -20,12 +21,6 @@ const nav = [
   { root: PageType.COMPONENTS, icon: 'components', value: 72 }
 ];
 
-const infoCards = [
-  { title: 'Tesla', value: 243.23, percent: 5.2, lastUpdate: '2ч. назад' },
-  { title: 'Apple', value: 361.25, percent: -6, lastUpdate: '2ч. назад' },
-  { title: 'Yandex', value: 223.3, percent: 45.2, lastUpdate: '2ч. назад' },
-  { title: 'Google', value: 343, percent: -4.2, lastUpdate: '2ч. назад' }
-];
 @observer
 export default class PageMain extends React.Component<RouteComponentProps> {
   @Inject private mainStore: MainStore;
@@ -37,12 +32,8 @@ export default class PageMain extends React.Component<RouteComponentProps> {
   render(): JSX.Element {
     return (
       <Layout>
-        <CardPanel>
-          {infoCards.map((card, index) => (
-            <InfoCard card={card} key={index} />
-          ))}
-        </CardPanel>
-        <Flex>
+        <CardPanel />
+        <Wrapper>
           <ProgressPages title="Вёрстка">
             {nav.map((page, item) => (
               <PagesItem key={item}>
@@ -56,10 +47,8 @@ export default class PageMain extends React.Component<RouteComponentProps> {
               </PagesItem>
             ))}
           </ProgressPages>
-          <Graph>
-            <Line data={chartExample1.data} options={chartExample1.options} />
-          </Graph>
-        </Flex>
+          <Graph />
+        </Wrapper>
       </Layout>
     );
   }

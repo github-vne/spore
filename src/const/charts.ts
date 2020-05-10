@@ -54,9 +54,6 @@ const chartExample1 = {
             zeroLineColor: 'transparent'
           },
           ticks: {
-            suggestedMin: 60,
-            suggestedMax: 125,
-            padding: 20,
             fontColor: '#9a9a9a'
           }
         }

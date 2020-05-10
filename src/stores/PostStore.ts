@@ -1,5 +1,5 @@
 import { promisedComputed, PromisedComputedValue } from 'computed-async-mobx';
-import { observable } from 'mobx';
+import { action, observable } from 'mobx';
 import { PostEntity } from 'models';
 import PostTransport from 'transport/PostTransport';
 import { Inject, Singleton } from 'typescript-ioc';
@@ -19,7 +19,12 @@ export default class PostStore {
     }
   });
 
-  createPost(post: PostEntity): void {
-    this.transport.createPost(post);
+  pushNewPost(post: PostEntity): void {
+    this.postsHash.unshift(post);
+  }
+
+  @action.bound
+  async createPost(post: PostEntity): Promise<PostEntity> {
+    return this.transport.createPost(post);
   }
 }
