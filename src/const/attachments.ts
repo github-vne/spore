@@ -1,6 +1,7 @@
 import { PostEntity } from 'models';
+import EntityWithAttaches from 'models/EntityWithAttaches';
 
-export type EntityWithAttachType = PostEntity;
+export type EntityWithAttachType = PostEntity | EntityWithAttaches;
 export const MAX_FILE_SIZE = 104857600; // max size 100Mb
 
 export function formatFileSize(bytes: number): string {

@@ -8,7 +8,7 @@ import { PageLink, PageType } from 'routers/Router';
 import { AccountStore, MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Button, Input } from 'ui-kit';
-import { Container, Footer } from './style';
+import { Container, Tab, Tabs, Wrapper } from './style';
 
 @observer
 export default class PageAuth extends React.Component<RouteComponentProps> {
@@ -50,23 +50,22 @@ export default class PageAuth extends React.Component<RouteComponentProps> {
   render(): JSX.Element {
     return (
       <Container>
-        <div>
-          <Link to={PageLink.HOME}>
-            <Button styled={STYLED.TERTIARY}>В сервис</Button>
-          </Link>
-        </div>
-        <Box
-          title="Регистрация"
-          footer={
-            <Button styled={STYLED.TERTIARY} onClick={this.signUp}>
-              Sign up
-            </Button>
-          }
-        >
-          <Input placeholder="login" name="login" onChange={this.onChange} />
-          <Input placeholder="password" name="password" onChange={this.onChange} />
-        </Box>
-        <Footer>2020 by Vasenkin</Footer>
+        <Wrapper>
+          <Tabs>
+            <Tab selected>Вход</Tab>
+            <Tab>Регистрация</Tab>
+          </Tabs>
+          <Box
+            footer={
+              <Button styled={STYLED.TERTIARY} onClick={this.signUp}>
+                Sign up
+              </Button>
+            }
+          >
+            <Input placeholder="login" name="login" onChange={this.onChange} />
+            <Input placeholder="password" name="password" onChange={this.onChange} />
+          </Box>
+        </Wrapper>
       </Container>
     );
   }

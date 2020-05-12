@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import { RawSvg } from 'ui-kit';
 
 export const Wrapper = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  width: 100%;
 `;
 
 export const ProgressPages = styled(Box)`

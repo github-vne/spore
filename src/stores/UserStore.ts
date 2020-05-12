@@ -22,4 +22,8 @@ export default class UserStore {
   updateUserInfo(user: UserEntity): Promise<UserEntity> {
     return this.transport.updateUserInfo(user);
   }
+
+  updatePhoto(photoId: number): Promise<UserEntity> {
+    return this.transport.uploadPhoto(photoId);
+  }
 }

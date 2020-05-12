@@ -2,7 +2,7 @@ import { serializable, serialize } from 'serializr';
 
 export default abstract class BaseEntity {
   @serializable
-  id: string;
+  id: number;
 
   @serializable
   type: string;

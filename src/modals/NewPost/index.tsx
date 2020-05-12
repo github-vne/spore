@@ -47,7 +47,7 @@ export class NewPost extends Modal {
   }
 
   @action.bound
-  attachFiles(files?: FileList): void {
+  private attachFiles(files?: FileList): void {
     if (!files?.length) {
       this.fileService.openFileDialog(this.tempPost, this.hash);
     } else {

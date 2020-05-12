@@ -2,6 +2,7 @@ import { Box, Layout } from 'common';
 import { SIZE, STYLED } from 'const';
 import { action, observable } from 'mobx';
 import { observer } from 'mobx-react';
+import { AddPhoto } from 'modals';
 import { UserEntity } from 'models';
 import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
@@ -21,6 +22,7 @@ export default class PageSettings extends React.Component<RouteComponentProps> {
 
   componentDidMount(): void {
     this.mainStore.changeCurrentPage(PageType.SETTINGS);
+    AddPhoto.openModal();
   }
 
   @action.bound
@@ -29,10 +31,10 @@ export default class PageSettings extends React.Component<RouteComponentProps> {
   }
 
   @action.bound
-  updateUserInfo(): void {
+  private async updateUserInfo(): Promise<void> {
     this.pending = true;
     try {
-      const res = this.userStore.updateUserInfo(this.tempUser);
+      await this.userStore.updateUserInfo(this.tempUser);
     } finally {
       this.pending = false;
     }
