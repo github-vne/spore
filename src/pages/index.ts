@@ -2,7 +2,7 @@ export { default as Auth } from './Auth';
 export { default as Chat } from './Chat';
 export { default as Components } from './Components';
 export { default as Dictionary } from './Dictionary';
-export { default as Home } from './Home';
+export { default as Landing } from './Landing';
 export { default as Main } from './Main';
 export { default as NotFound } from './NotFound';
 export { default as Posts } from './Posts';

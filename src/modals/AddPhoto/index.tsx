@@ -46,6 +46,7 @@ export class AddPhoto extends Modal {
 
   @computed private get attachmentsEl(): JSX.Element {
     if (!this.attachment) return null;
+
     return (
       <>
         {this.attachment.uploadingAttachments.reverse().map((file, index) => (

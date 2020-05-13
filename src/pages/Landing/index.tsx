@@ -12,7 +12,7 @@ export default class PageHome extends React.Component<RouteComponentProps> {
   @Inject private mainStore: MainStore;
 
   componentDidMount(): void {
-    this.mainStore.changeCurrentPage(PageType.MAIN);
+    this.mainStore.changeCurrentPage(PageType.LANDING);
   }
 
   render(): JSX.Element {

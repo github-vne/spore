@@ -3,57 +3,57 @@ import { Singleton } from 'typescript-ioc';
 
 @Singleton
 export default class Router {
-  HOME: string = PageLink.HOME;
   AUTH: string = PageLink.AUTH;
-  SETTINGS: string = PageLink.SETTINGS;
-  USERS: string = PageLink.USERS;
   CHAT: string = PageLink.CHAT;
-  POSTS: string = PageLink.POSTS;
-  COMPONENTS: string = PageLink.COMPONENTS;
-  TASKS: string = PageLink.TASKS;
   MAIN: string = PageLink.MAIN;
+  USERS: string = PageLink.USERS;
+  POSTS: string = PageLink.POSTS;
+  TASKS: string = PageLink.TASKS;
+  LANDING: string = PageLink.LANDING;
+  SETTINGS: string = PageLink.SETTINGS;
+  COMPONENTS: string = PageLink.COMPONENTS;
   DICTIONARY: string = PageLink.DICTIONARY;
 
   history: History = createBrowserHistory();
 }
 
 export enum PageType {
-  HOME = 'HOME',
   AUTH = 'AUTH',
-  USERS = 'USERS',
-  SETTINGS = 'SETTINGS',
-  COMPONENTS = 'COMPONENTS',
   CHAT = 'CHAT',
+  MAIN = 'MAIN',
+  USERS = 'USERS',
   POSTS = 'POSTS',
   TASKS = 'TASKS',
-  MAIN = 'MAIN',
+  LANDING = 'LANDING',
+  SETTINGS = 'SETTINGS',
+  NOT_FOUND = 'NOT_FOUND',
   DICTIONARY = 'DICTIONARY',
-  NOT_FOUND = 'NOT_FOUND'
+  COMPONENTS = 'COMPONENTS'
 }
 
 export const PageLink = {
-  [PageType.HOME]: '/',
+  [PageType.MAIN]: '/',
   [PageType.AUTH]: '/auth',
-  [PageType.USERS]: '/users',
-  [PageType.SETTINGS]: '/settings',
-  [PageType.COMPONENTS]: '/components',
   [PageType.CHAT]: '/chat',
+  [PageType.USERS]: '/users',
   [PageType.POSTS]: '/posts',
   [PageType.TASKS]: '/tasks',
-  [PageType.MAIN]: '/main',
+  [PageType.LANDING]: '/landing',
+  [PageType.SETTINGS]: '/settings',
+  [PageType.COMPONENTS]: '/components',
   [PageType.DICTIONARY]: '/dictionary'
 };
 
 export const PageName = {
-  [PageType.HOME]: 'О продукте',
+  [PageType.CHAT]: 'Чат',
   [PageType.AUTH]: 'Вход',
   [PageType.USERS]: 'Юзеры',
-  [PageType.SETTINGS]: 'Настройки',
-  [PageType.COMPONENTS]: 'Компоненты',
-  [PageType.CHAT]: 'Чат',
-  [PageType.POSTS]: 'Новости',
   [PageType.TASKS]: 'Задачи',
   [PageType.MAIN]: 'Главная',
+  [PageType.POSTS]: 'Новости',
+  [PageType.LANDING]: 'О продукте',
+  [PageType.SETTINGS]: 'Настройки',
   [PageType.DICTIONARY]: 'Словарь',
+  [PageType.COMPONENTS]: 'Компоненты',
   [PageType.NOT_FOUND]: 'Страница не найдена'
 };

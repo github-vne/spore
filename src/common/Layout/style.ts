@@ -1,4 +1,4 @@
-import { GRADIENT } from 'const';
+import { COLOR, GRADIENT } from 'const';
 import styled from 'styled-components';
 
 export const Layout = styled.div`
@@ -7,6 +7,7 @@ export const Layout = styled.div`
   background: ${GRADIENT.BACKGROUND};
   padding-top: 10px;
   z-index: 0;
+  position: relative;
 `;
 
 export const Container = styled.div`
