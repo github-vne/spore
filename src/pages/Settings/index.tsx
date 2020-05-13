@@ -26,6 +26,11 @@ export default class PageSettings extends React.Component<RouteComponentProps> {
   }
 
   @action.bound
+  openModal(): void {
+    AddPhoto.openModal();
+  }
+
+  @action.bound
   onChange(name: string, value: string): void {
     this.tempUser[name] = value;
   }
@@ -83,6 +88,7 @@ export default class PageSettings extends React.Component<RouteComponentProps> {
             </Box> */}
           </Profile>
           <User>
+            <button onClick={this.openModal}>test</button>
             <Avatar size={SIZE.EXTRA_LARGE} />
             <UserName>Name</UserName>
             <UserPosition>Position</UserPosition>

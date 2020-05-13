@@ -7,7 +7,6 @@ import { PostStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Button, Loader } from 'ui-kit';
 import { FileService } from 'utils';
-import uuidv4 from 'uuid/v4';
 import { AddImage, Content, DemoImg, ImagePreview, Input, Textarea } from './style';
 
 @observer
@@ -15,19 +14,10 @@ export class NewPost extends Modal {
   static width: string = '500px';
 
   @Inject private postStore: PostStore;
-  @Inject private fileService: FileService;
 
-  private hash: string = uuidv4();
   @observable private pending: boolean;
   @observable private tempPost: PostEntity = new PostEntity();
-
-  componentDidMount(): void {
-    this.fileService.setUploadHash(this.hash);
-  }
-
-  componentWillUnmount(): void {
-    this.fileService.setUploadHash(undefined);
-  }
+  @observable private fileService: FileService = new FileService();
 
   @action.bound
   private onChange(name: string, value: string): void {
@@ -38,6 +28,7 @@ export class NewPost extends Modal {
   private async createPost(): Promise<void> {
     this.pending = true;
     try {
+      this.tempPost.photoId = this.fileService.uploading.id;
       const res = await this.postStore.createPost(this.tempPost);
       if (res) this.postStore.pushNewPost(res);
     } finally {
@@ -47,28 +38,15 @@ export class NewPost extends Modal {
   }
 
   @action.bound
-  private attachFiles(files?: FileList): void {
-    if (!files?.length) {
-      this.fileService.openFileDialog(this.tempPost, this.hash);
-    } else {
-      this.fileService.uploadFiles(files, this.tempPost, this.hash);
-    }
+  private openFileDialog(): void {
+    this.fileService.openFileDialog();
   }
 
-  @computed
-  private get disabledBtn(): boolean {
-    return !this.tempPost.text || !this.tempPost.title || !this.tempPost.uploadingAttachments.length;
+  @computed private get disabledBtn(): boolean {
+    return !this.tempPost.text || !this.tempPost.title || !this.fileService.uploading;
   }
 
-  private get headerEl(): JSX.Element {
-    return (
-      <>
-        <p>Создать новый пост</p>
-      </>
-    );
-  }
-
-  private get footerEl(): JSX.Element {
+  @computed private get footerEl(): JSX.Element {
     return (
       <>
         <Button onClick={this.createPost} disabled={this.disabledBtn} pending={this.pending}>
@@ -79,31 +57,23 @@ export class NewPost extends Modal {
   }
 
   @computed private get attachmentsEl(): JSX.Element {
-    if (!this.tempPost) return null;
+    const file = this.fileService.uploading;
+
+    if (!file) return;
+
     return (
-      <>
-        {this.tempPost.uploadingAttachments.reverse().map((file, index) => (
-          <ImagePreview key={index}>
-            {file instanceof AttachmentEntity ? (
-              <>
-                <DemoImg alt="demo" src={file.url} />
-                <button
-                  type="button"
-                  onClick={
-                    file instanceof AttachmentEntity
-                      ? this.fileService.deleteLoadingAttachment.bind(this, file.id, this.tempPost)
-                      : undefined
-                  }
-                >
-                  Удалить фото
-                </button>
-              </>
-            ) : (
-              <Loader fullScreen inverseColor />
-            )}
-          </ImagePreview>
-        ))}
-      </>
+      <ImagePreview>
+        {file instanceof AttachmentEntity ? (
+          <>
+            <DemoImg alt="demo" src={file.url} />
+            <button type="button" onClick={this.fileService.deleteError}>
+              Удалить фото
+            </button>
+          </>
+        ) : (
+          <Loader fullScreen inverseColor />
+        )}
+      </ImagePreview>
     );
   }
 
@@ -112,7 +82,7 @@ export class NewPost extends Modal {
       <>
         <Input name="title" onChange={this.onChange} label="Заголовок" />
         <Textarea name="text" onChange={this.onChange} label="Текст" />
-        <AddImage onClick={this.attachFiles}>
+        <AddImage onClick={this.openFileDialog}>
           <span>Добавить изображение</span>
         </AddImage>
         {this.attachmentsEl}
@@ -122,7 +92,7 @@ export class NewPost extends Modal {
 
   render(): JSX.Element {
     return (
-      <ModalLayout header={this.headerEl} footer={this.footerEl}>
+      <ModalLayout header="Создать новый пост" footer={this.footerEl}>
         <Content>{this.contentEl}</Content>
       </ModalLayout>
     );

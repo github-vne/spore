@@ -11,6 +11,12 @@ export default class AttachmentTransport {
   uploadFile(file: UploadingFile): Promise<AttachmentEntity> {
     const formData = new FormData();
     formData.append('file', file.file);
-    return this.api.post(this.FILE_UPLOAD, formData).then(AttachmentEntity.fromServer);
+    return this.api
+      .post(this.FILE_UPLOAD, formData, {
+        config: {
+          onUploadProgress: (e: ProgressEvent) => (file.uploadProgress = Math.round((e.loaded * 100) / e.total))
+        }
+      })
+      .then(AttachmentEntity.fromServer);
   }
 }

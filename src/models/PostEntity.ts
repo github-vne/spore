@@ -1,11 +1,11 @@
 import { observable } from 'mobx';
 import { UserEntity } from 'models';
-import { custom, deserialize, serializable, SKIP } from 'serializr';
+import { alias, custom, deserialize, serializable, SKIP } from 'serializr';
 import { Singleton } from 'typescript-ioc';
-import EntityWithAttaches from './EntityWithAttaches';
+import BaseEntity from './BaseEntity';
 
 @Singleton
-export default class PostEntity extends EntityWithAttaches {
+export default class PostEntity extends BaseEntity {
   @observable
   @serializable
   title: string;
@@ -17,6 +17,10 @@ export default class PostEntity extends EntityWithAttaches {
   @observable
   @serializable
   photo: string;
+
+  @observable
+  @serializable(alias('photo_id'))
+  photoId: number;
 
   @observable
   @serializable(custom(_ => 1, UserEntity.fromServer))

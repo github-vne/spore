@@ -3,6 +3,9 @@ import { observable } from 'mobx';
 import { deserialize, serializable } from 'serializr';
 
 export class UploadingFile {
+  @serializable
+  id: number;
+
   file: File;
 
   @observable
@@ -15,19 +18,10 @@ export class UploadingFile {
 
 export class AttachmentEntity {
   @serializable
-  type: string;
-
-  @serializable
-  id: string;
+  id: number;
 
   @serializable
   name: string;
-
-  @serializable
-  created: string;
-
-  @serializable
-  size: number;
 
   @serializable
   url: string;

@@ -12,6 +12,6 @@ export interface ModalDefinition {
 }
 
 export interface Layout {
-  header?: JSX.Element;
+  header?: JSX.Element | string;
   footer?: JSX.Element;
 }
