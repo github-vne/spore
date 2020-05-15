@@ -7,20 +7,21 @@ import { MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Container, Logo, Navigation, NavItem, RawSvg, Toggle } from './style';
 
+const nav: Array<{ root: PageType; icon: string }> = [
+  { root: PageType.MAIN, icon: 'main' },
+  { root: PageType.POSTS, icon: 'news' },
+  { root: PageType.USERS, icon: 'users' },
+  { root: PageType.TASKS, icon: 'tasks' },
+  { root: PageType.CHAT, icon: 'chat' },
+  { root: PageType.DICTIONARY, icon: 'dictionary' },
+  { root: PageType.SETTINGS, icon: 'settings' },
+  { root: PageType.COMPONENTS, icon: 'components' }
+];
+
 @observer
 export default class SideBar extends Component {
   @Inject mainStore: MainStore;
 
-  private nav: Array<{ root: PageType; icon: string }> = [
-    { root: PageType.MAIN, icon: 'main' },
-    { root: PageType.POSTS, icon: 'news' },
-    { root: PageType.USERS, icon: 'users' },
-    { root: PageType.TASKS, icon: 'tasks' },
-    { root: PageType.CHAT, icon: 'chat' },
-    { root: PageType.DICTIONARY, icon: 'dictionary' },
-    { root: PageType.SETTINGS, icon: 'settings' },
-    { root: PageType.COMPONENTS, icon: 'components' }
-  ];
   @observable private expand: boolean = !localStorage.getItem(SHORT_SIDE_BAR);
 
   @computed get currentPage(): PageType {
@@ -40,7 +41,7 @@ export default class SideBar extends Component {
           <RawSvg icon="sideBar/logo" />
         </Logo>
         <Navigation>
-          {this.nav.map((page, index) => (
+          {nav.map((page, index) => (
             <NavItem key={index} to={PageLink[page.root]} selected={this.currentPage === PageType[page.root]}>
               <RawSvg icon={`sideBar/${page.icon}`} />
               <span>{PageName[page.root]}</span>
