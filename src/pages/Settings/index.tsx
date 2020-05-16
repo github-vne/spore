@@ -10,7 +10,17 @@ import { PageType } from 'routers/Router';
 import { MainStore, UserStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Avatar, Button, Input, Textarea } from 'ui-kit';
-import { Container, EditProfile, Profile, User, UserDescription, UserName, UserPosition } from './style';
+import {
+  Container,
+  EditProfile,
+  Profile,
+  UploadPhoto,
+  User,
+  UserDescription,
+  UserImage,
+  UserName,
+  UserPosition
+} from './style';
 
 @observer
 export default class PageSettings extends React.Component<RouteComponentProps> {
@@ -22,7 +32,6 @@ export default class PageSettings extends React.Component<RouteComponentProps> {
 
   componentDidMount(): void {
     this.mainStore.changeCurrentPage(PageType.SETTINGS);
-    AddPhoto.openModal();
   }
 
   @action.bound
@@ -88,8 +97,14 @@ export default class PageSettings extends React.Component<RouteComponentProps> {
             </Box> */}
           </Profile>
           <User>
-            <button onClick={this.openModal}>test</button>
-            <Avatar size={SIZE.EXTRA_LARGE} />
+            <UserImage>
+              <UploadPhoto
+                // tslint:disable-next-line: ter-max-len
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Circle-icons-camera.svg/1024px-Circle-icons-camera.svg.png"
+                onClick={this.openModal}
+              />
+              <Avatar size={SIZE.EXTRA_LARGE} />
+            </UserImage>
             <UserName>Name</UserName>
             <UserPosition>Position</UserPosition>
             <UserDescription>

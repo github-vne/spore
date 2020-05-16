@@ -6,9 +6,6 @@ export const Avatar = styled.div`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: ${COLOR.WHITE};
-  font-weight: bold;
-  background: ${COLOR.BLUE_50};
   overflow: hidden;
   border-radius: 50%;
   border: 2px solid ${COLOR.WHITE};
@@ -38,4 +35,10 @@ export const Avatar = styled.div`
       }
     `;
   }};
+`;
+
+export const Img = styled.img`
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 `;

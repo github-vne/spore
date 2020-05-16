@@ -28,6 +28,23 @@ export const User = styled(Box)`
   padding: 35px 15px;
 `;
 
+export const UploadPhoto = styled.img`
+  position: absolute;
+  cursor: pointer;
+
+  transition: 0.2s;
+  opacity: 0;
+`;
+
+export const UserImage = styled.div`
+  position: relative;
+  :hover {
+    ${UploadPhoto} {
+      opacity: 1;
+    }
+  }
+`;
+
 export const UserName = styled.h3`
   margin: 20px 0 10px;
 `;
