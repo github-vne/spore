@@ -1,10 +1,8 @@
 import { observable } from 'mobx';
 import { UserEntity } from 'models';
 import { alias, custom, deserialize, serializable, SKIP } from 'serializr';
-import { Singleton } from 'typescript-ioc';
 import BaseEntity from './BaseEntity';
 
-@Singleton
 export default class PostEntity extends BaseEntity {
   @observable
   @serializable

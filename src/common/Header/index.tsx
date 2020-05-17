@@ -3,7 +3,7 @@ import { computed } from 'mobx';
 import { observer } from 'mobx-react';
 import React from 'react';
 import { PageName } from 'routers/Router';
-import { MainStore } from 'stores';
+import { MainStore, UserStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Avatar, RawSvg } from 'ui-kit';
 import { HomeIcon, Item, Menu, Nav, Panel, Wrapper } from './style';
@@ -11,6 +11,7 @@ import { HomeIcon, Item, Menu, Nav, Panel, Wrapper } from './style';
 @observer
 export default class Header extends React.Component {
   @Inject private mainStore: MainStore;
+  @Inject private userStore: UserStore;
 
   @computed private get pageName(): string {
     return PageName[this.mainStore.currentPage];
@@ -33,7 +34,7 @@ export default class Header extends React.Component {
               </Item>
             ))}
           </Menu>
-          <Avatar size={SIZE.EXTRA_SMALL} />
+          <Avatar size={SIZE.EXTRA_SMALL} image={this.userStore.user.photo} />
         </Panel>
       </Wrapper>
     );

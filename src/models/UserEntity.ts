@@ -5,9 +5,6 @@ export default class UserEntity extends BaseEntity {
   @serializable
   login: string;
 
-  @serializable
-  email: string;
-
   @serializable(alias('first_name'))
   firstName: string;
 

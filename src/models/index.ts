@@ -1,3 +1,4 @@
+export { AuthEntity } from './AuthEntity';
 export { AttachmentEntity, UploadingFile } from './AttachmentEntity';
 export { default as BaseEntity } from './BaseEntity';
 export { default as ListResponse, ListResponseType } from './ListResponse';

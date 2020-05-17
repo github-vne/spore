@@ -4,12 +4,16 @@ import { Api } from 'utils';
 
 @Singleton
 export default class UserTransport {
-  @Inject api: Api;
+  @Inject private api: Api;
 
   private USER_LIST_ENDPOINT: string = 'users';
 
   retrieveUserList(params?: object): Promise<ListResponseType<UserEntity>> {
     return this.api.get(this.USER_LIST_ENDPOINT, params).then(ListResponse.fromServer.bind(null, UserEntity));
+  }
+
+  retrieveUser(id?: string): Promise<UserEntity> {
+    return this.api.get(`${this.USER_LIST_ENDPOINT}/${id}`).then(UserEntity.fromServer);
   }
 
   updateUserInfo(user: UserEntity): Promise<UserEntity> {

@@ -48,7 +48,5 @@ export const UserImage = styled.div`
 export const UserName = styled.h3`
   margin: 20px 0 10px;
 `;
-export const UserPosition = styled.h3`
-  margin-bottom: 20px;
-`;
+
 export const UserDescription = styled.p``;

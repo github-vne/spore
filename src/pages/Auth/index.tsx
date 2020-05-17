@@ -2,9 +2,10 @@ import { Box } from 'common';
 import { STYLED } from 'const';
 import { action, observable } from 'mobx';
 import { observer } from 'mobx-react';
+import { AuthEntity } from 'models';
 import React from 'react';
-import { Link, RouteComponentProps } from 'react-router-dom';
-import { PageLink, PageType } from 'routers/Router';
+import { RouteComponentProps } from 'react-router-dom';
+import { PageType } from 'routers/Router';
 import { AccountStore, MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Button, Input } from 'ui-kit';
@@ -14,8 +15,8 @@ import { Container, Tab, Tabs, Wrapper } from './style';
 export default class PageAuth extends React.Component<RouteComponentProps> {
   @Inject private mainStore: MainStore;
   @Inject private accountStore: AccountStore;
-  @observable private login: string;
-  @observable private password: string;
+
+  @observable private auth: AuthEntity = new AuthEntity();
 
   componentDidMount(): void {
     this.mainStore.changeCurrentPage(PageType.COMPONENTS);
@@ -23,28 +24,23 @@ export default class PageAuth extends React.Component<RouteComponentProps> {
 
   @action.bound
   private async signUp(): Promise<void> {
+    const res = await this.accountStore.signUp(this.auth);
+    console.info(res);
+  }
+
+  @action.bound
+  private async signIn(): Promise<void> {
     try {
-      const res = await this.accountStore.signUp(this.login, this.password);
-      console.info(res);
+      const res = await this.accountStore.signIn(this.auth);
+      console.info('AUTH!', res);
     } catch {
-      console.error('ERR');
+      console.error('err');
     }
   }
 
   @action.bound
   onChange(name: string, value: string): void {
-    this[name] = value;
-  }
-
-  @action.bound
-  send(): void {
-    fetch('http://cuddly-parakeet.herokuapp.com/api/v1/users', {
-      method: 'POST',
-      body: JSON.stringify({ login: 'qwerty', password: '123123123' }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then(res => console.info(res));
+    this.auth[name] = value;
   }
 
   render(): JSX.Element {
@@ -57,13 +53,18 @@ export default class PageAuth extends React.Component<RouteComponentProps> {
           </Tabs>
           <Box
             footer={
-              <Button styled={STYLED.TERTIARY} onClick={this.signUp}>
-                Sign up
-              </Button>
+              <>
+                <Button styled={STYLED.TERTIARY} onClick={this.signIn}>
+                  Sign In
+                </Button>
+                <Button styled={STYLED.TERTIARY} onClick={this.signUp}>
+                  Sign up
+                </Button>
+              </>
             }
           >
-            <Input placeholder="login" name="login" onChange={this.onChange} />
-            <Input placeholder="password" name="password" onChange={this.onChange} />
+            <Input label="Login" placeholder="login" name="login" onChange={this.onChange} />
+            <Input label="Password" placeholder="password" name="password" onChange={this.onChange} />
           </Box>
         </Wrapper>
       </Container>
