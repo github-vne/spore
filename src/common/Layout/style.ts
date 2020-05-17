@@ -1,4 +1,4 @@
-import { COLOR, GRADIENT } from 'const';
+import { GRADIENT } from 'const';
 import styled from 'styled-components';
 
 export const Layout = styled.div`
@@ -11,9 +11,9 @@ export const Layout = styled.div`
 `;
 
 export const Container = styled.div`
+  z-index: 1;
   width: 100%;
   max-width: 3000px;
-  z-index: 1;
 `;
 
 export const Main = styled.main`

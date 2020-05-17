@@ -1,22 +1,19 @@
-import { action, observable } from 'mobx';
+import { action } from 'mobx';
 import { observer } from 'mobx-react';
 import React, { RefObject } from 'react';
-import { FormControl, RawSvg } from 'ui-kit';
-import { Label } from 'ui-kit/FormControl';
+import styled from 'styled-components';
+import { FormControl, InputProps, RawSvg } from 'ui-kit';
+import { Icon, InnerBtn, Label, Relative, styleEl, Wrapper } from 'ui-kit/FormControl';
 import uuid from 'uuid';
-import { InnerBtn, Input, InputBox, InputIcon, Wrapper } from './style';
-import { InputProps } from './types';
+
+export const Input = styled.input`
+  ${styleEl}
+`;
 
 @observer
 export default class UiInput extends FormControl<string, InputProps> {
-  @observable private inputFocused: boolean = false;
   private inputRef: RefObject<HTMLInputElement> = React.createRef<HTMLInputElement>();
   private id: string = this.props.id || uuid();
-
-  @action
-  resetValue(): void {
-    this.innerValue = undefined;
-  }
 
   @action.bound
   removeFocus(): void {
@@ -28,41 +25,29 @@ export default class UiInput extends FormControl<string, InputProps> {
     this.inputRef.current?.focus();
   }
 
-  @action.bound
-  private onBlur(e: React.FocusEvent<any>): void {
-    this.inputFocused = false;
-    this.props.onBlur && this.props.onBlur(e);
-  }
-
-  @action.bound
-  private onFocus(e: React.FocusEvent<any>): void {
-    this.inputFocused = true;
-    this.props.onFocus && this.props.onFocus(e);
-  }
-
   render(): JSX.Element {
     const { placeholder, disabled, label, icon, innerBtn, styled } = this.props;
     return (
       <Wrapper className={this.props.className}>
         {label && (
-          <Label htmlFor={this.id} focus={this.inputFocused}>
+          <Label htmlFor={this.id} focus={this.focused}>
             {label}
           </Label>
         )}
-        <InputBox>
-          {icon && <InputIcon icon={icon} focus={this.inputFocused} />}
+        <Relative>
+          {icon && <Icon icon={icon} focus={this.focused} />}
           <Input
+            name={name}
             id={this.id}
             styled={styled}
-            name={name}
+            hasIcon={!!icon}
             ref={this.inputRef}
-            onFocus={this.onFocus}
-            onBlur={this.onBlur}
             disabled={disabled}
+            onBlur={this.onBlur}
+            onFocus={this.onFocus}
+            hasInnerBtn={!!innerBtn}
             placeholder={placeholder}
             onChange={this.onInnerChange}
-            hasIcon={!!icon}
-            hasInnerBtn={!!innerBtn}
             value={this.innerValue === undefined ? '' : this.innerValue}
           />
           {innerBtn ? (
@@ -70,7 +55,7 @@ export default class UiInput extends FormControl<string, InputProps> {
               {typeof innerBtn.icon === 'object' ? innerBtn.icon : <RawSvg icon={innerBtn.icon || 'common/send'} />}
             </InnerBtn>
           ) : null}
-        </InputBox>
+        </Relative>
       </Wrapper>
     );
   }

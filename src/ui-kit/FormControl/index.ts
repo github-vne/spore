@@ -1,3 +1,3 @@
-export { FormControlProps } from './types';
+export { FormControlProps, InputProps } from './types';
 export { FormControl } from './FormControl';
-export { styleEl, Label } from './CommonStyles';
+export { styleEl, Label, InnerBtn, Icon, Relative, Wrapper } from './style';

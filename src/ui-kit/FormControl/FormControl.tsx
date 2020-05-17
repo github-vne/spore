@@ -4,6 +4,7 @@ import { FormControlProps } from './types';
 
 export abstract class FormControl<V, P extends FormControlProps<V>> extends React.Component<P> {
   @observable protected innerValue: V = this.props.defaultValue || this.props.value;
+  @observable focused: boolean = false;
 
   componentDidUpdate(prevProps: P): void {
     if (prevProps.value !== this.props.value) {
@@ -19,6 +20,18 @@ export abstract class FormControl<V, P extends FormControlProps<V>> extends Reac
   @action
   resetValue(): void {
     this.innerValue = undefined;
+  }
+
+  @action.bound
+  onBlur(e: React.FocusEvent<any>): void {
+    this.focused = false;
+    this.props.onBlur && this.props.onBlur(e);
+  }
+
+  @action.bound
+  onFocus(e: React.FocusEvent<any>): void {
+    this.focused = true;
+    this.props.onFocus && this.props.onFocus(e);
   }
 
   @action.bound

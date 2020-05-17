@@ -1,5 +1,6 @@
 import { COLOR, STYLED } from 'const';
 import styled, { css } from 'styled-components';
+import RawSvg from 'ui-kit/RawSvg';
 
 interface StyledProps {
   hasInnerBtn?: boolean;
@@ -60,9 +61,46 @@ export const styleEl = css`
     `}
 `;
 
+export const Wrapper = styled.div`
+  width: 100%;
+  display: block;
+  color: ${COLOR.WHITE};
+`;
+
+export const Relative = styled.div`
+  position: relative;
+`;
+
 export const Label = styled.label`
   display: inline-block;
   margin-bottom: 5px;
   color: ${({ focus }: { focus: boolean }) => (focus ? COLOR.BLUE_60 : 'inherit')};
   transition: color 0.3s ease-in-out;
+`;
+
+const Badge = css`
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  bottom: 8px;
+  transition: 0.3s ease-in-out;
+  color: ${COLOR.BLUE_20};
+`;
+
+export const Icon = styled(RawSvg)`
+  ${Badge};
+  left: 10px;
+  ${({ focus }: { focus: boolean }) =>
+    focus &&
+    css`
+      color: ${COLOR.BLUE_60};
+    `}
+`;
+
+export const InnerBtn = styled.button.attrs({ type: 'button' })`
+  ${Badge};
+  right: 10px;
+  &:hover {
+    color: ${COLOR.BLUE_60};
+  }
 `;
