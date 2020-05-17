@@ -1,4 +1,4 @@
-import { Box, Layout } from 'common';
+import { Layout } from 'common';
 import { SIZE, STYLED } from 'const';
 import { action, computed, observable } from 'mobx';
 import { observer } from 'mobx-react';
@@ -10,7 +10,17 @@ import { PageType } from 'routers/Router';
 import { MainStore, UserStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Avatar, Button, Input, Textarea } from 'ui-kit';
-import { Container, EditProfile, Profile, UploadPhoto, User, UserDescription, UserImage, UserName } from './style';
+import {
+  Container,
+  EditProfile,
+  UploadPhoto,
+  UploadSvg,
+  User,
+  UserDescription,
+  UserImage,
+  UserInfo,
+  UserName
+} from './style';
 
 @observer
 export default class PageSettings extends React.Component<RouteComponentProps> {
@@ -19,6 +29,7 @@ export default class PageSettings extends React.Component<RouteComponentProps> {
 
   @observable private tempUser: UserEntity = this.userStore.user;
   @observable private pending: boolean;
+  @observable private success: boolean;
 
   componentDidMount(): void {
     this.mainStore.changeCurrentPage(PageType.SETTINGS);
@@ -43,75 +54,72 @@ export default class PageSettings extends React.Component<RouteComponentProps> {
     this.pending = true;
     try {
       this.tempUser = await this.userStore.updateUserInfo(this.tempUser);
+      this.success = true;
+      setTimeout(() => (this.success = false), 3000);
     } finally {
       this.pending = false;
     }
+  }
+
+  @computed private get footer(): JSX.Element {
+    return (
+      <>
+        {this.success ? <span>Данные обновлены</span> : null}
+        <Button styled={STYLED.TERTIARY} onClick={this.updateUserInfo} pending={this.pending}>
+          Update
+        </Button>
+      </>
+    );
   }
 
   render(): JSX.Element {
     return (
       <Layout>
         <Container>
-          <Profile>
-            <Box
-              title="Edit Profile"
-              footer={
-                <Button styled={STYLED.TERTIARY} onClick={this.updateUserInfo} pending={this.pending}>
-                  Update
-                </Button>
-              }
-            >
-              <EditProfile>
-                <Input
-                  name="firstName"
-                  onChange={this.onChange}
-                  label="First name"
-                  defaultValue={this.tempUser.firstName}
-                  placeholder="Enter your first name..."
-                />
-                <Input
-                  name="lastName"
-                  onChange={this.onChange}
-                  label="Last name"
-                  defaultValue={this.tempUser.lastName}
-                  placeholder="Enter your last name..."
-                />
-                <Input
-                  name="middleName"
-                  onChange={this.onChange}
-                  label="Middle name"
-                  defaultValue={this.tempUser.middleName}
-                  placeholder="Enter your middle name..."
-                />
-                <Input
-                  name="status"
-                  onChange={this.onChange}
-                  label="Status"
-                  defaultValue={status}
-                  placeholder="Enter your status..."
-                />
-              </EditProfile>
-              <Textarea
-                rows={3}
-                name="description"
-                defaultValue={this.tempUser.description}
+          <UserInfo title="Edit Profile" footer={this.footer}>
+            <EditProfile>
+              <Input
+                name="firstName"
                 onChange={this.onChange}
-                placeholder="Enter your description..."
+                label="First name"
+                defaultValue={this.tempUser.firstName}
+                placeholder="Enter your first name..."
               />
-            </Box>
-            {/* <Box title="Change Password" footer={<Button styled={STYLED.TERTIARY}>Change</Button>}>
-              <FormInput placeholder="password" label="Current Password" />
-              <FormInput placeholder="password" label="New Password" />
-              <FormInput placeholder="Confirm New Password" label="Confirm New Password" />
-            </Box> */}
-          </Profile>
+              <Input
+                name="lastName"
+                onChange={this.onChange}
+                label="Last name"
+                defaultValue={this.tempUser.lastName}
+                placeholder="Enter your last name..."
+              />
+              <Input
+                name="middleName"
+                onChange={this.onChange}
+                label="Middle name"
+                defaultValue={this.tempUser.middleName}
+                placeholder="Enter your middle name..."
+              />
+              <Input
+                name="status"
+                onChange={this.onChange}
+                label="Status"
+                defaultValue={this.tempUser.status}
+                placeholder="Enter your status..."
+              />
+            </EditProfile>
+            <Textarea
+              rows={3}
+              name="description"
+              defaultValue={this.tempUser.description}
+              onChange={this.onChange}
+              placeholder="Enter your description..."
+            />
+          </UserInfo>
           <User>
             <UserImage>
-              <UploadPhoto
-                // tslint:disable-next-line: ter-max-len
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Circle-icons-camera.svg/1024px-Circle-icons-camera.svg.png"
-                onClick={this.openModal}
-              />
+              <UploadPhoto onClick={this.openModal}>
+                <UploadSvg icon="common/camera" />
+              </UploadPhoto>
               <Avatar size={SIZE.EXTRA_LARGE} image={this.user.photo} />
             </UserImage>
             <UserName>{this.user.fullName}</UserName>

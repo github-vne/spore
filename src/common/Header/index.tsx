@@ -2,6 +2,7 @@ import { SIZE } from 'const';
 import { computed } from 'mobx';
 import { observer } from 'mobx-react';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { PageName } from 'routers/Router';
 import { MainStore, UserStore } from 'stores';
 import { Inject } from 'typescript-ioc';
@@ -34,7 +35,9 @@ export default class Header extends React.Component {
               </Item>
             ))}
           </Menu>
-          <Avatar size={SIZE.EXTRA_SMALL} image={this.userStore.user.photo} />
+          <Link to="/auth">
+            <Avatar size={SIZE.EXTRA_SMALL} image={this.userStore.user?.photo} />
+          </Link>
         </Panel>
       </Wrapper>
     );

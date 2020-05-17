@@ -14,8 +14,12 @@ export const Title = styled.h4`
   margin-bottom: 25px;
 `;
 
-export const Footer = styled.div`
+export const Footer = styled.footer`
   margin-top: 25px;
   display: flex;
+  align-items: center;
   justify-content: flex-end;
+  * + * {
+    margin-left: 10px;
+  }
 `;

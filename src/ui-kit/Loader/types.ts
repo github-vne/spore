@@ -1,6 +1,6 @@
 import { SIZE } from 'const';
 
-export interface LoaderProps {
+export interface ILoaderProps {
   size?: SIZE;
   hidden?: boolean;
   className?: string;

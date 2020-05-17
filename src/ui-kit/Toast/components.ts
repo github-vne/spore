@@ -3,6 +3,13 @@ import styled, { css } from 'styled-components';
 import RawSvg from 'ui-kit/RawSvg';
 import { ToastType } from './types';
 
+const ToastIconColor = {
+  [ToastType.INFO]: `${COLOR.BLUE_50}`,
+  [ToastType.ERROR]: `${COLOR.RED_100}`,
+  [ToastType.SUCCESS]: `${COLOR.GREEN_100}`,
+  [ToastType.WARNING]: `${COLOR.ORANGE_100}`
+};
+
 export const ToastsList = styled.div`
   display: flex;
   flex-direction: column-reverse;
@@ -23,12 +30,6 @@ export const Toast = styled.div`
   position: relative;
   width: 500px;
   transition: 0.3s;
-  ${({ removed }: { removed: boolean }) =>
-    removed &&
-    css`
-      opacity: 0.5;
-      transform: translateX(550px) translateZ(0);
-    `}
   @keyframes toastAnimation {
     from {
       transform: translateX(500px) translateZ(0);
@@ -43,10 +44,7 @@ export const Header = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 15px;
-  ${({ type }: { type: ToastType }) =>
-    css`
-      color: ${ToastIconColor[type]};
-    `}
+  color: ${({ type }: { type: ToastType }) => (type ? ToastIconColor[type] : COLOR.BLACK)};
 `;
 
 export const CloseBtn = styled.button.attrs({ type: 'button' })`
@@ -54,13 +52,6 @@ export const CloseBtn = styled.button.attrs({ type: 'button' })`
   cursor: pointer;
   margin: 0 0 auto auto;
 `;
-
-const ToastIconColor = {
-  [ToastType.INFO]: `${COLOR.BLUE_50}`,
-  [ToastType.ERROR]: `${COLOR.RED_100}`,
-  [ToastType.SUCCESS]: `${COLOR.GREEN_100}`,
-  [ToastType.WARNING]: `${COLOR.ORANGE_100}`
-};
 
 export const Icon = styled(RawSvg)`
   height: 24px;

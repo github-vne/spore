@@ -24,8 +24,7 @@ export class ToastService {
 
   @action
   dropToast(id: string): void {
-    this.toasts.forEach(el => (el.removed = el.id === id));
-    setTimeout(() => (this.toasts = this.toasts.filter(t => t.id !== id)), 300);
+    this.toasts = this.toasts.filter(t => t.id !== id);
   }
 
   private setToastDropTimeout(id: string, lifeTime: number): void {

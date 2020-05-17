@@ -19,16 +19,16 @@ export class ToastContainer extends React.Component {
   render(): JSX.Element {
     return (
       <ToastsList>
-        {this.toastService.toasts.map((toast: IToastDefinition) => (
-          <Toast key={toast.id} removed={toast.removed}>
-            <Header type={toast.type}>
-              <Icon icon={toast.icon} />
-              <Title>{toast.title}</Title>
-              <CloseBtn onClick={this.handleCloseClick.bind(this, toast.id)}>
+        {this.toastService.toasts.map(({ id, type, icon, title, content }: IToastDefinition) => (
+          <Toast key={id}>
+            <Header type={type}>
+              <Icon icon={icon} />
+              <Title>{title}</Title>
+              <CloseBtn onClick={this.handleCloseClick.bind(this, id)}>
                 <RawSvg icon="common/close" />
               </CloseBtn>
             </Header>
-            {toast.content && <Content>{toast.content}</Content>}
+            {content && <Content>{content}</Content>}
           </Toast>
         ))}
       </ToastsList>

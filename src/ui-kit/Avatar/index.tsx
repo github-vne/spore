@@ -1,14 +1,11 @@
 import React from 'react';
 import { Avatar, Img } from './style';
-import { AvatarProps } from './types';
+import { IAvatarProps } from './types';
 
-export default ({ image, size, className }: AvatarProps) => {
+export default ({ image, size, className }: IAvatarProps) => {
   return (
     <Avatar size={size} className={className}>
-      <Img
-        src={image || 'https://demo.datingscript.com/assets/images/users/male_picture_none_p_2x.png'}
-        alt="user_avatar"
-      />
+      <Img src={image || require('./default.png')} alt="avatar" />
     </Avatar>
   );
 };

@@ -1,12 +1,12 @@
 import { SIZE, STYLED } from 'const';
 
-export interface ButtonProps {
+export interface IButtonProps {
   size?: SIZE;
   icon?: string;
   href?: string;
   styled?: STYLED;
   pending?: boolean;
   className?: string;
-  children?: JSX.Element | string;
   [nativeKey: string]: any;
+  children?: JSX.Element | string;
 }
