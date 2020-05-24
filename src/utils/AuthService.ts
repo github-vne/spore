@@ -1,5 +1,5 @@
 import { OAUTH } from 'const';
-import { computed, observable } from 'mobx';
+import { action, computed, observable } from 'mobx';
 import { Singleton } from 'typescript-ioc';
 
 @Singleton
@@ -8,6 +8,11 @@ export default class AuthService {
 
   @computed get token(): string {
     return this._token;
+  }
+
+  @action.bound
+  setToken(token: string): void {
+    this._token = token;
   }
 
   async startupAuthCheck(authorizeUser: () => Promise<void>): Promise<void> {

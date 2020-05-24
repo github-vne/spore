@@ -24,11 +24,11 @@ export default class UserTransport {
   }
 
   updateUserInfo(user: UserEntity): Promise<UserEntity> {
-    return this.api.patch(`${this.USER_LIST_ENDPOINT}/info`, { ...user.toServer(), id: 1 }).then(UserEntity.fromServer);
+    return this.api.patch(`${this.USER_LIST_ENDPOINT}/info`, user.toServer()).then(UserEntity.fromServer);
   }
 
   uploadPhoto(photoId: number): Promise<UserEntity> {
-    return this.api.patch(`${this.USER_LIST_ENDPOINT}/photo`, { id: 1, photo_id: photoId }).then(UserEntity.fromServer);
+    return this.api.patch(`${this.USER_LIST_ENDPOINT}/photo`, { photo_id: photoId }).then(UserEntity.fromServer);
   }
 
   /* Auth */

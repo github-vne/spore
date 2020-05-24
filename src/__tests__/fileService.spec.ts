@@ -1,28 +1,6 @@
-const { formatFileSize, parseMediaType } = require('../const/attachments');
+const { formatFileSize } = require('../const/attachments');
 
 describe('FileService', () => {
-  it('parseMediaType', () => {
-    expect(parseMediaType()).toBe('');
-    expect(parseMediaType('ololo')).toBe('unknown');
-    expect(parseMediaType('application/pdf')).toBe('pdf');
-    expect(parseMediaType('video/mp4')).toBe('media');
-    expect(parseMediaType('video/webm')).toBe('media');
-    expect(parseMediaType('audio/mpeg')).toBe('media');
-    expect(parseMediaType('audio/aac')).toBe('media');
-    expect(parseMediaType('image/jpeg')).toBe('image');
-    expect(parseMediaType('image/svg+xml')).toBe('image');
-    expect(parseMediaType('image/webp')).toBe('image');
-    expect(parseMediaType('application/vnd.ms-powerpoint')).toBe('pptx');
-    expect(parseMediaType('application/vnd.oasis.opendocument.presentation')).toBe('pptx');
-    expect(parseMediaType('application/vnd.ms-excel')).toBe('xlsx');
-    expect(parseMediaType('application/vnd.oasis.opendocument.spreadsheet')).toBe('xlsx');
-    expect(parseMediaType('application/msword')).toBe('docx');
-    expect(parseMediaType('application/vnd.oasis.opendocument.text')).toBe('docx');
-    expect(parseMediaType('application/zip')).toBe('archive');
-    expect(parseMediaType('application/x-rar-compressed')).toBe('archive');
-    expect(parseMediaType('application/x-tar')).toBe('archive');
-  });
-
   it('formatFileSize', () => {
     expect(formatFileSize()).toBe('0 bytes');
     expect(formatFileSize('foo')).toBe('0 bytes');

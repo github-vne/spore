@@ -1,12 +1,13 @@
-import { UserCard } from 'common';
-import { SHORT_SIDE_BAR } from 'const';
+import { UserInfo } from 'common';
+import { OAUTH, SHORT_SIDE_BAR } from 'const';
 import { action, computed, observable } from 'mobx';
 import { observer } from 'mobx-react';
 import React, { Component } from 'react';
 import { PageLink, PageName, PageType } from 'routers/MainRouter';
 import { MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
-import { Container, Logo, Navigation, NavItem, RawSvg, Toggle } from './style';
+import { Button } from 'ui-kit';
+import { Container, Logo, Navigation, NavItem, RawSvg } from './style';
 
 const nav: Array<{ root: PageType; icon: string }> = [
   { root: PageType.MAIN, icon: 'main' },
@@ -35,22 +36,30 @@ export default class SideBar extends Component {
     localStorage.setItem(SHORT_SIDE_BAR, this.expand ? '' : 'true');
   }
 
+  @action.bound
+  logout(): void {
+    localStorage.removeItem(OAUTH);
+  }
+
   render(): JSX.Element {
     return (
       <Container expand={this.expand}>
-        <Logo>
-          <RawSvg icon="sideBar/logo" />
-          <span>Spore</span>
-        </Logo>
-        <UserCard />
-        <Navigation>
-          {nav.map((page, index) => (
-            <NavItem key={index} to={PageLink[page.root]} selected={this.currentPage === PageType[page.root]}>
-              <RawSvg icon={`sideBar/${page.icon}`} />
-              <span>{PageName[page.root]}</span>
-            </NavItem>
-          ))}
-        </Navigation>
+        <div>
+          <Logo>
+            <RawSvg icon="sideBar/logo" />
+            <span>Spore</span>
+          </Logo>
+          <UserInfo />
+          <Navigation>
+            {nav.map((page, index) => (
+              <NavItem key={index} to={PageLink[page.root]} selected={this.currentPage === PageType[page.root]}>
+                <RawSvg icon={`sideBar/${page.icon}`} />
+                <span>{PageName[page.root]}</span>
+              </NavItem>
+            ))}
+          </Navigation>
+        </div>
+        <Button onClick={this.logout}>Выход</Button>
         {/* <Toggle onClick={this.toggle} expand={this.expand}>
           <RawSvg icon="sideBar/expand" />
         </Toggle> */}

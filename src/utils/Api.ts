@@ -19,8 +19,8 @@ interface RequestConfig {
   apiVer?: false | string;
 }
 
-export const BACKEND_URL = 'http://cuddly-parakeet.herokuapp.com/';
-// export const BACKEND_URL = 'http://25.73.35.40/';
+// export const BACKEND_URL = 'http://cuddly-parakeet.herokuapp.com/';
+export const BACKEND_URL = 'http://25.73.35.40/';
 
 @Singleton
 export default class Api {
@@ -43,7 +43,7 @@ export default class Api {
     const axiosConfig = { params, ...config };
     const endpoint = this.prepareUrl(requestEndpoint, apiVer);
 
-    axiosConfig.headers = { ...axiosConfig.headers, authorization: this.auth.token };
+    axiosConfig.headers = this.auth.token ? { ...axiosConfig.headers, authorization: this.auth.token } : {};
 
     let request;
     switch (method) {

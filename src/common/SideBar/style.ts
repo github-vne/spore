@@ -11,6 +11,7 @@ export const Container = styled.div`
   flex: none;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   background: ${GRADIENT.SIDEBAR};
   border-radius: 0 0 5px 0;
   transition: width 0.3s;

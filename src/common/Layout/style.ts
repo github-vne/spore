@@ -1,4 +1,4 @@
-import { GRADIENT } from 'const';
+import { GRADIENT, HEADER_HEIGHT } from 'const';
 import styled from 'styled-components';
 
 export const Layout = styled.div`
@@ -18,7 +18,7 @@ export const Container = styled.div`
 export const Main = styled.main`
   display: block;
   width: 100%;
-  height: calc(100vh - 55px);
+  height: calc(100vh - ${HEADER_HEIGHT}px);
   position: relative;
   overflow-y: auto;
   padding: 0 20px 10px;

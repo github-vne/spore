@@ -3,10 +3,10 @@ import styled, { css } from 'styled-components';
 import { RawSvg } from 'ui-kit';
 
 export const Wrapper = styled.div`
-  padding: 20px 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   grid-gap: 20px;
+  margin-bottom: 20px;
   > div {
     min-height: 110px;
   }

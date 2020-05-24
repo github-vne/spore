@@ -7,7 +7,7 @@ import { InfoCardProps } from './type';
 
 @observer
 export default class CardPanel extends React.Component {
-  private companyNames: Array<string> = ['AAPL', 'YNDX', 'FB', 'MSFT', 'BTCUSD', 'ww'];
+  private companyNames: Array<string> = ['AAPL', 'YNDX', 'FB', 'MSFT', 'BTCUSD'];
   @observable private companyData: Array<InfoCardProps>;
 
   componentDidMount(): void {

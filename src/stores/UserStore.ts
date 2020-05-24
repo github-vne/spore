@@ -3,10 +3,13 @@ import { action, computed, observable } from 'mobx';
 import { AuthEntity, UserEntity } from 'models';
 import UserTransport from 'transport/UserTransport';
 import { Inject, Singleton } from 'typescript-ioc';
+import AuthService from 'utils/AuthService';
 
 @Singleton
 export default class UserStore {
   @Inject private transport: UserTransport;
+  @Inject private authService: AuthService;
+
   @observable private _user: UserEntity;
 
   @computed get user(): UserEntity {
@@ -38,19 +41,12 @@ export default class UserStore {
   /* Авторизация */
   async signUp(auth: AuthEntity): Promise<void> {
     const res = await this.transport.signUp(auth);
-    console.info(res);
   }
 
   async signIn(auth: AuthEntity): Promise<void> {
     const res = await this.transport.signIn(auth);
-    this._token = res.token;
+    this.authService.setToken(res.token);
     localStorage.setItem(OAUTH, res.token);
     this._user = res.user;
-  }
-
-  @action.bound
-  checkToken(): void {
-    const token = localStorage.getItem(OAUTH);
-    if (token) this._token = token;
   }
 }

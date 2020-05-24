@@ -14,18 +14,3 @@ export function formatFileSize(bytes: number): string {
   }
   return '0 bytes';
 }
-
-export function parseMediaType(type: string): string {
-  if (!type) return '';
-  if (type.includes('pdf')) return 'pdf';
-  if (type.includes('video') || type.includes('audio')) return 'media';
-  if (type.includes('image')) return 'image';
-  if (type.includes('powerpoint') || type.includes('presentation')) return 'pptx';
-  if (type.includes('excel') || type.includes('spreadsheet')) return 'xlsx';
-  if (type.includes('word') || type.includes('document.text')) return 'docx';
-  if (type.includes('zip') || type.includes('compressed') || type.includes('archive') || type.includes('tar')) {
-    return 'archive';
-  }
-
-  return 'unknown';
-}

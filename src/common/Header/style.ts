@@ -1,11 +1,12 @@
-import { COLOR } from 'const';
+import { COLOR, HEADER_HEIGHT } from 'const';
 import styled from 'styled-components';
 import { RawSvg } from 'ui-kit';
 
 export const Wrapper = styled.header`
   display: flex;
+  height: ${HEADER_HEIGHT}px;
   align-items: center;
-  padding: 3px 20px 10px;
+  padding: 0 20px;
 `;
 
 export const Nav = styled.ul`
@@ -38,7 +39,6 @@ export const Panel = styled.div`
 
 export const Menu = styled.ul`
   display: flex;
-  margin-right: 10px;
 `;
 
 export const Item = styled.li`
