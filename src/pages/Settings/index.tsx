@@ -6,7 +6,7 @@ import { AddPhoto } from 'modals';
 import { UserEntity } from 'models';
 import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { PageType } from 'routers/Router';
+import { PageType } from 'routers/MainRouter';
 import { MainStore, UserStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Avatar, Button, Input, Textarea } from 'ui-kit';

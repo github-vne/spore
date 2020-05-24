@@ -2,7 +2,7 @@ import { createBrowserHistory, History } from 'history';
 import { Singleton } from 'typescript-ioc';
 
 @Singleton
-export default class Router {
+export class MainRouter {
   AUTH: string = PageLink.AUTH;
   CHAT: string = PageLink.CHAT;
   MAIN: string = PageLink.MAIN;
@@ -15,6 +15,12 @@ export default class Router {
   DICTIONARY: string = PageLink.DICTIONARY;
 
   history: History = createBrowserHistory();
+
+  navigate(url: string): void {
+    console.info('URL = ', url);
+    const method = this.history.replace;
+    method(url);
+  }
 }
 
 export enum PageType {

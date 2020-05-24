@@ -5,7 +5,6 @@ export const Layout = styled.div`
   height: 100vh;
   display: flex;
   background: ${GRADIENT.BACKGROUND};
-  padding-top: 10px;
   z-index: 0;
   position: relative;
 `;

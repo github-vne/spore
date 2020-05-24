@@ -4,7 +4,7 @@ import { action } from 'mobx';
 import { observer } from 'mobx-react';
 import React, { Fragment, RefObject } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { PageType } from 'routers/Router';
+import { PageType } from 'routers/MainRouter';
 import { MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Avatar, Input } from 'ui-kit';

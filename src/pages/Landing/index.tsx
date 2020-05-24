@@ -2,7 +2,7 @@ import { STYLED } from 'const';
 import { observer } from 'mobx-react';
 import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { PageType } from 'routers/Router';
+import { PageType } from 'routers/MainRouter';
 import { MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Logo, Main, MainForm, MyLink, MyLinks, SporeBtn, Tagline } from './style';
@@ -22,7 +22,7 @@ export default class PageHome extends React.Component<RouteComponentProps> {
           <MainForm>
             <Logo src={require('./image/logo.svg')} alt="logo" />
             <Tagline>Портфолио Front-end разработчика</Tagline>
-            <SporeBtn href="main" styled={STYLED.PRIMARY}>
+            <SporeBtn href="/" styled={STYLED.PRIMARY}>
               Spore
             </SporeBtn>
             <span>Ссылки на проекты:</span>

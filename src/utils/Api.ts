@@ -1,6 +1,7 @@
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Inject, Singleton } from 'typescript-ioc';
 import { ToastService, ToastType } from 'ui-kit';
+import AuthService from './AuthService';
 
 enum Method {
   GET = 'get',
@@ -18,12 +19,13 @@ interface RequestConfig {
   apiVer?: false | string;
 }
 
-// const BACKEND_URL = 'http://cuddly-parakeet.herokuapp.com/';
-const BACKEND_URL = 'http://25.73.35.40/';
+export const BACKEND_URL = 'http://cuddly-parakeet.herokuapp.com/';
+// export const BACKEND_URL = 'http://25.73.35.40/';
 
 @Singleton
 export default class Api {
   @Inject private toastService: ToastService;
+  @Inject private auth: AuthService;
   private requestSender: AxiosInstance = axios.create();
 
   private prepareUrl = (endpoint: string, apiVer: string | boolean): string => {
@@ -40,6 +42,8 @@ export default class Api {
     const { config = {}, apiVer = 'v1' } = requestConfig;
     const axiosConfig = { params, ...config };
     const endpoint = this.prepareUrl(requestEndpoint, apiVer);
+
+    axiosConfig.headers = { ...axiosConfig.headers, authorization: this.auth.token };
 
     let request;
     switch (method) {
@@ -66,7 +70,7 @@ export default class Api {
       .catch((error: AxiosError) => {
         let text = 'Ошибка при отправке запроса! ';
         if (endpoint) text += `Адрес: ${endpoint} `;
-        if (params) text += ` | Параметры: ${JSON.stringify(params)}\n`;
+        if (Object.keys(params).length) text += ` | Параметры: ${JSON.stringify(params)}\n`;
         this.toastService.showToast(ToastType.ERROR, 'Ошибка при запросе', text, 'common/report_problem');
         return Promise.reject(error);
       });

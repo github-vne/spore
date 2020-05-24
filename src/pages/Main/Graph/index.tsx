@@ -12,18 +12,18 @@ export default class Graph extends React.Component {
   @observable private data: Array<any> = [];
 
   componentDidMount(): void {
-    this.initRequest();
+    // this.initRequest();
   }
 
-  @action.bound
-  private async initRequest(): Promise<void> {
-    await fetch('https://financialmodelingprep.com/api/v3/historical-chart/1hour/ETHUSD')
-      .then(res => res.json())
-      .then(arr => {
-        this.labels = arr.map(el => el.date);
-        this.data = arr.map(el => el.open);
-      });
-  }
+  // @action.bound
+  // private async initRequest(): Promise<void> {
+  // await fetch('https://financialmodelingprep.com/api/v3/historical-chart/1hour/ETHUSD')
+  //   .then(res => res.json())
+  //   .then(arr => {
+  //     this.labels = arr.map(el => el.date);
+  //     this.data = arr.map(el => el.open);
+  //   });
+  // }
 
   render(): JSX.Element {
     return (

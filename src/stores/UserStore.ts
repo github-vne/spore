@@ -1,34 +1,24 @@
-import { promisedComputed, PromisedComputedValue } from 'computed-async-mobx';
+import { OAUTH } from 'const';
 import { action, computed, observable } from 'mobx';
-import { UserEntity } from 'models';
+import { AuthEntity, UserEntity } from 'models';
 import UserTransport from 'transport/UserTransport';
 import { Inject, Singleton } from 'typescript-ioc';
 
 @Singleton
 export default class UserStore {
   @Inject private transport: UserTransport;
-  @observable private usersHash: Array<UserEntity>;
   @observable private _user: UserEntity;
-
-  userList: PromisedComputedValue<Array<UserEntity>> = promisedComputed([], async () => {
-    if (this.usersHash) return this.usersHash;
-    try {
-      const res = await this.transport.retrieveUserList();
-      return (this.usersHash = res.results);
-    } catch (e) {
-      return (this.usersHash = []);
-    }
-  });
 
   @computed get user(): UserEntity {
     return this._user;
   }
 
-  async retrieveUser(id: string): Promise<void> {
+  @action.bound
+  async authorize(): Promise<void> {
     try {
-      this._user = await this.transport.retrieveUser(id);
-    } catch {
-      console.info('e');
+      this._user = await this.transport.getCurrentUser();
+    } catch (err) {
+      console.error(err);
     }
   }
 
@@ -45,7 +35,22 @@ export default class UserStore {
     return this.transport.updateUserInfo(user);
   }
 
-  setUser(user: UserEntity): void {
-    this._user = user;
+  /* Авторизация */
+  async signUp(auth: AuthEntity): Promise<void> {
+    const res = await this.transport.signUp(auth);
+    console.info(res);
+  }
+
+  async signIn(auth: AuthEntity): Promise<void> {
+    const res = await this.transport.signIn(auth);
+    this._token = res.token;
+    localStorage.setItem(OAUTH, res.token);
+    this._user = res.user;
+  }
+
+  @action.bound
+  checkToken(): void {
+    const token = localStorage.getItem(OAUTH);
+    if (token) this._token = token;
   }
 }

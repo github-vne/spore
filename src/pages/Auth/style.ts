@@ -1,5 +1,7 @@
+import { Box as _Box } from 'common';
 import { COLOR, GRADIENT, SHADOW } from 'const';
 import styled from 'styled-components';
+import { Input as _Input } from 'ui-kit';
 
 export const Container = styled.div`
   width: 100%;
@@ -41,6 +43,11 @@ export const Tab = styled.li`
   }
 `;
 
-export const Footer = styled.footer`
-  font-size: 12px;
+export const Box = styled(_Box)`
+  border-radius: 0 5px 5px;
+  box-shadow: none;
+`;
+
+export const Input = styled(_Input)`
+  margin-bottom: 15px;
 `;

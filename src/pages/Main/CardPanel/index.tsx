@@ -11,15 +11,15 @@ export default class CardPanel extends React.Component {
   @observable private companyData: Array<InfoCardProps>;
 
   componentDidMount(): void {
-    this.initRequest();
+    // this.initRequest();
   }
 
-  @action.bound
-  private async initRequest(): Promise<void> {
-    await fetch(`https://financialmodelingprep.com/api/v3/quote/${this.companyNames.join(',')}`)
-      .then(res => res.json())
-      .then(arr => (this.companyData = arr));
-  }
+  // @action.bound
+  // private async initRequest(): Promise<void> {
+  //   // await fetch(`https://financialmodelingprep.com/api/v3/quote/${this.companyNames.join(',')}`)
+  //   //   .then(res => res.json())
+  //   //   .then(arr => (this.companyData = arr));
+  // }
 
   render(): JSX.Element {
     return (

@@ -1,10 +1,9 @@
 import { Layout } from 'common';
 import { Progress } from 'common/components';
-import { chartExample1 } from 'const/charts';
 import { observer } from 'mobx-react';
 import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { PageName, PageType } from 'routers/Router';
+import { PageName, PageType } from 'routers/MainRouter';
 import { MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import CardPanel from './CardPanel';

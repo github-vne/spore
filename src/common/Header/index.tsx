@@ -3,7 +3,7 @@ import { computed } from 'mobx';
 import { observer } from 'mobx-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { PageName } from 'routers/Router';
+import { PageName } from 'routers/MainRouter';
 import { MainStore, UserStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Avatar, RawSvg } from 'ui-kit';

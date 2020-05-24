@@ -3,7 +3,8 @@ import { Auth, Chat, Components, Dictionary, Landing, Main, NotFound, Posts, Set
 import React, { Suspense } from 'react';
 import { Route, Router, Switch } from 'react-router-dom';
 import { Inject } from 'typescript-ioc';
-import MainRouter from './Router';
+import { MainRouter } from './MainRouter';
+import PrivateRouter from './PrivateRouter';
 
 export default class AppRouter extends React.PureComponent {
   @Inject private mainRouter: MainRouter;
@@ -11,18 +12,18 @@ export default class AppRouter extends React.PureComponent {
   render(): JSX.Element {
     return (
       <Router history={this.mainRouter.history}>
-        <Suspense fallback={<h2>Is loading...</h2>}>
+        <Suspense fallback={<h2>Loading...</h2>}>
           <Switch>
-            <Route exact path={this.mainRouter.MAIN} component={Main} />
+            <PrivateRouter exact path={this.mainRouter.MAIN} component={Main} />
             <Route exact path={this.mainRouter.LANDING} component={Landing} />
             <Route exact path={this.mainRouter.AUTH} component={Auth} />
-            <Route exact path={this.mainRouter.SETTINGS} component={Settings} />
-            <Route exact path={this.mainRouter.USERS} component={Users} />
-            <Route exact path={this.mainRouter.COMPONENTS} component={Components} />
-            <Route exact path={this.mainRouter.CHAT} component={Chat} />
-            <Route exact path={this.mainRouter.POSTS} component={Posts} />
-            <Route exact path={this.mainRouter.DICTIONARY} component={Dictionary} />
-            <Route exact path={this.mainRouter.TASKS} component={Tasks} />
+            <PrivateRouter exact path={this.mainRouter.SETTINGS} component={Settings} />
+            <PrivateRouter exact path={this.mainRouter.USERS} component={Users} />
+            <PrivateRouter exact path={this.mainRouter.COMPONENTS} component={Components} />
+            <PrivateRouter exact path={this.mainRouter.CHAT} component={Chat} />
+            <PrivateRouter exact path={this.mainRouter.POSTS} component={Posts} />
+            <PrivateRouter exact path={this.mainRouter.DICTIONARY} component={Dictionary} />
+            <PrivateRouter exact path={this.mainRouter.TASKS} component={Tasks} />
             <Route component={NotFound} />
           </Switch>
         </Suspense>
