@@ -4,8 +4,8 @@ import styled from 'styled-components';
 export const Container = styled.div`
   position: relative;
   border-radius: 5px;
-  background: ${COLOR.BLUE_10};
   box-shadow: ${SHADOW.BOX};
+  background: ${COLOR.BLUE_10};
   padding: 15px;
 `;
 
