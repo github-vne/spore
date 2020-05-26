@@ -1,4 +1,4 @@
-import { Layout } from 'common';
+import { Layout, UserInfo } from 'common';
 import { SIZE, STYLED } from 'const';
 import { action, computed, observable } from 'mobx';
 import { observer } from 'mobx-react';
@@ -9,25 +9,29 @@ import { RouteComponentProps } from 'react-router-dom';
 import { PageType } from 'routers/MainRouter';
 import { MainStore, UserStore } from 'stores';
 import { Inject } from 'typescript-ioc';
-import { Avatar, Button, Input, Textarea } from 'ui-kit';
-import {
-  Container,
-  EditProfile,
-  UploadPhoto,
-  UploadSvg,
-  User,
-  UserDescription,
-  UserImage,
-  UserInfo,
-  UserName
-} from './style';
+import { Button, Input, Textarea } from 'ui-kit';
+import { Container, EditProfile, Settings, UploadPhoto, UploadSvg, User } from './style';
+
+enum fields {
+  firstName = 'firstName',
+  lastName = 'lastName',
+  middleName = 'middleName',
+  status = 'status'
+}
+
+const fieldsName = {
+  [fields.firstName]: 'Имя',
+  [fields.lastName]: 'Отчество',
+  [fields.middleName]: 'Фамилия',
+  [fields.status]: 'Статус'
+};
 
 @observer
 export default class PageSettings extends React.Component<RouteComponentProps> {
   @Inject private mainStore: MainStore;
   @Inject private userStore: UserStore;
 
-  @observable private tempUser: UserEntity = this.userStore.user;
+  @observable private tempUser: UserEntity = new UserEntity(this.user);
   @observable private pending: boolean;
   @observable private success: boolean;
 
@@ -53,7 +57,7 @@ export default class PageSettings extends React.Component<RouteComponentProps> {
   private async updateUserInfo(): Promise<void> {
     this.pending = true;
     try {
-      this.tempUser = await this.userStore.updateUserInfo(this.tempUser);
+      await this.userStore.updateUserInfo(this.tempUser);
       this.success = true;
       setTimeout(() => (this.success = false), 3000);
     } finally {
@@ -76,36 +80,18 @@ export default class PageSettings extends React.Component<RouteComponentProps> {
     return (
       <Layout>
         <Container>
-          <UserInfo title="Edit Profile" footer={this.footer}>
+          <Settings title="Edit Profile" footer={this.footer}>
             <EditProfile>
-              <Input
-                name="firstName"
-                onChange={this.onChange}
-                label="First name"
-                defaultValue={this.tempUser.firstName}
-                placeholder="Enter your first name..."
-              />
-              <Input
-                name="lastName"
-                onChange={this.onChange}
-                label="Last name"
-                defaultValue={this.tempUser.lastName}
-                placeholder="Enter your last name..."
-              />
-              <Input
-                name="middleName"
-                onChange={this.onChange}
-                label="Middle name"
-                defaultValue={this.tempUser.middleName}
-                placeholder="Enter your middle name..."
-              />
-              <Input
-                name="status"
-                onChange={this.onChange}
-                label="Status"
-                defaultValue={this.tempUser.status}
-                placeholder="Enter your status..."
-              />
+              {Object.values(fields).map(param => (
+                <Input
+                  key={param}
+                  name={param}
+                  onChange={this.onChange}
+                  label={fieldsName[param]}
+                  value={this.tempUser[param]}
+                  placeholder="Введите данные..."
+                />
+              ))}
             </EditProfile>
             <Textarea
               rows={3}
@@ -115,17 +101,12 @@ export default class PageSettings extends React.Component<RouteComponentProps> {
               onChange={this.onChange}
               placeholder="Enter your description..."
             />
-          </UserInfo>
+          </Settings>
           <User>
-            <UserImage>
-              <UploadPhoto onClick={this.openModal}>
-                <UploadSvg icon="common/camera" />
-              </UploadPhoto>
-              <Avatar size={SIZE.EXTRA_LARGE} image={this.user.photo} />
-            </UserImage>
-            <UserName>{this.user.fullName}</UserName>
-            <h3>{this.user.status}</h3>
-            <UserDescription>{this.user.description}</UserDescription>
+            <UploadPhoto onClick={this.openModal}>
+              <UploadSvg icon="common/camera" />
+            </UploadPhoto>
+            <UserInfo user={this.user} size={SIZE.EXTRA_LARGE} />
           </User>
         </Container>
       </Layout>

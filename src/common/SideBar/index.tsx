@@ -51,7 +51,7 @@ export default class SideBar extends Component {
             <RawSvg icon="sideBar/logo" />
             <span>Spore</span>
           </Logo>
-          <UserInfo user={this.userStore.user} />
+          <UserInfo user={this.userStore.user} hiddenDescription />
           <Navigation>
             {nav.map((page, index) => (
               <NavItem key={index} to={PageLink[page.root]} selected={this.currentPage === PageType[page.root]}>

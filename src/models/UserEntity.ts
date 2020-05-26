@@ -27,6 +27,16 @@ export default class UserEntity extends BaseEntity {
     return deserialize(UserEntity, rawData);
   }
 
+  constructor(props: Partial<UserEntity>) {
+    super();
+    if (!props) return;
+    this.firstName = props.firstName;
+    this.middleName = props.middleName;
+    this.lastName = props.lastName;
+    this.status = props.status;
+    this.description = props.description;
+  }
+
   get shortName(): string {
     const result = [];
     if (this.lastName) result.push(this.lastName);
@@ -40,6 +50,7 @@ export default class UserEntity extends BaseEntity {
     if (this.lastName) result.push(this.lastName);
     if (this.firstName) result.push(this.firstName);
     if (this.middleName) result.push(this.middleName);
+    if (!result.length) result.push(this.login);
     return result.join(' ');
   }
 

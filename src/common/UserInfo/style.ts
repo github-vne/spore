@@ -5,9 +5,10 @@ export const Card = styled.aside`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 `;
 
-export const FullName = styled.h4`
+export const Name = styled.h4`
   margin: 10px 0 4px;
   font-weight: bold;
   font-size: 16px;
@@ -15,4 +16,8 @@ export const FullName = styled.h4`
 
 export const Status = styled.span`
   font-size: 14px;
+`;
+
+export const Description = styled.p`
+  margin-top: 10px;
 `;

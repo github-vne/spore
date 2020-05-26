@@ -1,4 +1,5 @@
 import { Box } from 'common';
+import { COLOR } from 'const';
 import styled from 'styled-components';
 import { RawSvg } from 'ui-kit';
 
@@ -6,7 +7,7 @@ export const Container = styled.div`
   display: flex;
 `;
 
-export const UserInfo = styled(Box)`
+export const Settings = styled(Box)`
   width: 100%;
 `;
 
@@ -18,6 +19,7 @@ export const EditProfile = styled.div`
 `;
 
 export const User = styled(Box)`
+  position: relative;
   flex: none;
   display: flex;
   flex-direction: column;
@@ -29,34 +31,15 @@ export const User = styled(Box)`
 `;
 
 export const UploadSvg = styled(RawSvg)`
-  width: 50px;
+  width: 35px;
+  color: ${COLOR.WHITE};
 `;
 
 export const UploadPhoto = styled.button`
-  width: 100%;
-  height: 100%;
   position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 35px;
+  height: 35px;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.6);
-  transition: 0.2s;
-  opacity: 0;
-`;
-
-export const UserImage = styled.div`
-  position: relative;
-  border-radius: 50%;
-  overflow: hidden;
-  :hover {
-    ${UploadPhoto} {
-      opacity: 1;
-    }
-  }
-`;
-
-export const UserName = styled.h3`
-  margin: 20px 0 10px;
-`;
-
-export const UserDescription = styled.p`
-  margin-top: 10px;
 `;

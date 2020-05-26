@@ -39,8 +39,13 @@ export default class UserStore {
     }
   }
 
-  updateUserInfo(user: UserEntity): Promise<UserEntity> {
-    return this.transport.updateUserInfo(user);
+  @action.bound
+  async updateUserInfo(user: UserEntity): Promise<void> {
+    try {
+      this._user = await this.transport.updateUserInfo(user);
+    } catch {
+      console.error('error!');
+    }
   }
 
   /* Авторизация */
