@@ -17,6 +17,11 @@ export default class UserStore {
   }
 
   @action.bound
+  dropStore(): void {
+    this._user = undefined;
+  }
+
+  @action.bound
   async authorize(): Promise<void> {
     try {
       this._user = await this.transport.getCurrentUser();

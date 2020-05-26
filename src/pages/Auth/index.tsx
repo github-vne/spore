@@ -8,7 +8,7 @@ import { PageType } from 'routers/MainRouter';
 import { MainStore, UserStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Button } from 'ui-kit';
-import { Box, Container, Input, Tab, Tabs, Wrapper } from './style';
+import { Box, Container, Footer, Input, Tab, Tabs, Wrapper } from './style';
 
 @observer
 export default class PageAuth extends React.Component<RouteComponentProps> {
@@ -17,6 +17,8 @@ export default class PageAuth extends React.Component<RouteComponentProps> {
 
   @observable private auth: AuthEntity = new AuthEntity();
   @observable private tabs: Array<string> = ['Вход', 'Регистрация'];
+  @observable private pending: boolean;
+  @observable private status: string;
   @observable private tabIndex: number = 0;
 
   componentDidMount(): void {
@@ -29,16 +31,54 @@ export default class PageAuth extends React.Component<RouteComponentProps> {
   }
 
   @action.bound
-  private async signUp(): Promise<void> {
-    const res = await this.userStore.signUp(this.auth);
+  private async guest(): Promise<void> {
+    const guestData = new AuthEntity();
+    guestData.login = guestData.password = 'guest';
+    await this.userStore.signIn(guestData);
+  }
+
+  @action.bound
+  private showStatus(text: string): void {
+    this.status = text;
+    setTimeout(() => (this.status = ''), 2000);
+  }
+
+  @action.bound
+  private checkData(): boolean {
+    const { login, password } = this.auth;
+    const hasData = login && password;
+    if (!hasData) this.showStatus('Заполните поля');
+    return !!hasData;
   }
 
   @action.bound
   private async signIn(): Promise<void> {
+    if (!this.checkData()) return;
+    this.pending = true;
     try {
       await this.userStore.signIn(this.auth);
-    } catch {
-      console.error('err');
+      this.showStatus('Выполняется вход...');
+    } catch (err) {
+      console.error(err);
+      this.showStatus('Ошибка');
+    } finally {
+      this.pending = false;
+    }
+  }
+
+  @action.bound
+  private async signUp(): Promise<void> {
+    if (!this.checkData()) return;
+    this.pending = true;
+    try {
+      await this.userStore.signUp(this.auth);
+      this.showStatus('Профиль создан');
+      this.auth = new AuthEntity();
+    } catch (err) {
+      console.error(err);
+      this.showStatus('Ошибка');
+    } finally {
+      this.pending = false;
     }
   }
 
@@ -62,22 +102,32 @@ export default class PageAuth extends React.Component<RouteComponentProps> {
           </Tabs>
           <Box
             footer={
-              <>
-                <Button href="/">main</Button>
-                {this.tabIndex === 0 ? (
-                  <Button styled={STYLED.TERTIARY} onClick={this.signIn}>
-                    Вход
+              <Footer>
+                <div>
+                  <Button onClick={this.guest} styled={STYLED.PRIMARY}>
+                    Гость
                   </Button>
-                ) : (
-                  <Button styled={STYLED.TERTIARY} onClick={this.signUp}>
-                    Регистрация
-                  </Button>
-                )}
-              </>
+                  <span>{this.status}</span>
+                </div>
+                <Button
+                  pending={this.pending}
+                  styled={STYLED.TERTIARY}
+                  onClick={this.tabIndex === 0 ? this.signIn : this.signUp}
+                >
+                  {this.tabIndex === 0 ? 'Вход' : 'Регистрация'}
+                </Button>
+              </Footer>
             }
           >
-            <Input label="Логин" placeholder="egor_krid" name="login" onChange={this.onChange} />
-            <Input label="Пароль" type="password" placeholder="ilovePenis" name="password" onChange={this.onChange} />
+            <Input label="Логин" placeholder="login" name="login" onChange={this.onChange} value={this.auth.login} />
+            <Input
+              label="Пароль"
+              type="password"
+              placeholder="password"
+              name="password"
+              onChange={this.onChange}
+              value={this.auth.password}
+            />
           </Box>
         </Wrapper>
       </Container>

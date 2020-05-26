@@ -109,6 +109,7 @@ export default class PageSettings extends React.Component<RouteComponentProps> {
             </EditProfile>
             <Textarea
               rows={3}
+              label="Описание"
               name="description"
               defaultValue={this.tempUser.description}
               onChange={this.onChange}

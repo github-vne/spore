@@ -4,7 +4,7 @@ import { action, computed, observable } from 'mobx';
 import { observer } from 'mobx-react';
 import React, { Component } from 'react';
 import { PageLink, PageName, PageType } from 'routers/MainRouter';
-import { MainStore } from 'stores';
+import { MainStore, UserStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Button } from 'ui-kit';
 import { Container, Logo, Navigation, NavItem, RawSvg } from './style';
@@ -23,6 +23,7 @@ const nav: Array<{ root: PageType; icon: string }> = [
 @observer
 export default class SideBar extends Component {
   @Inject mainStore: MainStore;
+  @Inject userStore: UserStore;
 
   @observable private expand: boolean = !localStorage.getItem(SHORT_SIDE_BAR);
 
@@ -38,6 +39,7 @@ export default class SideBar extends Component {
 
   @action.bound
   logout(): void {
+    this.userStore.dropStore();
     localStorage.removeItem(OAUTH);
   }
 
@@ -49,7 +51,7 @@ export default class SideBar extends Component {
             <RawSvg icon="sideBar/logo" />
             <span>Spore</span>
           </Logo>
-          <UserInfo />
+          <UserInfo user={this.userStore.user} />
           <Navigation>
             {nav.map((page, index) => (
               <NavItem key={index} to={PageLink[page.root]} selected={this.currentPage === PageType[page.root]}>

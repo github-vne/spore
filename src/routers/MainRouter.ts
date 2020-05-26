@@ -17,8 +17,7 @@ export class MainRouter {
   history: History = createBrowserHistory();
 
   navigate(url: string): void {
-    console.info('URL = ', url);
-    const method = this.history.replace;
+    const method = this.history.push;
     method(url);
   }
 }

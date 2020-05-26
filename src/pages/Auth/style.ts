@@ -51,3 +51,9 @@ export const Box = styled(_Box)`
 export const Input = styled(_Input)`
   margin-bottom: 15px;
 `;
+
+export const Footer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`;
