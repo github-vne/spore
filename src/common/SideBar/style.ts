@@ -22,6 +22,8 @@ export const Navigation = styled.nav`
   display: flex;
   flex-direction: column;
   padding: 20px;
+  margin: 20px 0;
+  border-top: 1px solid ${COLOR.WHITE};
 `;
 
 export const NavItem = styled(Link)`

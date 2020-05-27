@@ -21,14 +21,10 @@ export const Nav = styled.ul`
       height: 7px;
       width: 7px;
       border-radius: 50%;
-      background: #fff;
+      background: ${COLOR.WHITE};
       margin: 0 8px;
     }
   }
-`;
-
-export const HomeIcon = styled(RawSvg)`
-  width: 20px;
 `;
 
 export const Panel = styled.div`

@@ -51,7 +51,7 @@ export default class PageChat extends React.Component<RouteComponentProps> {
             <TextareaBox>
               <Textarea
                 styled={STYLED.PRIMARY}
-                placeholder="Write a message..."
+                placeholder="Введите сообщение..."
                 innerBtn={{ icon: <SendButton icon="common/send" hasMessage />, onClick: this.sendMessage }}
               />
             </TextareaBox>

@@ -20,14 +20,11 @@ export default class PageTasks extends React.Component<RouteComponentProps> {
     return (
       <Layout>
         <Wrapper>
-          <div>
-            <h2>Создать задание</h2>
-            <CreateTask>
-              <Textarea placeholder="New task" rows={3} />
-            </CreateTask>
-          </div>
+          <CreateTask>
+            <Textarea placeholder="New task" rows={3} label="Создать задание" />
+          </CreateTask>
           <TasksCard title="Список заданий">
-            <TabLine>123</TabLine>
+            <TabLine>Задание #1</TabLine>
           </TasksCard>
         </Wrapper>
       </Layout>

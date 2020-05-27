@@ -6,5 +6,4 @@ export const Wrapper = styled(Box)`
   width: calc(100%);
   flex-wrap: wrap;
   margin-right: -15px;
-  margin-left: -15px;
 `;

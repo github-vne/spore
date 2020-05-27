@@ -11,7 +11,7 @@ export const Container = styled.div`
 
 export const EditWrapper = styled.div`
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: repeat(2, auto);
   gap: 15px;
   margin-bottom: 20px;
 `;

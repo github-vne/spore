@@ -1,6 +1,6 @@
 export interface BoxProps {
   title?: string;
-  className?: string;
-  footer?: JSX.Element;
   children?: any;
+  footer?: JSX.Element;
+  className?: string;
 }

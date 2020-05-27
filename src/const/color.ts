@@ -23,5 +23,9 @@ export enum GRADIENT {
 }
 
 export enum SHADOW {
-  BOX = '0 1px 20px 0 rgba(0,0,0,.1)'
+  BOX = '0 1px 20px 0 rgba(0,0,0,0.1)'
+}
+
+export enum RGBA {
+  BLUE_HOVER = 'rgba(29, 140, 248, 0.2)'
 }

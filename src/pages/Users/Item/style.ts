@@ -1,4 +1,4 @@
-import { COLOR } from 'const';
+import { COLOR, RGBA } from 'const';
 import styled from 'styled-components';
 
 export const Block = styled.div`
@@ -12,8 +12,7 @@ export const Block = styled.div`
   overflow: hidden;
   cursor: pointer;
   &:hover {
-    /* background: ${COLOR.BLUE_60}; */
-    /* opacity: 0.04; */
+    background: ${RGBA.BLUE_HOVER};
     border-color: ${COLOR.BLUE_60};
     color: ${COLOR.BLUE_60};
   }

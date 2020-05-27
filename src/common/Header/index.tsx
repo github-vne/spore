@@ -1,34 +1,28 @@
-import { computed } from 'mobx';
 import { observer } from 'mobx-react';
 import React from 'react';
 import { PageName } from 'routers/MainRouter';
-import { MainStore, UserStore } from 'stores';
+import { MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { RawSvg } from 'ui-kit';
-import { HomeIcon, Item, Menu, Nav, Panel, Wrapper } from './style';
+import { Item, Menu, Nav, Panel, Wrapper } from './style';
 
 @observer
 export default class Header extends React.Component {
   @Inject private mainStore: MainStore;
-  @Inject private userStore: UserStore;
-
-  @computed private get pageName(): string {
-    return PageName[this.mainStore.currentPage];
-  }
 
   render(): JSX.Element {
     return (
       <Wrapper>
         <Nav>
           <li>
-            <HomeIcon icon="header/house" />
+            <RawSvg icon="header/house" width={20} />
           </li>
-          <li>{this.pageName}</li>
+          <li>{PageName[this.mainStore.currentPage]}</li>
         </Nav>
         <Panel>
           <Menu>
             <Item>
-              <RawSvg icon="header/book" />
+              <RawSvg icon="header/bell" width={25} />
             </Item>
           </Menu>
         </Panel>

@@ -3,10 +3,10 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   position: relative;
+  padding: 15px;
   border-radius: 5px;
   box-shadow: ${SHADOW.BOX};
   background: ${COLOR.BLUE_10};
-  padding: 15px;
 `;
 
 export const Title = styled.h4`
