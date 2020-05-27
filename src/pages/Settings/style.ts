@@ -4,14 +4,12 @@ import styled from 'styled-components';
 import { RawSvg } from 'ui-kit';
 
 export const Container = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 20px;
 `;
 
-export const Settings = styled(Box)`
-  width: 100%;
-`;
-
-export const EditProfile = styled.div`
+export const EditWrapper = styled.div`
   display: grid;
   grid-template-columns: auto auto;
   gap: 15px;
@@ -19,14 +17,10 @@ export const EditProfile = styled.div`
 `;
 
 export const User = styled(Box)`
-  position: relative;
-  flex: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 350px;
-  margin-left: 20px;
   padding: 35px 15px;
 `;
 

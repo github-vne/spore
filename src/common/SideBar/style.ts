@@ -29,13 +29,10 @@ export const NavItem = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  color: ${({ selected }: { selected?: boolean }) => (selected ? COLOR.WHITE : COLOR.BLACK)};
+  color: ${({ selected }: { selected?: boolean }) => (selected ? COLOR.RED_100 : COLOR.WHITE)};
   position: relative;
   margin-bottom: 20px;
   font-size: 16px;
-  :hover {
-    color: ${COLOR.WHITE};
-  }
 `;
 
 export const RawSvg = styled(_RawSvg)`

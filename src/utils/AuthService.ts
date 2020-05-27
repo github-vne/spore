@@ -13,6 +13,7 @@ export default class AuthService {
   @action.bound
   setToken(token: string): void {
     this._token = token;
+    localStorage.setItem(OAUTH, token);
   }
 
   async startupAuthCheck(authorizeUser: () => Promise<void>): Promise<void> {

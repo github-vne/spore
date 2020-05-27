@@ -7,7 +7,6 @@ export const Container = styled.div`
 `;
 
 export const Panel = styled.div`
-  height: calc(100vh - 65px);
   position: sticky;
   top: 0;
 `;

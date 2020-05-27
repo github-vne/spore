@@ -53,10 +53,10 @@ export default class UserStore {
     const res = await this.transport.signUp(auth);
   }
 
+  @action.bound
   async signIn(auth: AuthEntity): Promise<void> {
     const res = await this.transport.signIn(auth);
+    this._user = new UserEntity(res.user);
     this.authService.setToken(res.token);
-    localStorage.setItem(OAUTH, res.token);
-    this._user = res.user;
   }
 }

@@ -1,4 +1,4 @@
-import { Layout, UserInfo } from 'common';
+import { Box, Layout, UserInfo } from 'common';
 import { SIZE, STYLED } from 'const';
 import { action, computed, observable } from 'mobx';
 import { observer } from 'mobx-react';
@@ -10,7 +10,7 @@ import { PageType } from 'routers/MainRouter';
 import { MainStore, UserStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Button, Input, Textarea } from 'ui-kit';
-import { Container, EditProfile, Settings, UploadPhoto, UploadSvg, User } from './style';
+import { Container, EditWrapper, UploadPhoto, UploadSvg, User } from './style';
 
 enum fields {
   firstName = 'firstName',
@@ -70,7 +70,7 @@ export default class PageSettings extends React.Component<RouteComponentProps> {
       <>
         {this.success ? <span>Данные обновлены</span> : null}
         <Button styled={STYLED.TERTIARY} onClick={this.updateUserInfo} pending={this.pending}>
-          Update
+          Изменить
         </Button>
       </>
     );
@@ -80,8 +80,8 @@ export default class PageSettings extends React.Component<RouteComponentProps> {
     return (
       <Layout>
         <Container>
-          <Settings title="Edit Profile" footer={this.footer}>
-            <EditProfile>
+          <Box title="Настройки профиля" footer={this.footer}>
+            <EditWrapper>
               {Object.values(fields).map(param => (
                 <Input
                   key={param}
@@ -92,7 +92,7 @@ export default class PageSettings extends React.Component<RouteComponentProps> {
                   placeholder="Введите данные..."
                 />
               ))}
-            </EditProfile>
+            </EditWrapper>
             <Textarea
               rows={3}
               label="Описание"
@@ -101,13 +101,20 @@ export default class PageSettings extends React.Component<RouteComponentProps> {
               onChange={this.onChange}
               placeholder="Enter your description..."
             />
-          </Settings>
+          </Box>
           <User>
             <UploadPhoto onClick={this.openModal}>
               <UploadSvg icon="common/camera" />
             </UploadPhoto>
             <UserInfo user={this.user} size={SIZE.EXTRA_LARGE} />
           </User>
+          <Box title="Сменить пароль" footer={<Button styled={STYLED.TERTIARY}>Сменить пароль</Button>}>
+            <EditWrapper>
+              <Input name="oldPassword" label="Старый пароль" placeholder="Введите старый пароль..." />
+              <Input name="newPassword" label="Новый пароль" placeholder="Введите новый пароль..." />
+            </EditWrapper>
+          </Box>
+          <Box title="Уведомления" />
         </Container>
       </Layout>
     );

@@ -41,6 +41,12 @@ export default class UserTransport {
   }
 
   signIn(params?: AuthEntity): Promise<SignIn> {
-    return axios.post(`${BACKEND_URL}sign_in`, params).then(res => res.data);
+    return axios.post(`${BACKEND_URL}sign_in`, params).then(res => {
+      const { token, user } = res.data;
+      return {
+        token,
+        user: UserEntity.fromServer(user)
+      };
+    });
   }
 }
