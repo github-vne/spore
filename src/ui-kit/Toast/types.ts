@@ -1,4 +1,4 @@
-export interface IToastDefinition {
+export interface ToastDefinition {
   id?: string;
   icon?: string;
   title: string;

@@ -11,7 +11,7 @@ import { Avatar, Button, Input, Loader, ToastType } from 'ui-kit';
 import { NotificationService } from 'utils';
 import { Group } from './style';
 
-const GroupComponent = ({ title, children }: { title?: string; children?: JSX.Element | Array<JSX.Element> }) => {
+const GroupComponent = ({ title, children }: { title?: string; children?: any }) => {
   return (
     <div>
       {title ? <p>{title}</p> : null}

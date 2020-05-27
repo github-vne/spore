@@ -1,6 +1,5 @@
 import { COLOR, SIZE } from 'const';
 import styled, { css } from 'styled-components';
-import { IAvatarProps } from './types';
 
 export const Avatar = styled.div`
   display: inline-flex;
@@ -9,7 +8,7 @@ export const Avatar = styled.div`
   overflow: hidden;
   border-radius: 50%;
   border: 2px solid ${COLOR.WHITE};
-  ${({ size }: IAvatarProps) => {
+  ${({ size }: { size: SIZE }) => {
     let _size;
     switch (size) {
       case SIZE.EXTRA_SMALL:

@@ -1,6 +1,6 @@
 import { SIZE } from 'const';
 
-export interface IAvatarProps {
+export interface AvatarProps {
   size?: SIZE;
   image?: string;
   className?: string;

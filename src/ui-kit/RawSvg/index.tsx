@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-interface IRawSvgProps {
+interface RawSvgProps {
   html?: any;
   icon?: string;
   className?: string;
@@ -16,7 +16,7 @@ const RawSvg = styled.span`
   }
 `;
 
-export default class UiRawSvg extends React.Component<IRawSvgProps> {
+export default class UiRawSvg extends React.Component<RawSvgProps> {
   render(): JSX.Element {
     const { icon, html, className } = this.props;
     return (

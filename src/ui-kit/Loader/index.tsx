@@ -1,9 +1,9 @@
 import { SIZE } from 'const';
 import React from 'react';
 import { FullScreen, Loader } from './style';
-import { ILoaderProps } from './types';
+import { LoaderProps } from './types';
 
-export default ({ fullScreen, ...props }: ILoaderProps) => {
+export default ({ fullScreen, ...props }: LoaderProps) => {
   if (fullScreen) {
     return (
       <FullScreen>

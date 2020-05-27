@@ -1,15 +1,15 @@
 import { action, observable } from 'mobx';
 import { Singleton } from 'typescript-ioc';
 import uuidv4 from 'uuid/v4';
-import { IToastDefinition, ToastType } from './types';
+import { ToastDefinition, ToastType } from './types';
 
 @Singleton
 export class ToastService {
-  @observable toasts: Array<IToastDefinition> = [];
+  @observable toasts: Array<ToastDefinition> = [];
 
   @action.bound
   showToast(type: ToastType, title: string, content?: string, icon?: string, lifeTime?: number): string {
-    const toast: IToastDefinition = {
+    const toast: ToastDefinition = {
       id: uuidv4(),
       type,
       title,

@@ -5,7 +5,7 @@ import { Inject } from 'typescript-ioc';
 import { RawSvg } from 'ui-kit';
 import { CloseBtn, Content, Header, Icon, Title, Toast, ToastsList } from './components';
 import { ToastService } from './ToastService';
-import { IToastDefinition } from './types';
+import { ToastDefinition } from './types';
 
 @observer
 export class ToastContainer extends React.Component {
@@ -19,7 +19,7 @@ export class ToastContainer extends React.Component {
   render(): JSX.Element {
     return (
       <ToastsList>
-        {this.toastService.toasts.map(({ id, type, icon, title, content }: IToastDefinition) => (
+        {this.toastService.toasts.map(({ id, type, icon, title, content }: ToastDefinition) => (
           <Toast key={id}>
             <Header type={type}>
               <Icon icon={icon} />
