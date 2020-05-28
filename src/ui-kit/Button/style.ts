@@ -6,7 +6,9 @@ import RawSvg from 'ui-kit/RawSvg';
 const BtnStyle = css`
   font-size: 13px;
   border: none;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   border-radius: 5px;
   padding: 6px 12px;
   cursor: pointer;
@@ -35,9 +37,6 @@ const BtnStyle = css`
       background: ${_backgound};
     `;
   }}
-  & > span {
-    height: 20px;
-  }
 `;
 
 export const ButtonRawSvg = styled(RawSvg)`
