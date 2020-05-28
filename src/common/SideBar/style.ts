@@ -9,63 +9,50 @@ const SMALL_WIDTH = 70;
 export const Container = styled.div`
   width: ${({ expand }: { expand: boolean }) => (expand ? `${FULL_WIDTH}px` : `${SMALL_WIDTH}px`)};
   flex: none;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background: ${GRADIENT.SIDEBAR};
   border-radius: 0 0 5px 0;
   transition: width 0.3s;
-  padding: 20px 10px;
+  padding: 20px 22px;
 `;
 
 export const Navigation = styled.nav`
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 20px 0;
   margin: 20px 0;
   border-top: 1px solid ${COLOR.WHITE};
 `;
 
 export const NavItem = styled(Link)`
+  overflow: hidden;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  color: ${({ selected }: { selected?: boolean }) => (selected ? COLOR.RED_100 : COLOR.WHITE)};
   position: relative;
   margin-bottom: 20px;
   font-size: 16px;
+  color: ${({ selected }: { selected?: boolean }) => (selected ? COLOR.RED_100 : COLOR.WHITE)};
 `;
 
 export const RawSvg = styled(_RawSvg)`
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   margin-right: 15px;
 `;
 
-export const Logo = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 15px;
+export const ButtonPanel = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
 `;
 
-export const Toggle = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: flex-start;
-  cursor: pointer;
-  ${({ expand }: { expand: boolean }) =>
-    expand &&
-    css`
-      > ${RawSvg} {
-        transform: rotate(180deg);
-      }
-    `};
-  ${RawSvg} {
-    width: 20px;
-    height: 20px;
-    margin: 0 ${`${(SMALL_WIDTH - 20) / 2}px`};
-    transition: 0.3s;
-  }
+export const IconButton = styled.button`
+  width: 26px;
+  height: 39px;
+  color: ${COLOR.WHITE};
 `;

@@ -1,4 +1,3 @@
-import { UserInfo } from 'common';
 import { OAUTH, SHORT_SIDE_BAR } from 'const';
 import { action, computed, observable } from 'mobx';
 import { observer } from 'mobx-react';
@@ -7,7 +6,7 @@ import { PageLink, PageName, PageType } from 'routers/MainRouter';
 import { MainStore, UserStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Button } from 'ui-kit';
-import { Container, Logo, Navigation, NavItem, RawSvg } from './style';
+import { ButtonPanel, Container, IconButton, Navigation, NavItem, RawSvg } from './style';
 
 const nav: Array<{ root: PageType; icon: string }> = [
   { root: PageType.MAIN, icon: 'main' },
@@ -47,11 +46,10 @@ export default class SideBar extends Component {
     return (
       <Container expand={this.expand}>
         <div>
-          <Logo>
+          <NavItem to={PageLink.LANDING}>
             <RawSvg icon="sideBar/logo" />
             <span>Spore</span>
-          </Logo>
-          <UserInfo user={this.userStore.user} hiddenDescription />
+          </NavItem>
           <Navigation>
             {nav.map((page, index) => (
               <NavItem key={index} to={PageLink[page.root]} selected={this.currentPage === PageType[page.root]}>
@@ -61,10 +59,26 @@ export default class SideBar extends Component {
             ))}
           </Navigation>
         </div>
-        <Button onClick={this.logout}>Выход</Button>
-        {/* <Toggle onClick={this.toggle} expand={this.expand}>
-          <RawSvg icon="sideBar/expand" />
-        </Toggle> */}
+        {}
+        {this.expand ? (
+          <ButtonPanel>
+            <Button onClick={this.toggle} icon="sideBar/expand">
+              Свернуть
+            </Button>
+            <Button onClick={this.logout} icon="sideBar/logout">
+              Выход
+            </Button>
+          </ButtonPanel>
+        ) : (
+          <ButtonPanel>
+            <IconButton onClick={this.toggle}>
+              <RawSvg icon="sideBar/expand" />
+            </IconButton>
+            <IconButton onClick={this.logout}>
+              <RawSvg icon="sideBar/logout" />
+            </IconButton>
+          </ButtonPanel>
+        )}
       </Container>
     );
   }

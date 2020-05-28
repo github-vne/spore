@@ -118,7 +118,7 @@ export const ModalCloseButton = styled.button`
     width: 20px;
     height: 2px;
     margin: -1px 0 0 -9px;
-    background: ${COLOR.GRAY_80};
+    background: ${COLOR.BLACK};
     transition: inherit;
   }
   &:before {

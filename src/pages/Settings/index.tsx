@@ -106,7 +106,7 @@ export default class PageSettings extends React.Component<RouteComponentProps> {
             <UploadPhoto onClick={this.openModal}>
               <UploadSvg icon="common/camera" />
             </UploadPhoto>
-            <UserInfo user={this.user} size={SIZE.EXTRA_LARGE} />
+            <UserInfo user={this.user} />
           </User>
           <Box title="Сменить пароль" footer={<Button styled={STYLED.TERTIARY}>Сменить пароль</Button>}>
             <EditWrapper>

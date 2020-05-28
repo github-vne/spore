@@ -7,15 +7,14 @@ import { Card, Description, Name, Status } from './style';
 interface UserInfoProps {
   user: UserEntity;
   className?: string;
-  size?: SIZE;
   hiddenDescription?: boolean;
 }
 
-export default ({ className, user, size, hiddenDescription }: UserInfoProps) => {
+export default ({ className, user, hiddenDescription }: UserInfoProps) => {
   const { photo, fullName, status, description } = user;
   return (
     <Card className={className}>
-      <Avatar image={photo} size={size} />
+      <Avatar image={photo} size={SIZE.EXTRA_LARGE} />
       <Name>{fullName}</Name>
       <Status>{status}</Status>
       {!hiddenDescription ? <Description>{description}</Description> : null}

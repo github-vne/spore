@@ -32,7 +32,7 @@ export default class PagePosts extends React.Component<RouteComponentProps> {
             <Button onClick={this.newPost}>Создать</Button>
           </Panel>
           <PostList />
-          <Panel>Фильтры</Panel>
+          <Panel>Фильтры (в разработке)</Panel>
         </Container>
       </Layout>
     );

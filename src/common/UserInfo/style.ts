@@ -6,6 +6,8 @@ export const Card = styled.aside`
   align-items: center;
   justify-content: center;
   text-align: center;
+  position: relative;
+  padding: 0 10px;
 `;
 
 export const Name = styled.h4`
