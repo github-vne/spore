@@ -70,10 +70,10 @@ export default class PageComponents extends React.Component<RouteComponentProps>
         <GroupComponent title="Input">
           <Input name="input0" onChange={this.onChange} placeholder="Label" label="With Label" />
           <Input
+            type="search"
             name="input1"
             onChange={this.onChange}
             defaultValue="Search"
-            icon="common/search"
             innerBtn={{
               onClick: () => console.info('click')
             }}

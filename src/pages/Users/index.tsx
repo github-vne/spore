@@ -41,8 +41,8 @@ export default class PageUsers extends React.Component<RouteComponentProps> {
     return (
       <Layout>
         <SearchPanel>
-          <Input placeholder="Search" type="search" />
-          <Button>Search</Button>
+          <Input placeholder="Поиск пользователей" type="search" />
+          <Button>Найти (В разработке)</Button>
         </SearchPanel>
         <UserList>{this.userList}</UserList>
       </Layout>

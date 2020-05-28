@@ -2,7 +2,9 @@ import { COLOR, RGBA } from 'const';
 import styled from 'styled-components';
 
 export const SearchPanel = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
 `;
 
 export const UserList = styled.div`

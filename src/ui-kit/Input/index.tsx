@@ -26,7 +26,8 @@ export default class UiInput extends FormControl<string, InputProps> {
   }
 
   render(): JSX.Element {
-    const { placeholder, disabled, label, icon, innerBtn, styled, type } = this.props;
+    const { placeholder, disabled, label, innerBtn, styled, type } = this.props;
+    const icon = type === 'search' ? 'common/search' : this.props.icon;
     return (
       <Wrapper className={this.props.className}>
         {label && (

@@ -108,13 +108,13 @@ export default class PageSettings extends React.Component<RouteComponentProps> {
             </UploadPhoto>
             <UserInfo user={this.user} />
           </User>
-          <Box title="Сменить пароль" footer={<Button styled={STYLED.TERTIARY}>Сменить пароль</Button>}>
+          <Box title="Сменить пароль (В разработке)" footer={<Button styled={STYLED.TERTIARY}>Сменить пароль</Button>}>
             <EditWrapper>
               <Input name="oldPassword" label="Старый пароль" placeholder="Введите старый пароль..." />
               <Input name="newPassword" label="Новый пароль" placeholder="Введите новый пароль..." />
             </EditWrapper>
           </Box>
-          <Box title="Уведомления" />
+          <Box title="Уведомления (В разработке)" />
         </Container>
       </Layout>
     );

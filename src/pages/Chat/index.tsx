@@ -58,7 +58,7 @@ export default class PageChat extends React.Component<RouteComponentProps> {
           </Column>
           <Column>
             <Info>
-              <Input icon="common/search" styled={STYLED.PRIMARY} />
+              <Input type="search" styled={STYLED.PRIMARY} />
             </Info>
             <UserList>
               {userList.map((user, index) => (
