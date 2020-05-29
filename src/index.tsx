@@ -1,3 +1,4 @@
+import { Preloader } from 'common/components';
 import dayjs from 'dayjs';
 import 'dayjs/locale/ru';
 import dayOfYear from 'dayjs/plugin/dayOfYear';
@@ -11,7 +12,7 @@ import ReactDOM from 'react-dom';
 import AppRouter from 'routers/AppRouter';
 import { UserStore } from 'stores';
 import { Inject } from 'typescript-ioc';
-import { Loader, ToastContainer } from 'ui-kit';
+import { ToastContainer } from 'ui-kit';
 import AuthService from 'utils/AuthService';
 
 const rootEl = document.getElementById('root');
@@ -38,7 +39,7 @@ class App extends React.Component {
   }
 
   render(): JSX.Element {
-    if (this.pending) return <Loader inverseColor />;
+    if (this.pending) return <Preloader />;
     return <AppRouter />;
   }
 }

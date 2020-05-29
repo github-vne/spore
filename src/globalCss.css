@@ -24,7 +24,7 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section, img { display: block }
 a,input,textarea,button{ outline: none!important; background: transparent; border: 0; resize: none; }
 html{ height: 100% }
-body { line-height: 1; color: #fff; min-width: 800px; }
+body { line-height: 1; color: #fff; min-width: 800px; min-height: 100vh; }
 ol, ul { list-style: none }
 blockquote, q {	quotes: none }
 blockquote:before, blockquote:after,
@@ -64,3 +64,4 @@ img {
     overflow: hidden;
     white-space: nowrap;
 }
+
