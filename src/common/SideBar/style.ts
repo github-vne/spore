@@ -30,18 +30,14 @@ export const Navigation = styled.nav`
 export const NavItem = styled(Link)`
   overflow: hidden;
   width: 100%;
-  display: flex;
+  display: grid;
   align-items: center;
+  grid-template-columns: 26px 1fr;
+  gap: 15px;
   position: relative;
   margin-bottom: 20px;
   font-size: 16px;
   color: ${({ selected }: { selected?: boolean }) => (selected ? COLOR.RED_100 : COLOR.WHITE)};
-`;
-
-export const RawSvg = styled(_RawSvg)`
-  width: 26px;
-  height: 26px;
-  margin-right: 15px;
 `;
 
 export const ButtonPanel = styled.div`

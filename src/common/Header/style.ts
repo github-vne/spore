@@ -1,6 +1,5 @@
 import { COLOR, HEADER_HEIGHT } from 'const';
 import styled from 'styled-components';
-import { RawSvg } from 'ui-kit';
 
 export const Wrapper = styled.header`
   display: flex;
@@ -27,23 +26,21 @@ export const Nav = styled.ul`
   }
 `;
 
-export const Panel = styled.div`
-  display: flex;
-  align-items: center;
+export const Notification = styled.button`
+  position: relative;
+  width: 25px;
   margin-left: auto;
-`;
-
-export const Menu = styled.ul`
-  display: flex;
-`;
-
-export const Item = styled.li`
-  width: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
   color: ${COLOR.WHITE};
+  &:after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: ${COLOR.RED_100};
+    border-radius: 50%;
+    top: 0;
+    right: 2px;
+  }
   :hover {
     color: ${COLOR.BLUE_60};
   }

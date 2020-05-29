@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 interface RawSvgProps {
   html?: any;
@@ -15,10 +15,7 @@ const RawSvg = styled.span`
     height: inherit;
     width: inherit;
   }
-  ${({ width }: { width: number }) =>
-    css`
-      width: ${width}px;
-    `}
+  width: ${({ width }: { width: number }) => (width ? `${width}px` : '100%')};
 `;
 
 export default class UiRawSvg extends React.Component<RawSvgProps> {

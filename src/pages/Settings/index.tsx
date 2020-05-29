@@ -1,5 +1,5 @@
 import { Box, Layout, UserInfo } from 'common';
-import { SIZE, STYLED } from 'const';
+import { STYLED } from 'const';
 import { action, computed, observable } from 'mobx';
 import { observer } from 'mobx-react';
 import { AddPhoto } from 'modals';
@@ -9,8 +9,8 @@ import { RouteComponentProps } from 'react-router-dom';
 import { PageType } from 'routers/MainRouter';
 import { MainStore, UserStore } from 'stores';
 import { Inject } from 'typescript-ioc';
-import { Button, Input, Textarea } from 'ui-kit';
-import { Container, EditWrapper, UploadPhoto, UploadSvg, User } from './style';
+import { Button, Input, RawSvg, Textarea } from 'ui-kit';
+import { Container, EditWrapper, UploadPhoto, User } from './style';
 
 enum fields {
   firstName = 'firstName',
@@ -104,7 +104,7 @@ export default class PageSettings extends React.Component<RouteComponentProps> {
           </Box>
           <User>
             <UploadPhoto onClick={this.openModal}>
-              <UploadSvg icon="common/camera" />
+              <RawSvg icon="common/camera" width={35} />
             </UploadPhoto>
             <UserInfo user={this.user} />
           </User>

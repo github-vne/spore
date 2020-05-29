@@ -4,7 +4,7 @@ import { PageName } from 'routers/MainRouter';
 import { MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { RawSvg } from 'ui-kit';
-import { Item, Menu, Nav, Panel, Wrapper } from './style';
+import { Nav, Notification, Wrapper } from './style';
 
 @observer
 export default class Header extends React.Component {
@@ -19,13 +19,9 @@ export default class Header extends React.Component {
           </li>
           <li>{PageName[this.mainStore.currentPage]}</li>
         </Nav>
-        <Panel>
-          <Menu>
-            <Item>
-              <RawSvg icon="header/bell" width={25} />
-            </Item>
-          </Menu>
-        </Panel>
+        <Notification>
+          <RawSvg icon="header/bell" />
+        </Notification>
       </Wrapper>
     );
   }

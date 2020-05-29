@@ -10,7 +10,7 @@ import { Inject } from 'typescript-ioc';
 import { Avatar, Input } from 'ui-kit';
 import ChatUser from './ChatUser';
 import { exampleMessageList, userList } from './example';
-import { Column, Container, Info, Message, MessageList, SendButton, Textarea, TextareaBox, UserList } from './style';
+import { Column, Container, Info, List, Message, MessageList, SendButton, Textarea, TextareaBox } from './style';
 
 @observer
 export default class PageChat extends React.Component<RouteComponentProps> {
@@ -60,13 +60,13 @@ export default class PageChat extends React.Component<RouteComponentProps> {
             <Info>
               <Input type="search" styled={STYLED.PRIMARY} />
             </Info>
-            <UserList>
+            <List>
               {userList.map((user, index) => (
                 <Fragment key={index}>
                   <ChatUser selected={index === 0} user={user} />
                 </Fragment>
               ))}
-            </UserList>
+            </List>
           </Column>
         </Container>
       </Layout>

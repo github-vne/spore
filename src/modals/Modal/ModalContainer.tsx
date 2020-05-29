@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react';
 import React from 'react';
 import { Inject } from 'typescript-ioc';
+import { RawSvg } from 'ui-kit';
 import { ModalService } from './modal.service';
 import { ModalCloseButton, ModalInner, ModalOverlay, ModalWrapper } from './style';
 
@@ -25,7 +26,11 @@ export class ModalContainer extends React.Component {
           onClick={overlayClick ? this.modalService.dropModal : undefined}
         />
         <ModalInner fullHeight={fullHeight} fullWidth={fullWidth} width={width}>
-          {hasCloseBtn ? <ModalCloseButton onClick={this.modalService.dropModal} /> : null}
+          {hasCloseBtn ? (
+            <ModalCloseButton onClick={this.modalService.dropModal}>
+              <RawSvg icon="common/close" />
+            </ModalCloseButton>
+          ) : null}
           {this.modalService.activeModal ? activeModalComponent : null}
         </ModalInner>
       </ModalWrapper>

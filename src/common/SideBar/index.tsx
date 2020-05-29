@@ -5,8 +5,8 @@ import React, { Component } from 'react';
 import { PageLink, PageName, PageType } from 'routers/MainRouter';
 import { MainStore, UserStore } from 'stores';
 import { Inject } from 'typescript-ioc';
-import { Button } from 'ui-kit';
-import { ButtonPanel, Container, IconButton, Navigation, NavItem, RawSvg } from './style';
+import { Button, RawSvg } from 'ui-kit';
+import { ButtonPanel, Container, IconButton, Navigation, NavItem } from './style';
 
 const nav: Array<{ root: PageType; icon: string }> = [
   { root: PageType.MAIN, icon: 'main' },

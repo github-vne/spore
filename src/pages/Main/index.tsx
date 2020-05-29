@@ -6,9 +6,10 @@ import { RouteComponentProps } from 'react-router-dom';
 import { PageName, PageType } from 'routers/MainRouter';
 import { MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
+import { RawSvg } from 'ui-kit';
 import CardPanel from './CardPanel';
 import Graph from './Graph';
-import { PageIcon, PagesItem, ProgressPages, Wrapper } from './style';
+import { PagesItem, ProgressPages, Wrapper } from './style';
 
 const nav = [
   { root: PageType.MAIN, icon: 'main', value: 15 },
@@ -36,7 +37,7 @@ export default class PageMain extends React.Component<RouteComponentProps> {
           <ProgressPages title="Вёрстка">
             {nav.map((page, item) => (
               <PagesItem key={item}>
-                <PageIcon icon={`sideBar/${page.icon}`} />
+                <RawSvg icon={`sideBar/${page.icon}`} />
                 <div>
                   <span>
                     {PageName[page.root]} ({page.value}%)

@@ -1,10 +1,10 @@
 import { COLOR, SIZE } from 'const';
 import styled, { css } from 'styled-components';
 import RawSvg from 'ui-kit/RawSvg';
-import { ILoaderProps } from './types';
+import { LoaderProps } from './types';
 
 export const Loader = styled(RawSvg)`
-  ${(props: ILoaderProps) => {
+  ${(props: LoaderProps) => {
     let size;
     switch (props.size) {
       case SIZE.EXTRA_SMALL:
@@ -27,7 +27,7 @@ export const Loader = styled(RawSvg)`
       height: ${size}px;
     `;
   }};
-  color: ${({ inverseColor }: ILoaderProps) => (inverseColor ? COLOR.BLUE_10 : COLOR.WHITE)};
+  color: ${({ inverseColor }: LoaderProps) => (inverseColor ? COLOR.BLUE_10 : COLOR.WHITE)};
   & > svg {
     width: 100%;
   }

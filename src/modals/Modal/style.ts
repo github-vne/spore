@@ -1,4 +1,4 @@
-import { COLOR, SHADOW } from 'const';
+import { COLOR } from 'const';
 import styled, { css } from 'styled-components';
 import { ModalDefinition, WrapperProps } from './types';
 
@@ -94,46 +94,22 @@ export const ModalContent = styled.section`
 `;
 
 export const Header = styled.header`
-  min-height: 48px;
+  min-height: 30px;
   font-size: 20px;
-  padding: 15px 55px 10px 15px;
+  padding: 15px 35px 10px 15px;
   color: ${COLOR.BLACK};
 `;
 
 export const ModalCloseButton = styled.button`
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 48px;
-  height: 48px;
+  top: 5px;
+  right: 5px;
+  width: 25px;
+  height: 25px;
   transition: all 0.15s linear;
   border-radius: 0 4px 0 0;
   z-index: 10;
-  &:before,
-  &:after {
-    position: absolute;
-    content: '';
-    top: 50%;
-    left: 50%;
-    width: 20px;
-    height: 2px;
-    margin: -1px 0 0 -9px;
-    background: ${COLOR.BLACK};
-    transition: inherit;
-  }
-  &:before {
-    transform: rotate(45deg) translateZ(0);
-  }
-  &:after {
-    transform: rotate(-45deg) translateZ(0);
-  }
-  &:hover {
-    background-color: ${COLOR.BLUE_60};
-    &:before,
-    &:after {
-      background: ${COLOR.WHITE};
-    }
-  }
+  color: ${COLOR.BLACK};
 `;
 
 export const Footer = styled.footer`

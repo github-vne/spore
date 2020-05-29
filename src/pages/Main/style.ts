@@ -19,13 +19,9 @@ export const ProgressPages = styled(Box)`
 export const PagesItem = styled.div`
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: 40px 1fr;
+  grid-template-columns: 25px 1fr;
   align-items: center;
   padding: 10px 0;
-`;
-
-export const PageIcon = styled(RawSvg)`
-  width: 100%;
 `;
 
 export const Graph = styled(Box)`

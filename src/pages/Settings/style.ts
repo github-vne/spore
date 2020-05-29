@@ -1,7 +1,6 @@
 import { Box } from 'common';
 import { COLOR } from 'const';
 import styled from 'styled-components';
-import { RawSvg } from 'ui-kit';
 
 export const Container = styled.div`
   display: grid;
@@ -24,11 +23,6 @@ export const User = styled(Box)`
   padding: 35px 15px;
 `;
 
-export const UploadSvg = styled(RawSvg)`
-  width: 35px;
-  color: ${COLOR.WHITE};
-`;
-
 export const UploadPhoto = styled.button`
   position: absolute;
   top: 20px;
@@ -36,4 +30,5 @@ export const UploadPhoto = styled.button`
   width: 35px;
   height: 35px;
   cursor: pointer;
+  color: ${COLOR.WHITE};
 `;

@@ -1,5 +1,5 @@
 import { COLOR } from 'const';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import RawSvg from 'ui-kit/RawSvg';
 import { ToastType } from './types';
 
@@ -55,8 +55,8 @@ export const CloseBtn = styled.button.attrs({ type: 'button' })`
 
 export const Icon = styled(RawSvg)`
   height: 24px;
-  margin: 0 8px auto 0;
   width: 24px;
+  margin: 0 8px auto 0;
 `;
 
 export const Title = styled.h5`
