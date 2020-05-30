@@ -34,25 +34,3 @@ export const Tagline = styled.h3`
   text-align: center;
   margin: 15px 0;
 `;
-
-export const MyLinks = styled.ol`
-  display: flex;
-  margin-top: 10px;
-`;
-
-export const MyLink = styled.li`
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  max-width: 70px;
-  margin: 0 10px;
-  span {
-    margin-top: 5px;
-  }
-  &:hover {
-    span {
-      color: #33b5e5;
-    }
-  }
-`;

@@ -15,7 +15,7 @@ export default class AppRouter extends React.PureComponent {
         <Suspense fallback={<h2>Loading...</h2>}>
           <Switch>
             <PrivateRouter exact path={this.mainRouter.MAIN} component={Main} />
-            <Route exact path={this.mainRouter.LANDING} component={Landing} />
+            {/* <Route exact path={this.mainRouter.LANDING} component={Landing} /> */}
             <Route exact path={this.mainRouter.AUTH} component={Auth} />
             <PrivateRouter exact path={this.mainRouter.SETTINGS} component={Settings} />
             <PrivateRouter exact path={this.mainRouter.USERS} component={Users} />

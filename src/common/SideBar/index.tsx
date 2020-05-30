@@ -46,7 +46,7 @@ export default class SideBar extends Component {
     return (
       <Container expand={this.expand}>
         <div>
-          <NavItem to={PageLink.LANDING}>
+          <NavItem to={PageLink.MAIN}>
             <RawSvg icon="sideBar/logo" />
             <span>Spore</span>
           </NavItem>
