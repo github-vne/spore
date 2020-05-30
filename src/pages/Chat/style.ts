@@ -35,6 +35,12 @@ export const TextareaBox = styled.div`
   justify-content: center;
 `;
 
+export const Textarea = styled(_Textarea)`
+  textarea {
+    max-height: 160px;
+  }
+`;
+
 export const List = styled.ul`
   display: flex;
   flex-direction: column;
@@ -114,10 +120,4 @@ export const Test = styled.div`
 
 export const SendButton = styled(RawSvg)`
   color: ${({ hasMessage }: { hasMessage?: boolean }) => (hasMessage ? '#2b5278' : '#617b95')};
-`;
-
-export const Textarea = styled(_Textarea)`
-  textarea {
-    max-height: 160px;
-  }
 `;

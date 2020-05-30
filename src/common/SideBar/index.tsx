@@ -5,8 +5,8 @@ import React, { Component } from 'react';
 import { PageLink, PageName, PageType } from 'routers/MainRouter';
 import { MainStore, UserStore } from 'stores';
 import { Inject } from 'typescript-ioc';
-import { Button, RawSvg } from 'ui-kit';
-import { ButtonPanel, Container, IconButton, Navigation, NavItem } from './style';
+import { RawSvg } from 'ui-kit';
+import { ActionButton, ButtonPanel, Container, Navigation, NavItem, ToggleIcon } from './style';
 
 const nav: Array<{ root: PageType; icon: string }> = [
   { root: PageType.MAIN, icon: 'main' },
@@ -59,26 +59,16 @@ export default class SideBar extends Component {
             ))}
           </Navigation>
         </div>
-        {}
-        {this.expand ? (
-          <ButtonPanel>
-            <Button onClick={this.toggle} icon="sideBar/expand">
-              Свернуть
-            </Button>
-            <Button onClick={this.logout} icon="sideBar/logout">
-              Выход
-            </Button>
-          </ButtonPanel>
-        ) : (
-          <ButtonPanel>
-            <IconButton onClick={this.toggle}>
-              <RawSvg icon="sideBar/expand" />
-            </IconButton>
-            <IconButton onClick={this.logout}>
-              <RawSvg icon="sideBar/logout" />
-            </IconButton>
-          </ButtonPanel>
-        )}
+        <ButtonPanel>
+          <ActionButton onClick={this.toggle}>
+            <ToggleIcon icon="sideBar/expand" expand={this.expand} />
+            <span>Свернуть</span>
+          </ActionButton>
+          <ActionButton onClick={this.logout}>
+            <RawSvg icon="sideBar/logout" />
+            <span>Выход</span>
+          </ActionButton>
+        </ButtonPanel>
       </Container>
     );
   }

@@ -1,7 +1,7 @@
 import { COLOR, GRADIENT } from 'const';
 import { Link } from 'react-router-dom';
-import styled, { css } from 'styled-components';
-import { RawSvg as _RawSvg } from 'ui-kit';
+import styled from 'styled-components';
+import { RawSvg } from 'ui-kit';
 
 const FULL_WIDTH = 210;
 const SMALL_WIDTH = 70;
@@ -42,13 +42,23 @@ export const NavItem = styled(Link)`
 
 export const ButtonPanel = styled.div`
   width: 100%;
+  overflow: hidden;
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
 `;
 
-export const IconButton = styled.button`
-  width: 26px;
-  height: 39px;
+export const ActionButton = styled.button`
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 15px;
+  text-align: left;
   color: ${COLOR.WHITE};
+  padding: 10px 3px;
+  font-size: 16px;
+`;
+
+export const ToggleIcon = styled(RawSvg)`
+  transition: 0.3s;
+  transform: ${({ expand }: { expand: boolean }) => (expand ? 'rotate(180deg)' : 'none')};
 `;
