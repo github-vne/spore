@@ -5,7 +5,6 @@ import { Definition, Word } from './style';
 
 @observer
 export class WordDefinition extends Modal<{ word: string }> {
-  static hasCloseBtn: boolean = false;
   render(): JSX.Element {
     const { word } = this.props.scope;
     return (

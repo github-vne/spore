@@ -5,22 +5,21 @@ import { Textarea as _Textarea } from 'ui-kit';
 
 export const Wrapper = styled.div`
   display: grid;
-  gap: 10px;
+  gap: 20px;
   grid-template-columns: 45% 1fr;
   height: 100%;
 `;
 
-export const CreateTask = styled.div``;
-
-export const CreatePanel = styled.div`
-  display: flex;
-  padding-top: 15px;
-  justify-content: flex-end;
+export const TaskSettings = styled.div`
+  display: grid;
+  height: 100%;
+  gap: 20px;
+  grid-template-rows: auto 1fr;
 `;
 
 export const Textarea = styled(_Textarea)`
   textarea {
-    max-height: 160px;
+    max-height: 92px;
   }
 `;
 
@@ -70,10 +69,9 @@ export const TabContent = styled.ul`
 export const Task = styled.li`
   display: grid;
   align-items: center;
-  grid-template-columns: 1fr 20px 20px;
-  gap: 5px;
+  grid-template-columns: 1fr auto;
   margin-bottom: 10px;
-  padding: 12px 16px;
+  padding: 12px 5px 12px 10px;
   border: 1px solid ${COLOR.GRAY_80};
   border-radius: 4px;
   word-break: break-all;
@@ -84,7 +82,13 @@ export const Task = styled.li`
   }
 `;
 
-export const TaskAction = styled.button`
+export const TaskActions = styled.div`
+  display: flex;
+`;
+
+export const ActionBtn = styled.button`
+  width: 20px;
+  margin-right: 10px;
   color: ${COLOR.BLUE_60};
   &:hover {
     color: ${COLOR.WHITE};

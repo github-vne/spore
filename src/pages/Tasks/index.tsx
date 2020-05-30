@@ -1,5 +1,5 @@
-import { Layout } from 'common';
-import { STYLED } from 'const';
+import { Box, Layout } from 'common';
+import { SIZE, STYLED } from 'const';
 import { action, observable } from 'mobx';
 import { observer } from 'mobx-react';
 import React from 'react';
@@ -7,16 +7,16 @@ import { RouteComponentProps } from 'react-router-dom';
 import { PageType } from 'routers/MainRouter';
 import { MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
-import { Button, RawSvg } from 'ui-kit';
+import { Button, Loader, RawSvg } from 'ui-kit';
 import {
-  CreatePanel,
-  CreateTask,
+  ActionBtn,
   TabContent,
   TabItem,
   TabPanel,
   Task,
-  TaskAction,
+  TaskActions,
   TasksCard,
+  TaskSettings,
   Textarea,
   Title,
   Wrapper
@@ -40,15 +40,15 @@ export default class PageTasks extends React.Component<RouteComponentProps> {
     return (
       <Layout>
         <Wrapper>
-          <CreateTask>
-            <Textarea placeholder="Текст задания" label="Создать задание" rows={3} />
-            <CreatePanel>
-              <Button styled={STYLED.TERTIARY}>Создать (В разработке)</Button>
-            </CreatePanel>
-          </CreateTask>
+          <TaskSettings>
+            <Box title="Создать задание (В разработке)" footer={<Button styled={STYLED.TERTIARY}>Создать</Button>}>
+              <Textarea placeholder="Текст задания" rows={4} />
+            </Box>
+            <Box title="Статистика (В разработке)" />
+          </TaskSettings>
           <TasksCard>
             <div>
-              <Title>Список заданий</Title>
+              <Title>Список заданий (В разработке)</Title>
               <TabPanel>
                 {['В работе', 'Выполнение', 'Удалённые'].map((tab, index) => (
                   <TabItem key={index} active={index === this.tabIndex} onClick={this.changeTabIndex.bind(this, index)}>
@@ -58,16 +58,20 @@ export default class PageTasks extends React.Component<RouteComponentProps> {
               </TabPanel>
             </div>
             <TabContent>
-              {/* <Loader size={SIZE.EXTRA_LARGE} fullScreen /> */}
               {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(el => (
                 <Task key={el}>
                   <p>Задание №{el}</p>
-                  <TaskAction>
-                    <RawSvg icon="tasks/complete" />
-                  </TaskAction>
-                  <TaskAction>
-                    <RawSvg icon="tasks/delete" />
-                  </TaskAction>
+                  <TaskActions>
+                    <ActionBtn>
+                      <RawSvg icon="tasks/edit" />
+                    </ActionBtn>
+                    <ActionBtn>
+                      <RawSvg icon="tasks/complete" />
+                    </ActionBtn>
+                    <ActionBtn>
+                      <RawSvg icon="tasks/delete" />
+                    </ActionBtn>
+                  </TaskActions>
                 </Task>
               ))}
             </TabContent>

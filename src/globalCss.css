@@ -22,7 +22,7 @@ time, mark, audio, video {
 }
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section, img { display: block }
-a,input,textarea,button{ outline: none!important; background: transparent; border: 0; resize: none; }
+a,input,textarea,button{ outline: none!important; background: transparent; border: 0; resize: none; font-family: 'Roboto', sans-serif; }
 html{ height: 100% }
 body { line-height: 1; color: #fff; min-width: 800px; min-height: 100vh; }
 ol, ul { list-style: none }
@@ -73,6 +73,8 @@ img {
 *::-webkit-scrollbar {
     width: 5px;
     background-color: #1e1e2f;
+    height: 5px;
+
 }
 
 *::-webkit-scrollbar-thumb {
