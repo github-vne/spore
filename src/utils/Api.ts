@@ -69,7 +69,7 @@ export default class Api {
         let text = 'Ошибка при отправке запроса! ';
         if (endpoint) text += `Адрес: ${endpoint} `;
         if (Object.keys(params).length) text += ` | Параметры: ${JSON.stringify(params)}\n`;
-        this.toastService.showToast(ToastType.ERROR, 'Ошибка при запросе', text, 'common/report_problem');
+        this.toastService.showToast(ToastType.ERROR, 'Ошибка при запросе', text, 'common/problem');
         return Promise.reject(error);
       });
 

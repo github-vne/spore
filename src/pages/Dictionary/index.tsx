@@ -1,10 +1,10 @@
 import { Layout } from 'common';
+import { PageType } from 'const/pages';
 import { action } from 'mobx';
 import { observer } from 'mobx-react';
 import { WordDefinition } from 'modals';
 import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { PageType } from 'routers/MainRouter';
 import { MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Section, Title, Word } from './style';

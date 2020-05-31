@@ -1,6 +1,5 @@
 import { Box } from 'common';
 import styled from 'styled-components';
-import { RawSvg } from 'ui-kit';
 
 export const Wrapper = styled.div`
   display: grid;
@@ -12,7 +11,7 @@ export const ProgressPages = styled(Box)`
   display: flex;
   flex: none;
   flex-direction: column;
-  max-width: 400px;
+  width: 300px;
   margin-right: 20px;
 `;
 

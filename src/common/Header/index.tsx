@@ -1,10 +1,10 @@
+import { PageName } from 'const/pages';
 import { observer } from 'mobx-react';
 import React from 'react';
-import { PageName } from 'routers/MainRouter';
 import { MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { RawSvg } from 'ui-kit';
-import { Nav, Notification, Wrapper } from './style';
+import { BreadCrumbs, Crumb, Notification, Wrapper } from './style';
 
 @observer
 export default class Header extends React.Component {
@@ -13,12 +13,12 @@ export default class Header extends React.Component {
   render(): JSX.Element {
     return (
       <Wrapper>
-        <Nav>
-          <li>
-            <RawSvg icon="header/house" width={20} />
-          </li>
-          <li>{PageName[this.mainStore.currentPage]}</li>
-        </Nav>
+        <BreadCrumbs>
+          <Crumb>
+            <RawSvg icon="header/home" width={20} />
+          </Crumb>
+          <Crumb>{PageName[this.mainStore.currentPage]}</Crumb>
+        </BreadCrumbs>
         <Notification>
           <RawSvg icon="header/bell" />
         </Notification>

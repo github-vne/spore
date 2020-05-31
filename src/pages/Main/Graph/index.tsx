@@ -1,7 +1,7 @@
-import { chartExample1 } from 'const/charts';
 import { observer } from 'mobx-react';
 import React from 'react';
 import { Line } from 'react-chartjs-2';
+import { chartExample1 } from './charts';
 import { Wrapper } from './style';
 
 @observer

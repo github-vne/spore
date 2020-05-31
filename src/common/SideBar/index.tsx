@@ -1,23 +1,12 @@
 import { OAUTH, SHORT_SIDE_BAR } from 'const';
+import { PageIcon, PageLink, PageName, PageType, SideBarItems } from 'const/pages';
 import { action, computed, observable } from 'mobx';
 import { observer } from 'mobx-react';
 import React, { Component } from 'react';
-import { PageLink, PageName, PageType } from 'routers/MainRouter';
 import { MainStore, UserStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { RawSvg } from 'ui-kit';
 import { ActionButton, ButtonPanel, Container, Navigation, NavItem, ToggleIcon } from './style';
-
-const nav: Array<{ root: PageType; icon: string }> = [
-  { root: PageType.MAIN, icon: 'main' },
-  { root: PageType.POSTS, icon: 'news' },
-  { root: PageType.USERS, icon: 'users' },
-  { root: PageType.TASKS, icon: 'tasks' },
-  { root: PageType.CHAT, icon: 'chat' },
-  { root: PageType.DICTIONARY, icon: 'dictionary' },
-  { root: PageType.SETTINGS, icon: 'settings' },
-  { root: PageType.COMPONENTS, icon: 'components' }
-];
 
 @observer
 export default class SideBar extends Component {
@@ -51,10 +40,10 @@ export default class SideBar extends Component {
             <span>Spore</span>
           </NavItem>
           <Navigation>
-            {nav.map((page, index) => (
-              <NavItem key={index} to={PageLink[page.root]} selected={this.currentPage === PageType[page.root]}>
-                <RawSvg icon={`sideBar/${page.icon}`} />
-                <span>{PageName[page.root]}</span>
+            {SideBarItems.map(page => (
+              <NavItem key={page} to={PageLink[page]} selected={this.currentPage === PageType[page]}>
+                <RawSvg icon={`pages/${PageIcon[page]}`} />
+                <span>{PageName[page]}</span>
               </NavItem>
             ))}
           </Navigation>

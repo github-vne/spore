@@ -42,6 +42,8 @@ export class AddPhoto extends Modal {
       );
     }
 
+    if (this.fileService.error) return <h1>Ошибка загрузки изображение</h1>;
+
     if (file instanceof AttachmentEntity) {
       return (
         <>

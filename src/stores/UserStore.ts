@@ -22,15 +22,6 @@ export default class UserStore {
   }
 
   @action.bound
-  async authorize(): Promise<void> {
-    try {
-      this._user = await this.transport.getCurrentUser();
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
-  @action.bound
   async updatePhoto(photoId: number): Promise<void> {
     try {
       this._user = await this.transport.uploadPhoto(photoId);
@@ -50,7 +41,16 @@ export default class UserStore {
 
   /* Авторизация */
   async signUp(auth: AuthEntity): Promise<void> {
-    const res = await this.transport.signUp(auth);
+    await this.transport.signUp(auth);
+  }
+
+  @action.bound
+  async authorize(): Promise<void> {
+    try {
+      this._user = await this.transport.getCurrentUser();
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   @action.bound

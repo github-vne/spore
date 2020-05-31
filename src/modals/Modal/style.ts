@@ -109,7 +109,6 @@ export const ModalCloseButton = styled.button`
   transition: all 0.15s linear;
   border-radius: 0 4px 0 0;
   z-index: 10;
-  color: ${COLOR.BLACK};
 `;
 
 export const Footer = styled.footer`

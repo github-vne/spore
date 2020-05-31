@@ -20,12 +20,6 @@ export default class NotificationService {
       [ToastType.ERROR]: 'ошибочного'
     };
 
-    this.toastService.showToast(
-      type,
-      title[type],
-      `Пример ${content[type]} уведомления`,
-      'common/report_problem',
-      3000
-    );
+    this.toastService.showToast(type, title[type], `Пример ${content[type]} уведомления`, 'common/problem', 3000);
   }
 }

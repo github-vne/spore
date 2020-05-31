@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Card = styled.aside`
+export const UserInfo = styled.aside`
   display: flex;
   flex-direction: column;
   align-items: center;

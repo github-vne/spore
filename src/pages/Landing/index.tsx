@@ -1,8 +1,8 @@
 import { STYLED } from 'const';
+import { PageType } from 'const/pages';
 import { observer } from 'mobx-react';
 import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { PageType } from 'routers/MainRouter';
 import { MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Logo, Main, MainForm, SporeBtn, Tagline } from './style';

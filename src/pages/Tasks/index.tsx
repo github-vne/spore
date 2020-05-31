@@ -1,10 +1,10 @@
 import { Box, Layout } from 'common';
 import { STYLED } from 'const';
+import { PageType } from 'const/pages';
 import { action, observable } from 'mobx';
 import { observer } from 'mobx-react';
 import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { PageType } from 'routers/MainRouter';
 import { MainStore, TaskStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Button } from 'ui-kit';

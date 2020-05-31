@@ -1,12 +1,12 @@
 import { Layout } from 'common';
 import { SIZE } from 'const';
+import { PageType } from 'const/pages';
 import { action, computed } from 'mobx';
 import { observer } from 'mobx-react';
 import { UserCard } from 'modals';
 import { UserEntity } from 'models';
 import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { PageType } from 'routers/MainRouter';
 import { ContactStore, MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Avatar, Button, Input, Loader } from 'ui-kit';

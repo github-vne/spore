@@ -1,10 +1,10 @@
 import { STYLED } from 'const';
+import { PageType } from 'const/pages';
 import { action, observable } from 'mobx';
 import { observer } from 'mobx-react';
 import { AuthEntity } from 'models';
 import React from 'react';
 import { Redirect, RouteComponentProps } from 'react-router-dom';
-import { PageType } from 'routers/MainRouter';
 import { MainStore, UserStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Button } from 'ui-kit';

@@ -47,7 +47,7 @@ export const Header = styled.div`
   color: ${({ type }: { type: ToastType }) => (type ? ToastIconColor[type] : COLOR.BLACK)};
 `;
 
-export const CloseBtn = styled.button.attrs({ type: 'button' })`
+export const CloseBtn = styled.button`
   flex: none;
   cursor: pointer;
   margin: 0 0 auto auto;

@@ -1,7 +1,7 @@
 import { COLOR, SHADOW } from 'const';
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Box = styled.div`
   position: relative;
   padding: 15px;
   border-radius: 5px;
@@ -11,11 +11,11 @@ export const Container = styled.div`
 
 export const Title = styled.h4`
   font-weight: bold;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 `;
 
 export const Footer = styled.footer`
-  margin-top: 25px;
+  margin-top: 20px;
   display: flex;
   align-items: center;
   justify-content: flex-end;

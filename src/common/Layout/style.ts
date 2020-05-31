@@ -2,17 +2,17 @@ import { GRADIENT, HEADER_HEIGHT } from 'const';
 import styled from 'styled-components';
 
 export const Layout = styled.div`
-  height: 100vh;
+  position: relative;
   display: flex;
+  height: 100vh;
   background: ${GRADIENT.BACKGROUND};
   z-index: 0;
-  position: relative;
 `;
 
 export const Container = styled.div`
-  z-index: 1;
   width: 100%;
   max-width: 3000px;
+  z-index: 1;
 `;
 
 export const Main = styled.main`

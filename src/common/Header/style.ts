@@ -3,17 +3,20 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.header`
   display: flex;
-  height: ${HEADER_HEIGHT}px;
   align-items: center;
+  height: ${HEADER_HEIGHT}px;
   padding: 0 20px;
 `;
 
-export const Nav = styled.ul`
+export const BreadCrumbs = styled.ul`
   display: flex;
   align-items: center;
   color: ${COLOR.WHITE};
   font-size: 16px;
-  & > li:not(:first-child) {
+`;
+
+export const Crumb = styled.li`
+  &:not(:first-child) {
     &:before {
       content: '';
       display: inline-block;
@@ -27,19 +30,19 @@ export const Nav = styled.ul`
 `;
 
 export const Notification = styled.button`
+  width: 22px;
   position: relative;
-  width: 25px;
   margin-left: auto;
   color: ${COLOR.WHITE};
   &:after {
     content: '';
     position: absolute;
+    top: 0;
+    right: 2px;
     width: 10px;
     height: 10px;
     background: ${COLOR.RED_100};
     border-radius: 50%;
-    top: 0;
-    right: 2px;
   }
   :hover {
     color: ${COLOR.BLUE_60};

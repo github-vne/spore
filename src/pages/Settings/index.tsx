@@ -1,12 +1,12 @@
 import { Box, Layout, UserInfo } from 'common';
 import { STYLED } from 'const';
+import { PageType } from 'const/pages';
 import { action, computed, observable } from 'mobx';
 import { observer } from 'mobx-react';
 import { AddPhoto } from 'modals';
 import { UserEntity } from 'models';
 import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { PageType } from 'routers/MainRouter';
 import { MainStore, UserStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Button, Input, RawSvg, Textarea } from 'ui-kit';

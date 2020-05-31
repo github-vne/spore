@@ -1,5 +1,5 @@
 import 'globalCss.css';
-import { Auth, Chat, Components, Dictionary, Landing, Main, NotFound, Posts, Settings, Tasks, Users } from 'pages';
+import { Auth, Chat, Components, Dictionary, Main, NotFound, Posts, Settings, Tasks, Users } from 'pages';
 import React, { Suspense } from 'react';
 import { Route, Router, Switch } from 'react-router-dom';
 import { Inject } from 'typescript-ioc';

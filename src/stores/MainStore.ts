@@ -1,5 +1,5 @@
+import { PageName, PageType } from 'const/pages';
 import { action, computed, observable } from 'mobx';
-import { PageName, PageType } from 'routers/MainRouter';
 import { Singleton } from 'typescript-ioc';
 
 @Singleton
