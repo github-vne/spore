@@ -58,39 +58,3 @@ export const TabItem = styled.button`
     border-color: ${COLOR.BLUE_60};
   }
 `;
-
-export const TabContent = styled.ul`
-  overflow: auto;
-  &::-webkit-scrollbar {
-    width: 0;
-  }
-`;
-
-export const Task = styled.li`
-  display: grid;
-  align-items: center;
-  grid-template-columns: 1fr auto;
-  margin-bottom: 10px;
-  padding: 12px 5px 12px 10px;
-  border: 1px solid ${COLOR.GRAY_80};
-  border-radius: 4px;
-  word-break: break-all;
-  cursor: pointer;
-  &:hover {
-    background: ${RGBA.BLUE_HOVER};
-    border-color: ${COLOR.BLUE_60};
-  }
-`;
-
-export const TaskActions = styled.div`
-  display: flex;
-`;
-
-export const ActionBtn = styled.button`
-  width: 20px;
-  margin-right: 10px;
-  color: ${COLOR.BLUE_60};
-  &:hover {
-    color: ${COLOR.WHITE};
-  }
-`;
