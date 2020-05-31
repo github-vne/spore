@@ -21,7 +21,7 @@ export default class PostEntity extends BaseEntity {
   photoId: number;
 
   @observable
-  @serializable(custom(_ => 1, UserEntity.fromServer))
+  @serializable(custom(_ => this.id, UserEntity.fromServer))
   owner: UserEntity;
 
   @observable
