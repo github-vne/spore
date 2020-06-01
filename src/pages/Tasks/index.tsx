@@ -1,6 +1,7 @@
 import { Box, Layout } from 'common';
 import { STYLED } from 'const';
 import { PageType } from 'const/pages';
+import { TaskStatusName, TaskStatusValues } from 'const/task';
 import { action, observable } from 'mobx';
 import { observer } from 'mobx-react';
 import React from 'react';
@@ -35,6 +36,7 @@ export default class PageTasks extends React.Component<RouteComponentProps> {
 
   @action.bound
   render(): JSX.Element {
+    console.info(TaskStatusValues);
     return (
       <Layout>
         <Wrapper>
@@ -55,17 +57,13 @@ export default class PageTasks extends React.Component<RouteComponentProps> {
             <div>
               <Title>Список заданий (В разработке)</Title>
               <TabPanel>
-                {[
-                  { title: 'В работе', name: 'inWork' },
-                  { title: 'Выполнение', name: 'completed' },
-                  { title: 'Удалённые', name: 'removed' }
-                ].map((tab, index) => (
+                {TaskStatusValues.map(status => (
                   <TabItem
-                    key={index}
-                    active={this.taskStore.taskStatus === tab.name}
-                    onClick={this.taskStore.changeTaskStatus.bind(this, tab.name)}
+                    key={status}
+                    active={this.taskStore.taskStatus === status}
+                    onClick={this.taskStore.changeTaskStatus.bind(this, status)}
                   >
-                    {tab.title}
+                    {TaskStatusName[status]}
                   </TabItem>
                 ))}
               </TabPanel>
