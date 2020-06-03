@@ -1,6 +1,41 @@
+import { Box } from 'common';
 import { COLOR, RGBA } from 'const';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Textarea as _Textarea } from 'ui-kit';
+
+export const TasksList = styled(Box)`
+  display: grid;
+  grid-template-rows: repeat(2, auto) 1fr;
+  height: 100%;
+  overflow: hidden;
+`;
+
+export const TabPanel = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 15px;
+`;
+
+export const TabItem = styled.button`
+  text-align: center;
+  color: ${COLOR.WHITE};
+  padding: 10px;
+  font-size: 16px;
+  border-bottom: 1px solid ${COLOR.WHITE};
+  ${({ active }: { active: boolean }) =>
+    active
+      ? css`
+          color: ${COLOR.BLUE_60};
+          border-color: ${COLOR.BLUE_60};
+        `
+      : css`
+          :hover {
+            color: ${COLOR.GRAY_80};
+            border-color: ${COLOR.GRAY_80};
+          }
+        `}
+`;
 
 export const List = styled.ul`
   overflow: auto;
