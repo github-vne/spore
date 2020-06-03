@@ -15,4 +15,8 @@ export default class PostTransport {
   createPost(post?: PostEntity): Promise<PostEntity> {
     return this.api.post(this.POST_ENDPOINT, post.toServer()).then(PostEntity.fromServer);
   }
+
+  likePost(id: number): Promise<void> {
+    return this.api.post(this.POST_ENDPOINT);
+  }
 }

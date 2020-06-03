@@ -19,12 +19,15 @@ export default class PostStore {
     }
   });
 
-  pushNewPost(post: PostEntity): void {
-    this.postsHash.unshift(post);
+  @action.bound
+  async createPost(post: PostEntity): Promise<void> {
+    const res = await this.transport.createPost(post);
+    if (res) this.postsHash.unshift(post);
   }
 
   @action.bound
-  async createPost(post: PostEntity): Promise<PostEntity> {
-    return this.transport.createPost(post);
+  async likePost(id: number): Promise<void> {
+    const res = await this.transport.likePost(id);
+    console.info(res);
   }
 }
