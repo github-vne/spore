@@ -4,7 +4,7 @@ import { Textarea as _Textarea } from 'ui-kit';
 export const Wrapper = styled.div`
   display: grid;
   gap: 20px;
-  grid-template-columns: 45% 1fr;
+  grid-template-columns: 1fr 40%;
   height: 100%;
 `;
 

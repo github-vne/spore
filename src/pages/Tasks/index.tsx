@@ -37,6 +37,7 @@ export default class PageTasks extends React.Component<RouteComponentProps> {
     return (
       <Layout>
         <Wrapper>
+          <TaskList />
           <TaskSettings>
             <Box
               title="Создать задание"
@@ -50,7 +51,6 @@ export default class PageTasks extends React.Component<RouteComponentProps> {
             </Box>
             <Box title="Статистика (В разработке)" />
           </TaskSettings>
-          <TaskList />
         </Wrapper>
       </Layout>
     );
