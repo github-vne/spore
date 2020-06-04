@@ -22,15 +22,15 @@ export default class PageTasks extends React.Component<RouteComponentProps> {
   }
 
   @action.bound
-  private onChange(name: string, value: string): void {
-    this[name] = value;
+  private onChange(_: string, value: string): void {
+    this.taskText = value;
   }
 
   @action.bound
   createTask(): void {
     if (!this.taskText) return;
     this.taskStore.createTask(this.taskText);
-    this.taskText = undefined;
+    this.taskText = null;
   }
 
   render(): JSX.Element {
@@ -46,7 +46,7 @@ export default class PageTasks extends React.Component<RouteComponentProps> {
                 </Button>
               }
             >
-              <Textarea rows={4} name="taskText" onChange={this.onChange} placeholder="Текст задания" />
+              <Textarea rows={4} value={this.taskText} onChange={this.onChange} placeholder="Текст задания" />
             </Box>
             <Box title="Статистика (В разработке)" />
           </TaskSettings>
