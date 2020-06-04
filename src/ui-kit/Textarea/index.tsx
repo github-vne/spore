@@ -27,7 +27,6 @@ export default class UiTextarea extends FormControl<string, InputProps> {
 
   componentDidUpdate(): void {
     this.autoSize && autosize.update(this.textareaRef.current);
-    if (!this.props.value) this.resetValue();
   }
 
   @action.bound
