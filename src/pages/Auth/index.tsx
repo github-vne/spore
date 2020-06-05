@@ -34,7 +34,12 @@ export default class PageAuth extends React.Component<RouteComponentProps> {
   private async guest(): Promise<void> {
     const guestData = new AuthEntity();
     guestData.login = guestData.password = 'guest';
-    await this.userStore.signIn(guestData);
+    this.pending = true;
+    try {
+      await this.userStore.signIn(guestData);
+    } finally {
+      this.pending = false;
+    }
   }
 
   @action.bound

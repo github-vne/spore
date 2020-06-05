@@ -31,4 +31,7 @@ export const UploadPhoto = styled.button`
   height: 35px;
   cursor: pointer;
   color: ${COLOR.WHITE};
+  :hover {
+    color: ${COLOR.BLUE_60};
+  }
 `;
