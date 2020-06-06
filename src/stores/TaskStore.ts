@@ -23,6 +23,12 @@ export default class TaskStore {
   }
 
   @action.bound
+  changeTaskText(id: number, text: string): void {
+    const task = this.tasks.find(el => el.id === id);
+    task.text = text;
+  }
+
+  @action.bound
   createTask(text: string): void {
     const newTask = new TaskEntity({ text, status: TaskStatus.TODO, id: this.tasks.length });
     this._tasks.push(newTask);
