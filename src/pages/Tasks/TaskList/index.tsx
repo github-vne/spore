@@ -33,14 +33,14 @@ export default class TaskList extends Component {
   }
 
   @action.bound
-  editTaskText(task: TaskEntity): void {
+  editableTask(task: TaskEntity): void {
     this.editableText = task.text;
     this.editableId = task.id;
   }
 
   @action.bound
-  acceptChange(task: TaskEntity): void {
-    task.text = this.editableText;
+  acceptChange(taskId: number): void {
+    this.taskStore.changeTaskText(taskId, this.editableText);
     this.editableId = null;
   }
 
@@ -57,28 +57,46 @@ export default class TaskList extends Component {
         <List>
           {this.tasks
             .filter(task => task.status === this.activeTab)
-            .map(el => (
-              <Task key={el.id}>
-                {this.editableId === el.id ? (
+            .map(task => (
+              <Task key={task.id}>
+                {this.editableId === task.id ? (
                   <>
                     <Textarea styled={STYLED.PRIMARY} value={this.editableText} onChange={this.onChangeText} />
-                    <ActionBtn onClick={this.acceptChange.bind(this, el)}>
-                      <RawSvg icon="tasks/accept" />
-                    </ActionBtn>
+                    <TaskActions>
+                      <ActionBtn onClick={this.acceptChange.bind(this, task.id)}>
+                        <RawSvg icon="tasks/accept" />
+                      </ActionBtn>
+                      <ActionBtn onClick={this.taskStore.changeTaskStatus.bind(this, task.id, 'delete')}>
+                        <RawSvg icon="tasks/delete" />
+                      </ActionBtn>
+                    </TaskActions>
                   </>
                 ) : (
                   <>
-                    <p>{el.text}</p>
+                    <p>{task.text}</p>
                     <TaskActions>
-                      <ActionBtn onClick={this.editTaskText.bind(this, el)}>
-                        <RawSvg icon="tasks/edit" />
-                      </ActionBtn>
-                      <ActionBtn onClick={this.taskStore.changeTaskStatus.bind(this, el.id, TaskStatus.DONE)}>
-                        <RawSvg icon="tasks/complete" />
-                      </ActionBtn>
-                      <ActionBtn onClick={this.taskStore.changeTaskStatus.bind(this, el.id, 's')}>
-                        <RawSvg icon="tasks/delete" />
-                      </ActionBtn>
+                      {task.status === TaskStatus.TODO && (
+                        <>
+                          <ActionBtn onClick={this.editableTask.bind(this, task)}>
+                            <RawSvg icon="tasks/edit" />
+                          </ActionBtn>
+                          <ActionBtn
+                            onClick={this.taskStore.changeTaskStatus.bind(this, task.id, TaskStatus.IN_PROGRESS)}
+                          >
+                            <RawSvg icon="tasks/work" />
+                          </ActionBtn>
+                        </>
+                      )}
+                      {task.status === TaskStatus.IN_PROGRESS && (
+                        <>
+                          <ActionBtn onClick={this.taskStore.changeTaskStatus.bind(this, task.id, TaskStatus.DONE)}>
+                            <RawSvg icon="tasks/complete" />
+                          </ActionBtn>
+                          <ActionBtn onClick={this.taskStore.changeTaskStatus.bind(this, task.id, 'delete')}>
+                            <RawSvg icon="tasks/delete" />
+                          </ActionBtn>
+                        </>
+                      )}
                     </TaskActions>
                   </>
                 )}
