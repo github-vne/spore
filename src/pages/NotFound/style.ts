@@ -13,7 +13,7 @@ export const Content = styled.main`
 `;
 
 export const Image = styled.img`
-  height: 80vh;
+  height: 50vh;
 `;
 
 export const Comeback = styled(Button).attrs({
