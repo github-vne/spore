@@ -27,9 +27,9 @@ export default class PostList extends React.Component {
             {post.photo && <Images src={post.photo} alt="user_images" />}
             <Text>{post.text}</Text>
             <ActionPanel>
-              <ActionButton>
+              {/* <ActionButton>
                 <RawSvg icon="post/comment" />
-              </ActionButton>
+              </ActionButton> */}
               <ActionButton onClick={this.postStore.likePost.bind(this, post.id)}>
                 <RawSvg icon="post/like" />
                 <span>{post.likes}</span>
