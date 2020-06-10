@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const SearchPanel = styled.div`
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 20px;
+  gap: 10px;
 `;
 
 export const UserList = styled.div`
@@ -12,6 +12,10 @@ export const UserList = styled.div`
   grid-gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   padding: 20px 0;
+`;
+
+export const Status = styled.h3`
+  color: ${COLOR.BLUE_60};
 `;
 
 export const UserItem = styled.div`
