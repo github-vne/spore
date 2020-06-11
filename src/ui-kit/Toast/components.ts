@@ -48,6 +48,7 @@ export const Header = styled.div`
 `;
 
 export const CloseBtn = styled.button`
+  width: 24px;
   flex: none;
   cursor: pointer;
   margin: 0 0 auto auto;

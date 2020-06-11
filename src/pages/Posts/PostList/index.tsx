@@ -31,7 +31,7 @@ export default class PostList extends React.Component {
                 <RawSvg icon="post/comment" />
               </ActionButton> */}
               <ActionButton onClick={this.postStore.likePost.bind(this, post.id)}>
-                <RawSvg icon="post/like" />
+                <RawSvg icon="post/like" width={24} />
                 <span>{post.likes}</span>
               </ActionButton>
             </ActionPanel>
