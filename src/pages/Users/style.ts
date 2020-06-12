@@ -1,10 +1,20 @@
 import { COLOR, RGBA } from 'const';
 import styled from 'styled-components';
 
-export const SearchPanel = styled.div`
+export const Settings = styled.div`
+  margin-top: 10px;
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 10px;
+`;
+
+export const FilterPanel = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const SortBtn = styled.button`
+  color: ${COLOR.WHITE};
 `;
 
 export const UserList = styled.div`

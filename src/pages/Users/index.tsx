@@ -9,8 +9,8 @@ import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { ContactStore, MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
-import { Avatar, Button, Input, Loader } from 'ui-kit';
-import { SearchPanel, Status, UserItem, UserList } from './style';
+import { Avatar, Button, Input, Loader, RawSvg } from 'ui-kit';
+import { FilterPanel, Settings, SortBtn, Status, UserItem, UserList } from './style';
 
 @observer
 export default class PageUsers extends React.Component<RouteComponentProps> {
@@ -54,10 +54,18 @@ export default class PageUsers extends React.Component<RouteComponentProps> {
   render(): JSX.Element {
     return (
       <Layout>
-        <SearchPanel>
-          <Input placeholder="Поиск пользователей" type="search" name="filter" onChange={this.onFilterChange} />
+        <Input placeholder="Поиск пользователей" type="search" name="filter" onChange={this.onFilterChange} />
+        <Settings>
+          <FilterPanel>
+            <SortBtn>
+              <RawSvg icon="users/sort_1" width={24} />
+            </SortBtn>
+            <SortBtn>
+              <RawSvg icon="users/sort_2" width={24} />
+            </SortBtn>
+          </FilterPanel>
           <Button>Фильтры (В разработке)</Button>
-        </SearchPanel>
+        </Settings>
         <UserList>{this.userList}</UserList>
       </Layout>
     );
