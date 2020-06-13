@@ -45,16 +45,6 @@ export class NewPost extends Modal {
     return !this.tempPost.text || !this.tempPost.title || !this.fileService.uploading;
   }
 
-  @computed private get footerEl(): JSX.Element {
-    return (
-      <>
-        <Button onClick={this.createPost} disabled={this.disabledBtn} pending={this.pending}>
-          Создать
-        </Button>
-      </>
-    );
-  }
-
   @computed private get attachmentsEl(): JSX.Element {
     const file = this.fileService.uploading;
 
@@ -91,7 +81,14 @@ export class NewPost extends Modal {
 
   render(): JSX.Element {
     return (
-      <ModalLayout header="Создать новый пост" footer={this.footerEl}>
+      <ModalLayout
+        header="Создать новый пост"
+        footer={
+          <Button onClick={this.createPost} disabled={this.disabledBtn} pending={this.pending}>
+            Создать
+          </Button>
+        }
+      >
         <Content>{this.contentEl}</Content>
       </ModalLayout>
     );

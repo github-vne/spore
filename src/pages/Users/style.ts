@@ -14,7 +14,13 @@ export const FilterPanel = styled.div`
 `;
 
 export const SortBtn = styled.button`
+  height: 24px;
+  width: 24px;
   color: ${COLOR.WHITE};
+  margin-right: 10px;
+  :hover {
+    color: ${COLOR.BLUE_60};
+  }
 `;
 
 export const UserList = styled.div`

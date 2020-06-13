@@ -58,10 +58,10 @@ export default class PageUsers extends React.Component<RouteComponentProps> {
         <Settings>
           <FilterPanel>
             <SortBtn>
-              <RawSvg icon="users/sort_1" width={24} />
+              <RawSvg icon="users/sort_1" />
             </SortBtn>
             <SortBtn>
-              <RawSvg icon="users/sort_2" width={24} />
+              <RawSvg icon="users/sort_2" />
             </SortBtn>
           </FilterPanel>
           <Button>Фильтры (В разработке)</Button>

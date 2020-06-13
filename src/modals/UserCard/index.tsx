@@ -1,10 +1,9 @@
 import { UserInfo } from 'common';
-import { SIZE } from 'const';
 import { observer } from 'mobx-react';
 import { Modal, ModalLayout } from 'modals/Modal';
 import { UserEntity } from 'models';
 import React from 'react';
-import { Background, Content, UserAvatar } from './style';
+import { Background, Content } from './style';
 
 @observer
 export class UserCard extends Modal<{ user: UserEntity }> {
@@ -19,7 +18,6 @@ export class UserCard extends Modal<{ user: UserEntity }> {
         <Content>
           <Background />
           <UserInfo user={this.user} />
-          {/* <UserAvatar image={this.user?.photo} size={SIZE.EXTRA_LARGE} /> */}
         </Content>
       </ModalLayout>
     );

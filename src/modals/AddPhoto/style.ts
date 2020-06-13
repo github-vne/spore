@@ -1,6 +1,4 @@
-import { COLOR, STYLED } from 'const';
 import styled from 'styled-components';
-import { Button, Input as _Input, Textarea as _Textarea } from 'ui-kit';
 
 export const Content = styled.div`
   height: 400px;

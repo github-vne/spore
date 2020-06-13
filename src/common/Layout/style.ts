@@ -6,13 +6,11 @@ export const Layout = styled.div`
   display: flex;
   height: 100vh;
   background: ${GRADIENT.BACKGROUND};
-  z-index: 0;
 `;
 
 export const Container = styled.div`
   width: 100%;
   max-width: 3000px;
-  z-index: 1;
 `;
 
 export const Main = styled.main`
