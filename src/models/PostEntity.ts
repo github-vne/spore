@@ -3,6 +3,21 @@ import { UserEntity } from 'models';
 import { alias, custom, deserialize, serializable, SKIP } from 'serializr';
 import BaseEntity from './BaseEntity';
 
+export class LikeEntity {
+  @observable
+  @serializable
+  count: number;
+
+  @observable
+  @serializable(alias('user_likes'))
+  userLikes: boolean;
+
+  static fromServer(rawData: Record<string, any>): LikeEntity {
+    return deserialize(LikeEntity, rawData);
+  }
+}
+
+// tslint:disable-next-line:max-classes-per-file
 export default class PostEntity extends BaseEntity {
   @observable
   @serializable
@@ -25,13 +40,8 @@ export default class PostEntity extends BaseEntity {
   owner: UserEntity;
 
   @observable
-  @serializable(
-    custom(
-      _ => SKIP,
-      val => val.count
-    )
-  )
-  likes: number;
+  @serializable(custom(_ => SKIP, LikeEntity.fromServer))
+  likes: LikeEntity;
 
   static fromServer(rawData: object): PostEntity {
     if (!rawData) return;

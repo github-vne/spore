@@ -27,7 +27,13 @@ export default class PostStore {
 
   @action.bound
   async likePost(id: number): Promise<void> {
-    const res = await this.transport.likePost(id);
-    console.info(res);
+    const post = this.postsHash.find(post => post.id === id);
+    try {
+      const res = await this.transport.changeLike(id);
+      post.likes.count = res.count;
+      post.likes.userLikes = res.userLikes;
+    } catch (err) {
+      console.error(err);
+    }
   }
 }

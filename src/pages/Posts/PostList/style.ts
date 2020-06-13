@@ -57,14 +57,11 @@ export const ActionPanel = styled.div`
 
 export const ActionButton = styled.button`
   cursor: pointer;
-  color: ${COLOR.WHITE};
+  color: ${({ active }: { active: boolean }) => (active ? COLOR.BLUE_60 : COLOR.WHITE)};
   display: flex;
   align-items: center;
   :hover {
-    color: #33b5e5;
-  }
-  & + & {
-    margin-left: 15px;
+    opacity: 0.7;
   }
   > span {
     margin-left: 5px;

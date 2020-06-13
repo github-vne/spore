@@ -1,4 +1,5 @@
 import { ListResponse, ListResponseType, PostEntity } from 'models';
+import { LikeEntity } from 'models/PostEntity';
 import { Inject, Singleton } from 'typescript-ioc';
 import { Api } from 'utils';
 
@@ -6,6 +7,7 @@ import { Api } from 'utils';
 export default class PostTransport {
   @Inject api: Api;
 
+  private LIKES: string = 'likes/change';
   private POST_ENDPOINT: string = 'posts';
 
   retrievePostList(): Promise<ListResponseType<PostEntity>> {
@@ -16,7 +18,7 @@ export default class PostTransport {
     return this.api.post(this.POST_ENDPOINT, post.toServer()).then(PostEntity.fromServer);
   }
 
-  likePost(id: number): Promise<void> {
-    return this.api.post(this.POST_ENDPOINT);
+  changeLike(id: number): Promise<LikeEntity> {
+    return this.api.patch(this.LIKES, { id, type: 'post' }).then(LikeEntity.fromServer);
   }
 }
