@@ -17,8 +17,8 @@ interface RequestConfig {
   apiVer?: false | string;
 }
 
-// export const BACKEND_URL = 'http://cuddly-parakeet.herokuapp.com/';
-export const BACKEND_URL = 'http://25.73.35.40/';
+export const BACKEND_URL = 'http://cuddly-parakeet.herokuapp.com/';
+// export const BACKEND_URL = 'http://25.73.35.40/';
 
 @Singleton
 export default class Api {

@@ -10,7 +10,12 @@ import { RouteComponentProps } from 'react-router-dom';
 import { ContactStore, MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Avatar, Button, Input, Loader, RawSvg } from 'ui-kit';
-import { FilterPanel, Settings, SortBtn, Status, UserItem, UserList } from './style';
+import { FilterPanel, Settings, SortBtn, Status, UserInfo, UserItem, UserList } from './style';
+
+enum ViewCard {
+  SMALL = 'small',
+  LARGE = 'large'
+}
 
 @observer
 export default class PageUsers extends React.Component<RouteComponentProps> {
@@ -18,6 +23,7 @@ export default class PageUsers extends React.Component<RouteComponentProps> {
   @Inject private contactStore: ContactStore;
 
   @observable private filter: string;
+  @observable private viewCard: ViewCard = ViewCard.SMALL;
 
   componentDidMount(): void {
     this.mainStore.changeCurrentPage(PageType.USERS);
@@ -33,6 +39,12 @@ export default class PageUsers extends React.Component<RouteComponentProps> {
     this[name] = value;
   };
 
+  @action.bound
+  private switchView(view: ViewCard): void {
+    if (this.viewCard === view) return;
+    this.viewCard = view;
+  }
+
   @computed private get userList(): JSX.Element | Array<JSX.Element> {
     let users = this.contactStore.userList.get();
     if (this.contactStore.userList.busy) return <Loader fullScreen size={SIZE.EXTRA_LARGE} />;
@@ -42,6 +54,8 @@ export default class PageUsers extends React.Component<RouteComponentProps> {
     if (this.filter) users = users.filter(user => user.fullName.toLowerCase().includes(this.filter.toLowerCase()));
 
     if (!users.length) return <Status>Не найдено</Status>;
+
+    if (this.viewCard === ViewCard.LARGE) return users.map(user => <UserInfo user={user} key={user.id} />);
 
     return users.map(user => (
       <UserItem onClick={this.openModal.bind(this, user)} key={user.id}>
@@ -57,12 +71,11 @@ export default class PageUsers extends React.Component<RouteComponentProps> {
         <Input placeholder="Поиск пользователей" type="search" name="filter" onChange={this.onFilterChange} />
         <Settings>
           <FilterPanel>
-            <SortBtn>
-              <RawSvg icon="users/sort_1" />
-            </SortBtn>
-            <SortBtn>
-              <RawSvg icon="users/sort_2" />
-            </SortBtn>
+            {Object.values(ViewCard).map(view => (
+              <SortBtn onClick={this.switchView.bind(this, view)} key={view} active={view === this.viewCard}>
+                <RawSvg icon={`users/view_${view}`} />
+              </SortBtn>
+            ))}
           </FilterPanel>
           <Button>Фильтры (В разработке)</Button>
         </Settings>
