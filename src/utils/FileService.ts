@@ -17,6 +17,12 @@ export default class FileService {
   @observable
   error: UploadingFile;
 
+  dropFile(): void {
+    this.fileInput.value = null;
+    this.uploading = null;
+    this.error = null;
+  }
+
   openFileDialog(): void {
     this.fileInput.value = null;
     this.fileInput.removeEventListener('change', this.fileChangeHandler);

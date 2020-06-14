@@ -14,7 +14,11 @@ export class AddPhoto extends Modal {
   static width: string = '400px';
 
   @Inject private userStore: UserStore;
-  @observable private fileService: FileService = new FileService();
+  @Inject private fileService: FileService;
+
+  componentWillUnmount(): void {
+    this.fileService.dropFile();
+  }
 
   @action.bound
   openFileDialog(): void {

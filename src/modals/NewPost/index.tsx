@@ -14,10 +14,14 @@ export class NewPost extends Modal {
   static width: string = '500px';
 
   @Inject private postStore: PostStore;
+  @Inject private fileService: FileService;
 
   @observable private pending: boolean;
   @observable private tempPost: PostEntity = new PostEntity();
-  @observable private fileService: FileService = new FileService();
+
+  componentWillUnmount(): void {
+    this.fileService.dropFile();
+  }
 
   @action.bound
   private onChange(name: string, value: string): void {
@@ -55,7 +59,7 @@ export class NewPost extends Modal {
         {file instanceof AttachmentEntity ? (
           <>
             <DemoImg alt="demo" src={file.url} />
-            <button type="button" onClick={this.fileService.deleteError}>
+            <button type="button" onClick={this.fileService.deleteUploading}>
               Удалить фото
             </button>
           </>
