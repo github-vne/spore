@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import RawSvg from 'ui-kit/RawSvg';
 import { ToastType } from './types';
 
-const ToastIconColor = {
-  [ToastType.INFO]: `${COLOR.BLUE_50}`,
-  [ToastType.ERROR]: `${COLOR.RED_100}`,
-  [ToastType.SUCCESS]: `${COLOR.GREEN_100}`,
-  [ToastType.WARNING]: `${COLOR.ORANGE_100}`
+const ToastBackground = {
+  [ToastType.INFO]: COLOR.BLUE_40,
+  [ToastType.ERROR]: COLOR.PINK_100,
+  [ToastType.SUCCESS]: COLOR.GREEN_80,
+  [ToastType.WARNING]: COLOR.PINK_10
 };
 
 export const ToastsList = styled.div`
@@ -22,11 +22,11 @@ export const ToastsList = styled.div`
 
 export const Toast = styled.div`
   animation: toastAnimation 0.3s;
-  background: ${COLOR.WHITE};
+  background: ${({ type }: { type: ToastType }) => (type ? ToastBackground[type] : ToastBackground[ToastType.INFO])};
+  color: ${COLOR.WHITE};
   border-radius: 4px;
-  color: ${COLOR.BLACK};
   margin-bottom: 12px;
-  padding: 15px;
+  padding: 10px 15px 15px;
   position: relative;
   width: 500px;
   transition: 0.3s;
@@ -42,28 +42,21 @@ export const Toast = styled.div`
 
 export const Header = styled.div`
   display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-  color: ${({ type }: { type: ToastType }) => (type ? ToastIconColor[type] : COLOR.BLACK)};
+  align-items: flex-end;
+  margin-bottom: 10px;
+  font-weight: bold;
 `;
 
 export const CloseBtn = styled.button`
+  color: ${COLOR.WHITE};
   width: 24px;
+  height: 24px;
   flex: none;
   cursor: pointer;
   margin: 0 0 auto auto;
 `;
 
 export const Icon = styled(RawSvg)`
-  height: 24px;
   width: 24px;
-  margin: 0 8px auto 0;
-`;
-
-export const Title = styled.h5`
-  overflow: hidden;
-`;
-
-export const Content = styled.p`
-  color: ${COLOR.GRAY_80};
+  margin-right: 5px;
 `;

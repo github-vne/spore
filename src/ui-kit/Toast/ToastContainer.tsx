@@ -3,7 +3,7 @@ import { observer } from 'mobx-react';
 import React from 'react';
 import { Inject } from 'typescript-ioc';
 import { RawSvg } from 'ui-kit';
-import { CloseBtn, Content, Header, Icon, Title, Toast, ToastsList } from './components';
+import { CloseBtn, Header, Icon, Toast, ToastsList } from './components';
 import { ToastService } from './ToastService';
 import { ToastDefinition } from './types';
 
@@ -20,15 +20,15 @@ export class ToastContainer extends React.Component {
     return (
       <ToastsList>
         {this.toastService.toasts.map(({ id, type, icon, title, content }: ToastDefinition) => (
-          <Toast key={id}>
-            <Header type={type}>
+          <Toast key={id} type={type}>
+            <Header>
               <Icon icon={icon} />
-              <Title>{title}</Title>
+              <h5>{title}</h5>
               <CloseBtn onClick={this.handleCloseClick.bind(this, id)}>
                 <RawSvg icon="common/close" />
               </CloseBtn>
             </Header>
-            {content && <Content>{content}</Content>}
+            {content && <p>{content}</p>}
           </Toast>
         ))}
       </ToastsList>

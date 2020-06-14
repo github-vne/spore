@@ -5,12 +5,14 @@ export enum COLOR {
   GRAY_80 = '#767d8a',
   BLUE_10 = '#27293d',
   BLUE_20 = '#2b3553',
+  BLUE_40 = '#419ef9',
   BLUE_50 = '#54b9cd',
   BLUE_60 = '#1d8cf8',
-  GREEN_80 = '#2dce89',
-  GREEN_100 = '#6AC234',
+  GREEN_80 = '#00bf9a',
   ORANGE_100 = '#FF9E00',
-  RED_100 = '#FF3600'
+  RED_100 = '#FF3600',
+  PINK_10 = '#ff9f89',
+  PINK_100 = '#fd77a4'
 }
 
 export enum GRADIENT {
