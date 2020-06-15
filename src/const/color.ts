@@ -17,17 +17,17 @@ export enum COLOR {
 
 export enum GRADIENT {
   BACKGROUND = 'linear-gradient(#1e1e2f, #1e1e24)',
-  SIDEBAR = 'linear-gradient(0deg, #3358f4, #1d8cf8)',
-  DEFAULT = 'linear-gradient(to bottom left,#344675,#263148,#344675)',
-  PRIMARY = 'linear-gradient(to bottom left,#1d8cf8,#3358f4,#1d8cf8)',
-  SECONDARY = 'linear-gradient(to bottom left,#e14eca,#ba54f5,#e14eca)',
-  TERTIARY = 'linear-gradient(to bottom left,#ff8d72,#ff6491,#ff8d72)'
+  SIDEBAR = 'linear-gradient(0deg, #3358f4, #1d8cf8)'
 }
 
 export enum SHADOW {
   BOX = '0 1px 20px 0 rgba(0,0,0,0.1)'
 }
 
-export enum RGBA {
-  BLUE_HOVER = 'rgba(29, 140, 248, 0.2)'
-}
+export const hexToRgba = (hex: string, opacity: number = 1): string => {
+  const bigint = parseInt(hex.split('#')[1], 16);
+  const r = (bigint >> 16) & 255;
+  const g = (bigint >> 8) & 255;
+  const b = bigint & 255;
+  return `rgba(${r},${g},${b},${opacity})`;
+};

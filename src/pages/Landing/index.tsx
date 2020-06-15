@@ -22,7 +22,7 @@ export default class PageHome extends React.Component<RouteComponentProps> {
           <MainForm>
             <Logo src={require('./image/logo.svg')} alt="logo" />
             <Tagline>Портфолио Front-end разработчика</Tagline>
-            <SporeBtn href="/" styled={STYLED.PRIMARY}>
+            <SporeBtn to="/" styled={STYLED.PRIMARY}>
               Spore
             </SporeBtn>
           </MainForm>

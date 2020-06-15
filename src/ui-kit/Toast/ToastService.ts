@@ -8,7 +8,7 @@ export class ToastService {
   @observable toasts: Array<ToastDefinition> = [];
 
   @action.bound
-  showToast(type: ToastType, title: string, content?: string, icon?: string, lifeTime: number = 3000): string {
+  showToast(type: ToastType, title: string, content?: string, icon?: string, lifeTime?: number): string {
     const toast: ToastDefinition = {
       id: uuidv4(),
       type,

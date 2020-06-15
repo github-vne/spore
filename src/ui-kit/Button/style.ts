@@ -1,9 +1,10 @@
-import { COLOR, GRADIENT, STYLED } from 'const';
+import { COLOR, hexToRgba, STYLED } from 'const';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import RawSvg from 'ui-kit/RawSvg';
 
 const BtnStyle = css`
+  position: relative;
   font-size: 13px;
   border: none;
   display: inline-flex;
@@ -12,31 +13,34 @@ const BtnStyle = css`
   border-radius: 5px;
   padding: 6px 12px;
   cursor: pointer;
-  color: ${COLOR.WHITE};
   font-size: 1em;
   min-width: 80px;
   padding: 0.6em 1.5em;
-  transition: 0.2;
+  transition: 0.2s;
   ${({ styled }: { styled: STYLED }) => {
-    let _backgound: string;
+    let _color: string;
     switch (styled) {
       case STYLED.PRIMARY:
-        _backgound = GRADIENT.PRIMARY;
+        _color = COLOR.GREEN_80;
         break;
       case STYLED.SECONDARY:
-        _backgound = GRADIENT.SECONDARY;
+        _color = COLOR.PINK_100;
         break;
       case STYLED.TERTIARY:
-        _backgound = GRADIENT.TERTIARY;
+        _color = COLOR.PINK_10;
         break;
       default:
-        _backgound = GRADIENT.DEFAULT;
+        _color = COLOR.BLUE_40;
         break;
     }
     return css`
-      background: ${_backgound};
+      color: ${_color};
+      border: 1px solid ${_color};
+      &:hover {
+        background: ${hexToRgba(_color, 0.2)};
+      }
     `;
-  }}
+  }};
 `;
 
 export const ButtonRawSvg = styled(RawSvg)`
@@ -53,5 +57,9 @@ export const Button = styled.button.attrs({ type: 'button' })`
 `;
 
 export const BtnLink = styled(Link)`
+  ${BtnStyle}
+`;
+
+export const BtnHref = styled.a`
   ${BtnStyle}
 `;

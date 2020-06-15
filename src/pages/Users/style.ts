@@ -1,5 +1,5 @@
 import { UserInfo as _UserInfo } from 'common';
-import { COLOR, RGBA } from 'const';
+import { COLOR, hexToRgba } from 'const';
 import styled, { css } from 'styled-components';
 
 export const Settings = styled.div`
@@ -40,7 +40,7 @@ const StyleUserCard = css`
   border-radius: 4px;
   overflow: hidden;
   &:hover {
-    background: ${RGBA.BLUE_HOVER};
+    background: ${hexToRgba(COLOR.BLUE_60, 0.2)};
     border-color: ${COLOR.BLUE_60};
     color: ${COLOR.BLUE_60};
   }

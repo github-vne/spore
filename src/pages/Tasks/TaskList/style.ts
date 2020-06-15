@@ -1,5 +1,5 @@
 import { Box } from 'common';
-import { COLOR, RGBA } from 'const';
+import { COLOR, hexToRgba } from 'const';
 import styled, { css } from 'styled-components';
 import { Textarea as _Textarea } from 'ui-kit';
 
@@ -56,7 +56,7 @@ export const Task = styled.li`
   word-break: break-all;
   cursor: pointer;
   &:hover {
-    background: ${RGBA.BLUE_HOVER};
+    background: ${hexToRgba(COLOR.BLUE_60, 0.2)};
     border-color: ${COLOR.BLUE_60};
   }
 `;

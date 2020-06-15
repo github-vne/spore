@@ -1,13 +1,22 @@
 import { SIZE } from 'const';
 import React from 'react';
 import { Loader } from 'ui-kit';
-import { BtnLink, Button, ButtonRawSvg } from './style';
+import { BtnHref, BtnLink, Button, ButtonRawSvg } from './style';
 import { ButtonProps } from './types';
 
-export default ({ children, styled, icon, className, pending, href, disabled, ...props }: ButtonProps) => {
+export default ({ children, styled, icon, className, pending, href, to, disabled, ...props }: ButtonProps) => {
   if (href) {
     return (
-      <BtnLink to={href} styled={styled} className={className}>
+      <BtnHref href={href} styled={styled} className={className} {...props}>
+        {icon && <ButtonRawSvg icon={icon} />}
+        <span>{children}</span>
+      </BtnHref>
+    );
+  }
+
+  if (to) {
+    return (
+      <BtnLink to={to} styled={styled} className={className} {...props}>
         {icon && <ButtonRawSvg icon={icon} />}
         <span>{children}</span>
       </BtnLink>

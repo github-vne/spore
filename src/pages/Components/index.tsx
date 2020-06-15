@@ -82,9 +82,15 @@ export default class PageComponents extends React.Component<RouteComponentProps>
         </GroupComponent>
         <GroupComponent title="Toast">
           <Button onClick={this.openToast.bind(this, ToastType.INFO)}>Info</Button>
-          <Button onClick={this.openToast.bind(this, ToastType.SUCCESS)}>Success</Button>
-          <Button onClick={this.openToast.bind(this, ToastType.WARNING)}>Warning</Button>
-          <Button onClick={this.openToast.bind(this, ToastType.ERROR)}>Error</Button>
+          <Button styled={STYLED.PRIMARY} onClick={this.openToast.bind(this, ToastType.SUCCESS)}>
+            Success
+          </Button>
+          <Button styled={STYLED.TERTIARY} onClick={this.openToast.bind(this, ToastType.WARNING)}>
+            Warning
+          </Button>
+          <Button styled={STYLED.SECONDARY} onClick={this.openToast.bind(this, ToastType.ERROR)}>
+            Error
+          </Button>
         </GroupComponent>
       </Layout>
     );
