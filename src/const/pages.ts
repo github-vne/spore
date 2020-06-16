@@ -26,7 +26,7 @@ export const PageLink = {
 };
 
 export const PageName = {
-  [PageType.CHAT]: 'Чат (В разработке)',
+  [PageType.CHAT]: 'Чат',
   [PageType.AUTH]: 'Вход',
   [PageType.USERS]: 'Юзеры',
   [PageType.TASKS]: 'Задачи',

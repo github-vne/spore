@@ -35,7 +35,7 @@ export const NavItem = styled(Link)`
   overflow: hidden;
   margin-bottom: 20px;
   font-size: 16px;
-  color: ${({ selected }: { selected?: boolean }) => (selected ? COLOR.RED_100 : COLOR.WHITE)};
+  color: ${({ selected }: { selected?: boolean }) => (selected ? COLOR.PINK_10 : COLOR.WHITE)};
 `;
 
 export const ButtonPanel = styled.div`

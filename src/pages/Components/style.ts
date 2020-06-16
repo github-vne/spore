@@ -6,7 +6,7 @@ export const Group = styled.div`
   grid-gap: 5px;
   align-items: flex-end;
   padding: 15px;
-  border: 1px solid ${COLOR.WHITE};
+  border: 1px solid ${COLOR.BLUE_60};
   border-radius: 5px;
   margin: 5px 0 20px;
   > *:not(:last-child) {
