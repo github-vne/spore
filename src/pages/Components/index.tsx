@@ -7,7 +7,7 @@ import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { MainStore } from 'stores';
 import { Inject } from 'typescript-ioc';
-import { Avatar, Button, Input, Loader, ToastType } from 'ui-kit';
+import { Avatar, Button, Input, Loader, Select, ToastType } from 'ui-kit';
 import { NotificationService } from 'utils';
 import { Group } from './style';
 
@@ -49,7 +49,9 @@ export default class PageComponents extends React.Component<RouteComponentProps>
           <Button styled={STYLED.TERTIARY}>Tertiary</Button>
         </GroupComponent>
         <GroupComponent title="Button Icon">
-          <Button icon="common/send">Icon</Button>
+          <Button icon="common/send" styled={STYLED.PRIMARY}>
+            Icon
+          </Button>
           <Button pending>Icon</Button>
           <Button disabled>Disabled</Button>
         </GroupComponent>
@@ -66,6 +68,9 @@ export default class PageComponents extends React.Component<RouteComponentProps>
           <Avatar size={SIZE.MIDDLE} />
           <Avatar size={SIZE.SMALL} />
           <Avatar size={SIZE.EXTRA_SMALL} />
+        </GroupComponent>
+        <GroupComponent title="Select">
+          <Select />
         </GroupComponent>
         <GroupComponent title="Input">
           <Input name="input0" onChange={this.onChange} placeholder="Label" label="With Label" />
