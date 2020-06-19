@@ -1,19 +1,12 @@
 import { action, computed, observable } from 'mobx';
 import { observer } from 'mobx-react';
 import React, { RefObject } from 'react';
+import ReactDOM from 'react-dom';
 import { Arrow, List, Option, Select, Wrapper } from './style';
-
-interface SelectProps {
-  list: any;
-}
-
-interface OptionProps {
-  title: string;
-  value: string | number;
-}
+import { OptionProps, SelectProps } from './type';
 
 @observer
-export default class UiSelect extends React.Component {
+export default class UiSelect extends React.Component<SelectProps> {
   @observable private openList: boolean = true;
   @observable private selected: OptionProps;
 
@@ -22,6 +15,13 @@ export default class UiSelect extends React.Component {
     { title: 'name1', value: 'value' },
     { title: 'name2', value: 'value' },
     { title: 'name3', value: 'value' },
+    { title: 'name4', value: 'value' },
+    { title: 'name4', value: 'value' },
+    { title: 'name4', value: 'value' },
+    { title: 'name4', value: 'value' },
+    { title: 'name4', value: 'value' },
+    { title: 'name4', value: 'value' },
+    { title: 'name4', value: 'value' },
     { title: 'name4', value: 'value' }
   ];
 
@@ -34,9 +34,10 @@ export default class UiSelect extends React.Component {
   }
 
   @action.bound
-  private closeList(): void {
-    this.openList = false;
-  }
+  private closeList = (e: any): void => {
+    const domNode = ReactDOM.findDOMNode(this.selectRef.current);
+    if (!domNode || !domNode.contains(e.target)) this.openList = false;
+  };
 
   @action.bound
   private toggle(): void {
