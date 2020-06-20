@@ -71,6 +71,7 @@ export default class PageComponents extends React.Component<RouteComponentProps>
         </GroupComponent>
         <GroupComponent title="Select">
           <Select />
+          <Select />
         </GroupComponent>
         <GroupComponent title="Input">
           <Input name="input0" onChange={this.onChange} placeholder="Label" label="With Label" />
