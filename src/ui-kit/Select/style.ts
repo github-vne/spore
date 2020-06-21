@@ -29,7 +29,7 @@ export const List = styled.ul`
   position: absolute;
   top: 45px;
   height: auto;
-  max-height: 170px;
+  max-height: 210px;
   overflow: auto;
   width: 100%;
   background: ${COLOR.BLUE_10};

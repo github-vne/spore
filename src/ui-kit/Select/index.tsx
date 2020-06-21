@@ -7,23 +7,12 @@ import { OptionProps, SelectProps } from './type';
 
 @observer
 export default class UiSelect extends React.Component<SelectProps> {
-  @observable private openList: boolean = true;
-  @observable private selected: OptionProps;
+  @observable private openList: boolean;
+  @observable private selected: OptionProps = this.props.defaultValue || null;
 
   private selectRef: RefObject<HTMLDivElement> = React.createRef<HTMLDivElement>();
-  private exampleList: Array<OptionProps> = [
-    { title: 'name1', value: 'value' },
-    { title: 'name2', value: 'value' },
-    { title: 'name3', value: 'value' },
-    { title: 'name4', value: 'value' },
-    { title: 'name4', value: 'value' },
-    { title: 'name4', value: 'value' },
-    { title: 'name4', value: 'value' },
-    { title: 'name4', value: 'value' },
-    { title: 'name4', value: 'value' },
-    { title: 'name4', value: 'value' },
-    { title: 'name4', value: 'value' }
-  ];
+  private options: Array<OptionProps> = this.props.options || [];
+  private clearOption: OptionProps = { title: 'Не выбирать', value: null };
 
   componentDidMount(): void {
     window.addEventListener('click', this.closeList);
@@ -48,14 +37,18 @@ export default class UiSelect extends React.Component<SelectProps> {
   private selectOption(option: OptionProps): void {
     this.selected = option;
     this.openList = false;
+    this.props.onChange && this.props.onChange(this.props.name, this.selected.value);
   }
 
   @computed private get list(): JSX.Element {
-    if (!this.openList || !this.exampleList.length) return;
+    if (!this.openList || !this.options.length) return;
 
     return (
       <List>
-        {this.exampleList.map((el, i) => (
+        {this.props.clearable ? (
+          <Option onClick={this.selectOption.bind(this, this.clearOption)}>{this.clearOption.title}</Option>
+        ) : null}
+        {this.options.map((el, i) => (
           <Option key={i} onClick={this.selectOption.bind(this, el)}>
             {el.title}
           </Option>
@@ -68,7 +61,7 @@ export default class UiSelect extends React.Component<SelectProps> {
     return (
       <Wrapper ref={this.selectRef}>
         <Select onClick={this.toggle}>
-          {this.selected ? this.selected.title : 'Выбранный элемент'}
+          {this.selected ? this.selected.value : this.props.placeholder || 'Выбрать элемент...'}
           <Arrow icon="common/arrow_down" opened={this.openList} />
         </Select>
         {this.list}

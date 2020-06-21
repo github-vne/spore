@@ -24,6 +24,16 @@ const GroupComponent = ({ title, children }: { title?: string; children?: any })
 export default class PageComponents extends React.Component<RouteComponentProps> {
   @Inject private mainStore: MainStore;
   @Inject private notificationService: NotificationService;
+  private exampleOptions: any = [
+    { title: 'Заголовок_1', value: 'Значение_1' },
+    { title: 'Заголовок_2', value: 'Значение_2' },
+    { title: 'Заголовок_3', value: 'Значение_3' },
+    { title: 'Заголовок_4', value: 'Значение_4' },
+    { title: 'Заголовок_5', value: 'Значение_5' },
+    { title: 'Заголовок_6', value: 'Значение_6' },
+    { title: 'Заголовок_7', value: 'Значение_7' },
+    { title: 'Заголовок_8', value: 'Значение_8' }
+  ];
 
   componentDidMount(): void {
     this.mainStore.changeCurrentPage(PageType.COMPONENTS);
@@ -70,8 +80,14 @@ export default class PageComponents extends React.Component<RouteComponentProps>
           <Avatar size={SIZE.EXTRA_SMALL} />
         </GroupComponent>
         <GroupComponent title="Select">
-          <Select />
-          <Select />
+          <Select name="select0" onChange={this.onChange} options={this.exampleOptions} placeholder="Placeholder" />
+          <Select
+            clearable
+            name="select0"
+            onChange={this.onChange}
+            defaultValue={this.exampleOptions[3]}
+            options={this.exampleOptions}
+          />
         </GroupComponent>
         <GroupComponent title="Input">
           <Input name="input0" onChange={this.onChange} placeholder="Label" label="With Label" />

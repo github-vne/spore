@@ -1,17 +1,16 @@
+type OptionValue = string | number | object;
+
 export interface SelectProps {
-  name?: string;
+  name: string;
   isOpen?: boolean;
-  list?: Array<OptionProps>;
+  options: Array<OptionProps>;
   defaultValue?: OptionProps;
-  onChange?: () => ReturnedOption;
+  placeholder?: string;
+  clearable?: boolean;
+  onChange?(name: string, value: OptionValue): void;
 }
 
 export interface OptionProps {
   title: string;
-  value: string | number;
-}
-
-export interface ReturnedOption {
-  name: string;
-  value: string | number;
+  value: OptionValue;
 }
