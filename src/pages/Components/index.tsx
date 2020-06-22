@@ -62,6 +62,7 @@ export default class PageComponents extends React.Component<RouteComponentProps>
           <Button icon="common/send" styled={STYLED.PRIMARY}>
             Icon
           </Button>
+          <Button icon="common/send" styled={STYLED.PRIMARY} />
           <Button pending>Icon</Button>
           <Button disabled>Disabled</Button>
         </GroupComponent>

@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import RawSvg from 'ui-kit/RawSvg';
 
-const BtnStyle = css`
+const ElStyle = css`
+  height: 40px;
   position: relative;
   font-size: 13px;
   border: none;
@@ -11,12 +12,14 @@ const BtnStyle = css`
   align-items: center;
   justify-content: center;
   border-radius: 5px;
-  padding: 6px 12px;
   cursor: pointer;
   font-size: 1em;
-  min-width: 80px;
-  padding: 0.6em 1.5em;
+  min-width: 20px;
+  padding: 0 10px;
   transition: 0.2s;
+  &:disabled {
+    opacity: 0.65;
+  }
   ${({ styled }: { styled: STYLED }) => {
     let _color: string;
     switch (styled) {
@@ -36,30 +39,30 @@ const BtnStyle = css`
     return css`
       color: ${_color};
       border: 1px solid ${_color};
-      &:hover {
+      &:hover:not(:disabled) {
         background: ${hexToRgba(_color, 0.2)};
       }
     `;
   }};
 `;
 
-export const ButtonRawSvg = styled(RawSvg)`
+export const Icon = styled(RawSvg)`
   width: 20px;
   height: 20px;
-  margin-right: 5px;
+`;
+
+export const Children = styled.span`
+  margin: 0 5px;
 `;
 
 export const Button = styled.button.attrs({ type: 'button' })`
-  ${BtnStyle}
-  &:disabled {
-    opacity: 0.65;
-  }
+  ${ElStyle}
 `;
 
 export const BtnLink = styled(Link)`
-  ${BtnStyle}
+  ${ElStyle}
 `;
 
 export const BtnHref = styled.a`
-  ${BtnStyle}
+  ${ElStyle}
 `;

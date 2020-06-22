@@ -8,6 +8,6 @@ export interface ButtonProps {
   styled?: STYLED;
   pending?: boolean;
   className?: string;
-  [nativeKey: string]: any;
   children?: any;
+  [nativeKey: string]: any;
 }
