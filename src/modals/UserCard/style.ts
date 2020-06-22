@@ -1,3 +1,4 @@
+import { COLOR } from 'const';
 import styled from 'styled-components';
 import { Avatar } from 'ui-kit';
 
@@ -14,13 +15,7 @@ export const Background = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  background: #67b26f; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #67b26f, #4ca2cd); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #67b26f,
-    #4ca2cd
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, ${COLOR.GREEN_80}, ${COLOR.BLUE_40});
 `;
 
 export const UserAvatar = styled(Avatar)`

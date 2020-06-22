@@ -1,4 +1,4 @@
-import { OAUTH } from 'const';
+import { OAUTH } from 'const/localStorage';
 import { action, computed, observable } from 'mobx';
 import { Singleton } from 'typescript-ioc';
 

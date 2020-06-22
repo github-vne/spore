@@ -33,14 +33,6 @@ export const Tab = styled.li`
   position: relative;
   cursor: pointer;
   background: ${({ selected }: { selected?: boolean }) => (selected ? COLOR.BLUE_10 : COLOR.GRAY_80)};
-  &:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    bottom: -2px;
-    background: #444;
-    height: 1px;
-  }
 `;
 
 export const Box = styled(_Box)`

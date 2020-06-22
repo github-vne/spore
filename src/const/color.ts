@@ -6,7 +6,6 @@ export enum COLOR {
   BLUE_10 = '#27293d',
   BLUE_20 = '#2b3553',
   BLUE_40 = '#419ef9',
-  BLUE_50 = '#54b9cd',
   BLUE_60 = '#1d8cf8',
   GREEN_80 = '#00bf9a',
   ORANGE_100 = '#FF9E00',

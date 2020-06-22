@@ -1,4 +1,5 @@
-import { COLOR, HEADER_HEIGHT } from 'const';
+import { COLOR } from 'const';
+import { HEADER_HEIGHT } from 'const/params';
 import styled from 'styled-components';
 
 export const Wrapper = styled.header`
@@ -23,8 +24,8 @@ export const Crumb = styled.li`
       height: 7px;
       width: 7px;
       border-radius: 50%;
-      background: ${COLOR.WHITE};
       margin: 0 8px;
+      background: ${COLOR.WHITE};
     }
   }
 `;
@@ -41,8 +42,8 @@ export const Notification = styled.button`
     right: 2px;
     width: 10px;
     height: 10px;
-    background: ${COLOR.RED_100};
     border-radius: 50%;
+    background: ${COLOR.RED_100};
   }
   :hover {
     color: ${COLOR.BLUE_60};

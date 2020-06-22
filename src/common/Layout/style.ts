@@ -1,4 +1,5 @@
-import { GRADIENT, HEADER_HEIGHT } from 'const';
+import { GRADIENT } from 'const';
+import { HEADER_HEIGHT } from 'const/params';
 import styled from 'styled-components';
 
 export const Layout = styled.div`

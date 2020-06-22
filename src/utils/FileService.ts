@@ -46,6 +46,6 @@ export default class FileService {
     return this;
   }
 
-  deleteUploading = (): void => (this.uploading = undefined);
-  deleteError = (): void => (this.error = undefined);
+  deleteUploading = (): void => (this.uploading = null);
+  deleteError = (): void => (this.error = null);
 }

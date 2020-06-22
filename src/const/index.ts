@@ -1,5 +1,2 @@
-export * from './attachments';
 export * from './color';
-export * from './enums';
-export * from './localStorage';
-export * from './params';
+export { STYLED, SIZE } from './enums';

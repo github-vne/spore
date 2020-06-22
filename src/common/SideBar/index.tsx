@@ -1,4 +1,4 @@
-import { OAUTH, SHORT_SIDE_BAR } from 'const';
+import { OAUTH, SHORT_SIDE_BAR } from 'const/localStorage';
 import { PageIcon, PageLink, PageName, PageType, SideBarItems } from 'const/pages';
 import { action, computed, observable } from 'mobx';
 import { observer } from 'mobx-react';
