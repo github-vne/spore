@@ -1,9 +1,10 @@
+import { COLOR } from 'const';
 import styled from 'styled-components';
 import { Button } from 'ui-kit';
 
 export const Main = styled.div`
   height: 100vh;
-  background-color: #1e1e2f;
+  background-color: ${COLOR.BLUE_20};
   background-size: 20px;
   background-position: 200px;
   display: flex;

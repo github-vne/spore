@@ -1,4 +1,4 @@
-import { COLOR } from 'const';
+import { COLOR, hexToRgba } from 'const';
 import styled, { css } from 'styled-components';
 import { RawSvg, Textarea as _Textarea } from 'ui-kit';
 import { MessageType } from './types';
@@ -26,7 +26,6 @@ export const Info = styled.div`
 
 export const TextareaBox = styled.div`
   padding: 5px;
-  background: #1e1e24;
   width: 100%;
   border: 1px solid ${COLOR.WHITE};
   flex: none;
@@ -69,7 +68,7 @@ export const Message = styled.li`
   width: fit-content;
   max-width: 500px;
   padding: 8px 10px;
-  box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
+  box-shadow: 0 1px 0.5px ${hexToRgba(COLOR.BLACK, 0.13)};
   margin-bottom: 10px;
   border-radius: 8px;
   ${({ type }: { type?: MessageType }) => {
@@ -77,23 +76,23 @@ export const Message = styled.li`
       case MessageType.MY:
         return css`
           align-self: flex-end;
-          background: #2b5278;
+          background: ${COLOR.BLUE_30};
           ${MessageBefore};
           &:before {
             right: -9px;
             border-width: 10px 0px 0px 15px;
-            border-left-color: #2b5278;
+            border-left-color: ${COLOR.BLUE_30};
           }
         `;
       case MessageType.CONTACT:
         return css`
           align-self: flex-start;
-          background: #617b95;
+          background: ${COLOR.GRAY_50};
           ${MessageBefore};
           &:before {
             left: -9px;
             border-width: 10px 15px 0px 0px;
-            border-right-color: #617b95;
+            border-right-color: ${COLOR.GRAY_50};
           }
         `;
       case MessageType.INFO:
@@ -102,7 +101,7 @@ export const Message = styled.li`
           padding: 4px 8px;
           border-radius: 15px;
           align-self: center;
-          background: #617b95;
+          background: ${COLOR.GRAY_50};
         `;
       default:
         break;
@@ -119,5 +118,5 @@ export const Test = styled.div`
 `;
 
 export const SendButton = styled(RawSvg)`
-  color: ${({ hasMessage }: { hasMessage?: boolean }) => (hasMessage ? '#2b5278' : '#617b95')};
+  color: ${({ hasMessage }: { hasMessage?: boolean }) => (hasMessage ? COLOR.BLUE_30 : '#617b95')};
 `;

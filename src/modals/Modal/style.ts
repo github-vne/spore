@@ -1,4 +1,4 @@
-import { COLOR } from 'const';
+import { COLOR, hexToRgba } from 'const';
 import styled, { css } from 'styled-components';
 import { ModalDefinition, WrapperProps } from './types';
 
@@ -16,7 +16,7 @@ export const ModalWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.4);
+  background: ${hexToRgba(COLOR.BLACK, 0.5)};
   ${(props: WrapperProps) =>
     props.backdropVisible &&
     css`

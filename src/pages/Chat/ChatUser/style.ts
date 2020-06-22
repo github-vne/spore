@@ -1,3 +1,4 @@
+import { COLOR, hexToRgba } from 'const';
 import styled, { css } from 'styled-components';
 
 export const User = styled.li`
@@ -7,12 +8,12 @@ export const User = styled.li`
   padding: 8px 10px;
   cursor: pointer;
   &:hover {
-    background: rgba(111, 130, 149, 0.4);
+    background: ${hexToRgba(COLOR.GRAY_80, 0.4)};
   }
   ${({ selected }: { selected?: boolean }) =>
     selected &&
     css`
-      background: #2b5278;
+      background: ${COLOR.BLUE_30};
     `}
 `;
 

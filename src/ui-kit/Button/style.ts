@@ -33,7 +33,7 @@ const ElStyle = css`
         _color = COLOR.PINK_10;
         break;
       default:
-        _color = COLOR.BLUE_40;
+        _color = COLOR.BLUE_80;
         break;
     }
     return css`

@@ -15,7 +15,7 @@ export const Background = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  background: linear-gradient(to right, ${COLOR.GREEN_80}, ${COLOR.BLUE_40});
+  background: linear-gradient(to right, ${COLOR.GREEN_80}, ${COLOR.BLUE_80});
 `;
 
 export const UserAvatar = styled(Avatar)`

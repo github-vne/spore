@@ -4,7 +4,7 @@ import RawSvg from 'ui-kit/RawSvg';
 import { ToastType } from './types';
 
 const ToastBackground = {
-  [ToastType.INFO]: COLOR.BLUE_40,
+  [ToastType.INFO]: COLOR.BLUE_80,
   [ToastType.ERROR]: COLOR.PINK_100,
   [ToastType.SUCCESS]: COLOR.GREEN_80,
   [ToastType.WARNING]: COLOR.PINK_10
