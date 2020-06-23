@@ -6,10 +6,10 @@ import { Singleton } from 'typescript-ioc';
 @Singleton
 export default class TaskStore {
   @observable private _tasks: Array<TaskEntity> = [
-    { text: '1', status: TaskStatus.TODO, id: 0 },
-    { text: '2', status: TaskStatus.DONE, id: 1 },
-    { text: '3', status: TaskStatus.IN_PROGRESS, id: 2 },
-    { text: '4', status: TaskStatus.IN_PROGRESS, id: 3 }
+    { text: 'Новая задача', status: TaskStatus.TODO, id: 0 },
+    { text: 'Готово', status: TaskStatus.DONE, id: 1 },
+    { text: 'Делаю 1', status: TaskStatus.IN_PROGRESS, id: 2 },
+    { text: 'Делаю 2', status: TaskStatus.IN_PROGRESS, id: 3 }
   ];
 
   @computed get tasks(): Array<TaskEntity> {
