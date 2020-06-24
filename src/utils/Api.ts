@@ -17,7 +17,7 @@ interface RequestConfig {
   apiVer?: false | string;
 }
 
-export const BACKEND_URL = 'http://cuddly-parakeet.herokuapp.com/';
+// export const BACKEND_URL = '/';
 // export const BACKEND_URL = 'http://25.73.35.40/';
 
 @Singleton
@@ -27,7 +27,7 @@ export default class Api {
   private requestSender: AxiosInstance = axios.create();
 
   private prepareUrl = (endpoint: string, apiVer: string | boolean): string => {
-    return `${BACKEND_URL}api/${apiVer}/${endpoint}`;
+    return `/api/${apiVer}/${endpoint}`;
   };
 
   private doRequest(
