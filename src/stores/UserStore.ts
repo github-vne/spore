@@ -1,4 +1,3 @@
-import { OAUTH } from 'const';
 import { action, computed, observable } from 'mobx';
 import { AuthEntity, UserEntity } from 'models';
 import UserTransport from 'transport/UserTransport';
@@ -23,20 +22,12 @@ export default class UserStore {
 
   @action.bound
   async updatePhoto(photoId: number): Promise<void> {
-    try {
-      this._user = await this.transport.uploadPhoto(photoId);
-    } catch {
-      console.info('e');
-    }
+    this._user = await this.transport.uploadPhoto(photoId);
   }
 
   @action.bound
   async updateUserInfo(user: UserEntity): Promise<void> {
-    try {
-      this._user = await this.transport.updateUserInfo(user);
-    } catch {
-      console.error('error!');
-    }
+    this._user = await this.transport.updateUserInfo(user);
   }
 
   /* Авторизация */
@@ -46,17 +37,13 @@ export default class UserStore {
 
   @action.bound
   async authorize(): Promise<void> {
-    try {
-      this._user = await this.transport.getCurrentUser();
-    } catch (err) {
-      console.error(err);
-    }
+    this._user = await this.transport.getCurrentUser();
   }
 
   @action.bound
   async signIn(auth: AuthEntity): Promise<void> {
     const res = await this.transport.signIn(auth);
-    this._user = new UserEntity(res.user);
+    this._user = res.user;
     this.authService.setToken(res.token);
   }
 }
