@@ -51,8 +51,13 @@ export const ActionPanel = styled.div`
   border-top: 1px solid ${COLOR.WHITE};
   color: ${COLOR.WHITE};
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
   font-size: 15px;
+`;
+
+export const Date = styled.span`
+  color: ${COLOR.GREEN_80};
 `;
 
 export const ActionButton = styled.button`

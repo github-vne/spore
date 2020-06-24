@@ -1,6 +1,8 @@
+import { Dayjs } from 'dayjs';
 import { observable } from 'mobx';
 import { UserEntity } from 'models';
 import { alias, custom, deserialize, serializable, SKIP } from 'serializr';
+import { dateTimeReadOnly } from 'utils/serializers';
 import BaseEntity from './BaseEntity';
 
 export class LikeEntity {
@@ -22,6 +24,10 @@ export default class PostEntity extends BaseEntity {
   @observable
   @serializable
   title: string;
+
+  @observable
+  @serializable(alias('date', dateTimeReadOnly))
+  date: Dayjs;
 
   @observable
   @serializable

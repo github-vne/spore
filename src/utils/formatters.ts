@@ -2,8 +2,7 @@ import dayjs, { Dayjs } from 'dayjs';
 import inflect from './inflect';
 
 export const TIME_FORMAT = 'HH:mm';
-export const DATE_FORMAT = 'LL'; // DD MMMM YYYY г.
-export const TIME_DATE_FORMAT = `${TIME_FORMAT}, ${DATE_FORMAT}`;
+export const DATE_FORMAT = 'DD MMMM YYYY';
 
 export abstract class DtFormatter {
   static formatDate(val: Dayjs): string {
@@ -25,9 +24,9 @@ export abstract class DtFormatter {
 
   static formatDateTime(val: Dayjs, full?: boolean): string {
     if (!val) return '';
-    if (full) return val.format(TIME_DATE_FORMAT);
-    if (!val.isSame(dayjs(), 'year')) return val.format(`${TIME_FORMAT}, ll`);
+    if (full) return val.format(`${TIME_FORMAT}, ${DATE_FORMAT}`);
+    if (!val.isSame(dayjs(), 'year')) return val.format(`ll, ${TIME_FORMAT}`);
     if (val.isSame(dayjs(), 'day')) return this.formatTime(val);
-    return `${val.format(TIME_FORMAT)}, ${DtFormatter.formatDate(val)}`;
+    return `${DtFormatter.formatDate(val)}, ${val.format(TIME_FORMAT)}`;
   }
 }
