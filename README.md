@@ -2,9 +2,6 @@
     <img src="public/static/images/logo.png" alt="Vasenkin" title="Vasenkin" align="right" height="70" />
 </a>
 
-Spore
-======================
-
 <p align="center">
   <img src="public/static/images/dashboard.png" alt="Screenshot" />
 </p>
