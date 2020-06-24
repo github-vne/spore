@@ -46,7 +46,7 @@ export class NewPost extends Modal {
   }
 
   @computed private get disabledBtn(): boolean {
-    return !this.tempPost.text || !this.tempPost.title || !this.fileService.uploading;
+    return !this.tempPost.text || !this.tempPost.title;
   }
 
   @computed private get attachmentsEl(): JSX.Element {

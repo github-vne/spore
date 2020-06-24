@@ -22,7 +22,7 @@ export default class PostStore {
   @action.bound
   async createPost(post: PostEntity): Promise<void> {
     const res = await this.transport.createPost(post);
-    if (res) this.postsHash.unshift(post);
+    if (res) this.postsHash.unshift(res);
   }
 
   @action.bound
