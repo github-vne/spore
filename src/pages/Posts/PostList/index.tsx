@@ -5,7 +5,7 @@ import { PostStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Avatar, Loader, RawSvg } from 'ui-kit';
 import { DtFormatter } from 'utils/formatters';
-import { ActionButton, ActionPanel, Date, Images, List, Owner, Post, Status, Text, Title } from './style';
+import { ActionButton, ActionPanel, Date, Images, List, Owner, Post, Status, Title } from './style';
 
 @observer
 export default class PostList extends React.Component {
@@ -28,7 +28,7 @@ export default class PostList extends React.Component {
             </Owner>
             <Title>{post.title}</Title>
             {post.photo && <Images src={post.photo} alt="user_images" />}
-            <Text>{post.text}</Text>
+            <p>{post.text}</p>
             <ActionPanel>
               <Date>{DtFormatter.formatDateTime(post.date)}</Date>
               <ActionButton onClick={this.postStore.likePost.bind(this, post.id)} active={post.likes.userLikes}>

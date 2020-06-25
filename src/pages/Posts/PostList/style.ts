@@ -36,7 +36,6 @@ export const Owner = styled.div`
 `;
 
 export const Title = styled.h5`
-  ${OverflowText};
   font-size: 22px;
   margin-bottom: 10px;
 `;
@@ -44,11 +43,6 @@ export const Title = styled.h5`
 export const Images = styled.img`
   width: calc(100% + 30px);
   margin: 0 -15px 10px -15px;
-`;
-
-export const Text = styled.pre`
-  ${OverflowText};
-  -webkit-line-clamp: 5;
 `;
 
 export const ActionPanel = styled.div`
