@@ -5,7 +5,7 @@ import { PostStore } from 'stores';
 import { Inject } from 'typescript-ioc';
 import { Avatar, Loader, RawSvg } from 'ui-kit';
 import { DtFormatter } from 'utils/formatters';
-import { ActionButton, ActionPanel, Date, Images, List, Owner, Post, Text, Title } from './style';
+import { ActionButton, ActionPanel, Date, Images, List, Owner, Post, Status, Text, Title } from './style';
 
 @observer
 export default class PostList extends React.Component {
@@ -15,6 +15,8 @@ export default class PostList extends React.Component {
     const posts = this.postStore.postList.get();
 
     if (this.postStore.postList.busy) return <Loader fullScreen />;
+
+    if (!posts.length) return <Status>Список пуст, создайте новый пост</Status>;
 
     return (
       <List>

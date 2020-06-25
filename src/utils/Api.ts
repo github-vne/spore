@@ -18,7 +18,7 @@ interface RequestConfig {
 }
 
 export const BACKEND_URL = '/';
-// export const BACKEND_URL = 'http://25.73.35.40/';
+// export const BACKEND_URL = 'http://185.41.160.136/';
 
 @Singleton
 export default class Api {

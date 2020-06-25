@@ -15,6 +15,12 @@ export const List = styled.div`
   column-gap: 15px;
 `;
 
+export const Status = styled.h3`
+  font-size: 25px;
+  text-align: center;
+  color: ${COLOR.GREEN_80};
+`;
+
 export const Post = styled(Box)`
   width: 100%;
   display: inline-block;

@@ -31,7 +31,7 @@ export class NewPost extends Modal {
   @action.bound
   private async createPost(): Promise<void> {
     this.pending = true;
-    this.tempPost.photoId = this.fileService.uploading.id;
+    if (this.fileService.uploading) this.tempPost.photoId = this.fileService.uploading.id;
     try {
       await this.postStore.createPost(this.tempPost);
     } finally {
