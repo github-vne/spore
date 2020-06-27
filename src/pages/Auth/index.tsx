@@ -109,9 +109,11 @@ export default class PageAuth extends React.Component<RouteComponentProps> {
             footer={
               <Footer>
                 <div>
-                  <Button onClick={this.guest} styled={STYLED.PRIMARY} pending={this.pending}>
-                    Гость
-                  </Button>
+                  {this.tabIndex === 0 ? (
+                    <Button onClick={this.guest} styled={STYLED.PRIMARY} pending={this.pending}>
+                      Гость
+                    </Button>
+                  ) : null}
                   <span>{this.status}</span>
                 </div>
                 <Button
