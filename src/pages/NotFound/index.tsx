@@ -17,7 +17,7 @@ export default class PageNotFound extends React.Component<RouteComponentProps> {
   render(): JSX.Element {
     return (
       <Content>
-        <Comeback to={PageLink.MAIN}>На главную</Comeback>
+        <Comeback to={PageLink.MAIN}>На главную страницу</Comeback>
         <Image src={require('./404.svg')} />
       </Content>
     );
