@@ -34,7 +34,6 @@
 <a name="browser"></a>
 ### Поддержка браузеров
 * Google Chrome
-* Not IE
 
 <a name="stack"></a>
 ### Staсk технологий
