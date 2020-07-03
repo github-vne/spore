@@ -24,7 +24,7 @@ export default class PageMain extends React.Component<RouteComponentProps> {
       <Layout>
         <CardPanel />
         <Wrapper>
-          <ProgressPages title="Рандом">
+          <ProgressPages title="Загруженность страниц">
             {SideBarItems.map((page, index) => (
               <PagesItem key={index}>
                 <RawSvg icon={`pages/${PageIcon[page]}`} />
