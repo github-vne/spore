@@ -66,6 +66,7 @@ export default class Api {
     request = request
       .then((response: AxiosResponse) => response.data)
       .catch((error: AxiosError) => {
+        if (error.response.data.code === 500) return; // Проверка на ошибку при авторизации
         let text = 'Ошибка при отправке запроса! ';
         if (endpoint) text += `Адрес: ${endpoint} `;
         if (Object.keys(params).length) text += ` | Параметры: ${JSON.stringify(params)}\n`;
