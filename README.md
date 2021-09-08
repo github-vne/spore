@@ -1,4 +1,4 @@
-# [DEMO](http://185.41.160.136/)
+<!-- # [DEMO](http://185.41.160.136/) -->
 
 <a href="https://github.com/n-vasenkin">
     <img src="public/static/images/logo.png" alt="Vasenkin" title="Vasenkin" align="right" height="70" />
